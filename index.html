@@ -356,13 +356,15 @@
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-5xl font-extrabold text-[#1A4D57] mb-4">Language Courses</h2>
                 <p class="text-gray-500 max-w-2xl mx-auto">Pelajari Bahasa Indonesia dengan metode interaktif bersama tutor berpengalaman.</p>
-                <div class="flex flex-col md:flex-row items-center justify-center mt-10 gap-4">
+                <div class="flex flex-col items-center justify-center mt-10 gap-4">
                     <span class="text-sm font-bold text-[#1A4D57] uppercase tracking-wider">Pilih Level:</span>
-                    <div class="inline-flex bg-white p-1 rounded-none border border-gray-200 shadow-sm">
-                        <button onclick="filterCourses('all')" class="filter-btn active px-6 py-2 rounded-none text-sm font-bold transition-all">Semua</button>
-                        <button onclick="filterCourses('basic')" class="filter-btn px-6 py-2 rounded-none text-gray-500 text-sm font-bold transition-all hover:bg-gray-50">Basic</button>
-                        <button onclick="filterCourses('independent')" class="filter-btn px-6 py-2 rounded-none text-gray-500 text-sm font-bold transition-all hover:bg-gray-50">Independent</button>
-                        <button onclick="filterCourses('proficient')" class="filter-btn px-6 py-2 rounded-none text-gray-500 text-sm font-bold transition-all hover:bg-gray-50">Proficient</button>
+                    <div class="w-full max-w-md md:max-w-2xl mx-auto px-2">
+                        <div class="flex bg-white border border-gray-200 shadow-sm overflow-hidden">
+                            <button onclick="filterCourses('all')" class="filter-btn active flex-1 py-2.5 text-[11px] md:text-sm font-bold transition-all border-r border-gray-100 last:border-0">Semua</button>
+                            <button onclick="filterCourses('basic')" class="filter-btn flex-1 py-2.5 text-gray-500 text-[11px] md:text-sm font-bold transition-all hover:bg-gray-50 border-r border-gray-100">Basic</button>
+                            <button onclick="filterCourses('independent')" class="filter-btn flex-1 py-2.5 text-gray-500 text-[11px] md:text-sm font-bold transition-all hover:bg-gray-50 border-r border-gray-100">Independent</button>
+                            <button onclick="filterCourses('proficient')" class="filter-btn flex-1 py-2.5 text-gray-500 text-[11px] md:text-sm font-bold transition-all hover:bg-gray-50">Proficient</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -791,7 +793,9 @@
             const cards = document.querySelectorAll('.course-card');
             buttons.forEach(btn => {
                 btn.classList.remove('active');
-                if(btn.innerText.toLowerCase() === level || (level === 'all' && btn.innerText.toLowerCase() === 'semua')) {
+                // Penyesuaian pengecekan teks tombol agar sinkron dengan HTML baru
+                const btnText = btn.innerText.toLowerCase();
+                if(btnText === level || (level === 'all' && btnText === 'semua')) {
                     btn.classList.add('active');
                 }
             });
