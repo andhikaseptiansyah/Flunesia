@@ -91,6 +91,20 @@
             padding-bottom: 1.5rem;
         }
 
+        /* PERBAIKAN RESPONSIVE FILTER */
+        .filter-btn {
+            padding: 8px 24px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 640px) {
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+        }
+
         .filter-btn.active {
             background-color: #1A4D57;
             color: white !important;
@@ -227,13 +241,6 @@
 <body class="text-gray-800">
 
     <div class="fixed bottom-8 right-8 z-[1000] flex flex-col items-end gap-2 drop-shadow-2xl">
-        <div class="bg-white px-5 py-3 rounded-[1.8rem] rounded-br-none mb-1 shadow-xl relative animate-bounce" style="animation-duration: 3s;">
-            <p class="text-[10px] font-bold text-[#C4A603] uppercase tracking-wider leading-none mb-1">Admin Online</p>
-            <p class="text-gray-700 font-semibold text-sm whitespace-nowrap flex items-center gap-1">
-                Ada bantuan? 👋
-            </p>
-            <div class="absolute -bottom-2 right-0 w-0 h-0 border-l-[15px] border-l-transparent border-t-[15px] border-t-white"></div>
-        </div>
         
         <a href="https://wa.me/6287729949195" target="_blank" class="relative group">
             <div class="w-16 h-16 rounded-full border-4 border-[#25D366] p-0.5 bg-white overflow-hidden shadow-lg transition-transform group-hover:scale-110 active:scale-95">
@@ -360,10 +367,10 @@
                     <span class="text-sm font-bold text-[#1A4D57] uppercase tracking-wider">Pilih Level:</span>
                     <div class="w-full max-w-full overflow-x-auto hide-scrollbar px-4 flex justify-center">
                         <div class="inline-flex bg-white p-1 border border-gray-200 shadow-sm min-w-max">
-                            <button onclick="filterCourses('all')" class="filter-btn active px-6 py-2 rounded-none text-sm font-bold transition-all shrink-0">Semua</button>
-                            <button onclick="filterCourses('basic')" class="filter-btn px-6 py-2 rounded-none text-gray-500 text-sm font-bold transition-all hover:bg-gray-50 shrink-0">Basic</button>
-                            <button onclick="filterCourses('independent')" class="filter-btn px-6 py-2 rounded-none text-gray-500 text-sm font-bold transition-all hover:bg-gray-50 shrink-0">Independent</button>
-                            <button onclick="filterCourses('proficient')" class="filter-btn px-6 py-2 rounded-none text-gray-500 text-sm font-bold transition-all hover:bg-gray-50 shrink-0">Proficient</button>
+                            <button onclick="filterCourses('all')" class="filter-btn active text-sm font-bold">Semua</button>
+                            <button onclick="filterCourses('basic')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Basic</button>
+                            <button onclick="filterCourses('independent')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Independent</button>
+                            <button onclick="filterCourses('proficient')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Proficient</button>
                         </div>
                     </div>
                 </div>
