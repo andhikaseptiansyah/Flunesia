@@ -35,6 +35,24 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
+        /* Utility class untuk motif tanpa gambar luar */
+    .bg-pattern-dots {
+        background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px);
+        background-size: 15px 15px;
+    }
+    .bg-pattern-lines {
+        background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 10px);
+    }
+    /* Memastikan transisi grayscale halus */
+    .tutor-img {
+        filter: grayscale(100%);
+        transition: all 0.5s ease;
+    }
+    .tutor-card:hover .tutor-img {
+        filter: grayscale(0%);
+        transform: scale(1.05);
+    }
+
         @keyframes float {
             0%, 100% { transform: translateY(0) translateX(0) scale(1); }
             33% { transform: translateY(-50px) translateX(30px) scale(1.1); }
@@ -383,23 +401,22 @@
                 <div id="course-container" class="hide-scrollbar">
                     <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="basic">
                         <div class="relative h-44 bg-[#336F7A] pattern-dots overflow-visible">
-                            <img src="orangkursus2.png" alt="Dosen A1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
+                            <img src="orangkursus3.png" alt="Dosen A1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
                             <div class="absolute bottom-4 left-4 z-20">
                                 <div class="bg-white px-4 py-2 rounded-none shadow-sm">
-                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Basic User (Level A1-A2)</p>
+                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">BCBT Test</p>
                                 </div>
                             </div>
                         </div>
                         <div class="p-6 pt-12">
                             <div class="inline-block px-3 py-1 bg-sky-100 text-sky-700 text-[10px] font-bold rounded-none mb-4 uppercase">Basic Level</div>
-                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Indonesian for Daily Life (Basic)</h3>
-                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Program yang dirancang khusus untuk pemula yang ingin menguasai ungkapan dasar sehari-hari. Kamu akan belajar memperkenalkan diri, bertukar informasi pribadi secara sederhana, hingga melakukan tugas-tugas rutin di lingkungan sekitar dengan percaya diri. Sangat cocok untuk kamu yang baru pertama kali menyentuh Bahasa Indonesia.</p>
+                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">CBT Level Test: Cari Tahu Kemampuanmu</h3>
+                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Langkah awal sebelum memulai perjalanan belajarmu. Ikuti tes berbasis komputer secara gratis untuk menentukan apakah kamu berada di level Basic, Independent, atau Proficient. Hasil ini akan membantu kami menyesuaikan materi yang paling efektif untukmu.</p>
                             <div class="flex justify-between items-center pt-4 border-t border-gray-50">
                                 <div>
                                     <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Start from</p>
                                     <div class="flex items-center gap-2">
-                                        <p class="text-2xl font-extrabold text-[#1A4D57]">Rp67.800</p>
-                                        <p class="text-sm text-gray-400 line-through">Rp120.000</p>
+                                        <p class="text-2xl font-extrabold text-[#1A4D57]">Free Test</p>
                                     </div>
                                 </div>
                                 <button class="w-12 h-12 bg-[#1A4D57] text-white rounded-none flex items-center justify-center transition-all hover:bg-[#C4A603] shadow-md">➜</button>
@@ -408,22 +425,23 @@
                     </div>
  <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="basic">
                         <div class="relative h-44 bg-[#41644A] pattern-dots overflow-visible">
-                            <img src="orangkursus1.png" alt="Dosen B1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
+                            <img src="orangkursus2.png" alt="Dosen B1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
                             <div class="absolute bottom-4 left-4 z-20">
                                 <div class="bg-white px-4 py-2 rounded-none shadow-sm">
-                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">CBT Test</p>
+                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Basic User (Level A1-A2)</p>
                                 </div>
                             </div>
                         </div>
                         <div class="p-6 pt-12">
                             <div class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-bold rounded-none mb-4 uppercase">Basic level</div>
-                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">CBT Level Test: Cari Tahu Kemampuanmu</h3>
-                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Langkah awal sebelum memulai perjalanan belajarmu. Ikuti tes berbasis komputer secara gratis untuk menentukan apakah kamu berada di level Basic, Independent, atau Proficient. Hasil ini akan membantu kami menyesuaikan materi yang paling efektif untukmu.</p>
+                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Indonesian for Daily Life (Basic)</h3>
+                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Program yang dirancang khusus untuk pemula yang ingin menguasai ungkapan dasar sehari-hari. Kamu akan belajar memperkenalkan diri, bertukar informasi pribadi secara sederhana, hingga melakukan tugas-tugas rutin di lingkungan sekitar dengan percaya diri. Sangat cocok untuk kamu yang baru pertama kali menyentuh Bahasa Indonesia.</p>
                             <div class="flex justify-between items-center pt-4 border-t border-gray-50">
                                 <div>
                                     <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Start from</p>
                                     <div class="flex items-center gap-2">
-                                        <p class="text-2xl font-extrabold text-[#1A4D57]">Free Test</p>
+                                   <p class="text-2xl font-extrabold text-[#1A4D57]">Rp89.800</p>
+                                        <p class="text-sm text-gray-400 line-through">Rp105.000</p>
                                     </div>
                                 </div>
                                 <button class="w-12 h-12 bg-[#1A4D57] text-white rounded-none flex items-center justify-center transition-all hover:bg-[#C4A603] shadow-md">➜</button>
@@ -448,8 +466,8 @@
                                 <div>
                                     <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Start from</p>
                                     <div class="flex items-center gap-2">
-                                        <p class="text-2xl font-extrabold text-[#1A4D57]">Rp49.800</p>
-                                        <p class="text-sm text-gray-400 line-through">Rp85.000</p>
+                                        <p class="text-2xl font-extrabold text-[#1A4D57]">Rp149.800</p>
+                                        <p class="text-sm text-gray-400 line-through">Rp155.000</p>
                                     </div>
                                 </div>
                                 <button class="w-12 h-12 bg-[#1A4D57] text-white rounded-none flex items-center justify-center transition-all hover:bg-[#C4A603] shadow-md">➜</button>
@@ -459,7 +477,7 @@
 
                     <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="proficient">
                         <div class="relative h-44 bg-[#D1D5DB] pattern-dots overflow-visible">
-                            <img src="orangkursus3.png" alt="Dosen C1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
+                            <img src="orangkursus1.png" alt="Dosen C1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
                             <div class="absolute bottom-4 left-4 z-20">
                                 <div class="bg-white px-4 py-2 rounded-none shadow-sm">
                                     <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Proficient (Level C1-C2)</p>
@@ -474,8 +492,8 @@
                                 <div>
                                     <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Start from</p>
                                     <div class="flex items-center gap-2">
-                                        <p class="text-2xl font-extrabold text-[#1A4D57]">Rp59.800</p>
-                                        <p class="text-sm text-gray-400 line-through">Rp110.000</p>
+                                        <p class="text-2xl font-extrabold text-[#1A4D57]">Rp189.800</p>
+                                        <p class="text-sm text-gray-400 line-through">Rp190.000</p>
                                     </div>
                                 </div>
                                 <button class="w-12 h-12 bg-[#1A4D57] text-white rounded-none flex items-center justify-center transition-all hover:bg-[#C4A603] shadow-md">➜</button>
@@ -539,7 +557,7 @@
         </div>
     </section>
 
-  <section class="w-full bg-[#1A4D57] relative overflow-hidden pt-12 pb-24">
+  <section class="w-full bg-[#336F7A] relative overflow-hidden pt-12 pb-24">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-[#245A64] -skew-x-12 translate-x-1/4 z-0 hidden lg:block"></div>
         <div class="max-w-7xl mx-auto w-full px-6 md:px-12 relative z-10">
             <div class="grid lg:grid-cols-2 gap-8 items-center">
@@ -562,67 +580,195 @@
             </svg>
         </div>
     </section>
+    
+    <section class="py-16 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-6" data-aos="fade-up">
+            <span class="text-[#C4A603] font-bold tracking-widest uppercase text-xs">Cerita Fluenesia</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-[#1A4D57] mt-2 mb-3">Pengalaman First-Timer Kami</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base">Lihat kesan mereka yang telah mencoba Free CBT Test dan sesi Trial Class interaktif kami.</p>
+        </div>
 
-    <section class="py-24 bg-[#f9fafb]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-[#1A4D57] mb-4">Memperkenalkan Tutor Profesional Fluenesia</h2>
-                <p class="text-gray-500 max-w-2xl mx-auto">Belajar bersama para ahli bahasa yang berdedikasi dan memiliki pengalaman internasional.</p>
-            </div>
-
-            <div class="slider-wrapper relative px-6 md:px-12" data-aos="fade-up">
-                <button onclick="slideTutor('left')" class="nav-btn nav-prev" style="top: 50% !important; left: 0;">❮</button>
-                <button onclick="slideTutor('right')" class="nav-btn nav-next" style="top: 50% !important; right: 0;">❯</button>
-
-                <div id="tutor-container" class="hide-scrollbar">
-                    <div class="tutor-card relative group h-[480px] rounded-[2.5rem] overflow-hidden bg-[#1A4D57] p-6 shadow-xl flex flex-col justify-end">
-                        <img src="orangkursus1.png" alt="Rachelle C. De Castro" class="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500">
-                        <div class="bg-white rounded-3xl p-6 text-center shadow-lg relative z-10 mb-2">
-                            <h3 class="text-lg font-bold text-[#1A4D57]">Rachelle C. De Castro</h3>
-                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">SERTIFIKAT TESOL</p>
-                            <div class="mt-4 bg-[#C4A603] text-white py-2 px-5 rounded-full text-xs font-bold inline-block">20 Tahun Pengalaman</div>
-                        </div>
+        <div id="testi-container" class="flex gap-8 overflow-x-auto hide-scrollbar scroll-smooth snap-x snap-mandatory pt-12 pb-10 px-4 cursor-grab active:cursor-grabbing" data-aos="fade-up">
+            
+            <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
+                <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
+                    <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=150" class="w-full h-full object-cover">
                     </div>
-
-                    <div class="tutor-card relative group h-[480px] rounded-[2.5rem] overflow-hidden bg-[#C4A603] p-6 shadow-xl flex flex-col justify-end">
-                        <img src="orangkursus2.png" alt="Aisyah Amilatul" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-500">
-                        <div class="bg-white rounded-3xl p-6 text-center shadow-lg relative z-10 mb-2">
-                            <h3 class="text-lg font-bold text-[#1A4D57]">Aisyah Amilatul</h3>
-                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">SERTIFIKAT TESOL & TEFL</p>
-                            <div class="mt-4 bg-[#1A4D57] text-white py-2 px-5 rounded-full text-xs font-bold inline-block">Pengalaman 8 Tahun</div>
-                        </div>
+                    <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
+                        <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
                     </div>
-
-                    <div class="tutor-card relative group h-[480px] rounded-[2.5rem] overflow-hidden bg-[#1A4D57] p-6 shadow-xl flex flex-col justify-end">
-                        <img src="orangkursus3.png" alt="Dhimas Dwi Nugraha" class="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500">
-                        <div class="bg-white rounded-3xl p-6 text-center shadow-lg relative z-10 mb-2">
-                            <h3 class="text-lg font-bold text-[#1A4D57]">Dhimas Dwi Nugraha</h3>
-                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">SERTIFIKAT TESOL</p>
-                            <div class="mt-4 bg-[#C4A603] text-white py-2 px-5 rounded-full text-xs font-bold inline-block">Pengalaman 7 Tahun</div>
-                        </div>
-                    </div>
-
-                    <div class="tutor-card relative group h-[480px] rounded-[2.5rem] overflow-hidden bg-[#245A64] p-6 shadow-xl flex flex-col justify-end">
-                        <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=600" alt="Tutor 4" class="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500">
-                        <div class="bg-white rounded-3xl p-6 text-center shadow-lg relative z-10 mb-2">
-                            <h3 class="text-lg font-bold text-[#1A4D57]">Budi Santoso</h3>
-                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">BAHASA INDONESIA EXPERT</p>
-                            <div class="mt-4 bg-[#C4A603] text-white py-2 px-5 rounded-full text-xs font-bold inline-block">10 Tahun Pengalaman</div>
-                        </div>
-                    </div>
-
-                    <div class="tutor-card relative group h-[480px] rounded-[2.5rem] overflow-hidden bg-[#1A4D57] p-6 shadow-xl flex flex-col justify-end">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600" alt="Tutor 5" class="absolute inset-0 w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500">
-                        <div class="bg-white rounded-3xl p-6 text-center shadow-lg relative z-10 mb-2">
-                            <h3 class="text-lg font-bold text-[#1A4D57]">Siti Aminah</h3>
-                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">LINGUISTIK CERTIFIED</p>
-                            <div class="mt-4 bg-[#C4A603] text-white py-2 px-5 rounded-full text-xs font-bold inline-block">12 Tahun Pengalaman</div>
-                        </div>
+                    <div class="mt-4 flex-grow">
+                        <h4 class="text-xl font-bold text-[#1A4D57]">Ivan Ray</h4>
+                        <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">💻 Free CBT Test User</p>
+                        <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Awalnya bingung mulai dari mana, tapi fitur Free CBT Test-nya ngebantu banget! Hasilnya akurat dan saya langsung disarankan masuk ke level Independent. User interface-nya juga modern."</p>
                     </div>
                 </div>
             </div>
+
+            <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
+                <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
+                    <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
+                        <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
+                    </div>
+                    <div class="mt-4 flex-grow">
+                        <h4 class="text-xl font-bold text-[#1A4D57]">Idni</h4>
+                        <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">🛡️ Trial Class Participant</p>
+                        <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Baru ikut sesi trial 30 menit, tapi sudah belajar banyak kosakata slang yang praktis. Tutornya sangat friendly dan cara mengajarnya santai tapi materi tetap tersampaikan dengan baik."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
+                <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
+                    <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
+                        <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
+                    </div>
+                    <div class="mt-4 flex-grow">
+                        <h4 class="text-xl font-bold text-[#1A4D57]">Farah D</h4>
+                        <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">📋 Assessment User</p>
+                        <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Sistem assessment-nya tidak membosankan. Setelah tes, saya langsung dapat feedback tentang kelemahan saya. Fluenesia benar-benar memperhatikan detail kemampuan siswa."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
+                <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
+                    <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
+                        <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
+                    </div>
+                    <div class="mt-4 flex-grow">
+                        <h4 class="text-xl font-bold text-[#1A4D57]">Michael Chen</h4>
+                        <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">✨ Beta User</p>
+                        <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Suka sekali dengan kemudahan booking trial class-nya. Admin WhatsApp-nya sangat responsif membantu saya menjadwalkan kelas pertama untuk anak saya."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
+                <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
+                    <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
+                        <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
+                    </div>
+                    <div class="mt-4 flex-grow">
+                        <h4 class="text-xl font-bold text-[#1A4D57]">Sarah Jenkins</h4>
+                        <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">📱 Mobile User</p>
+                        <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Saya mencoba mengerjakan CBT Test melalui HP sambil di jalan, dan aplikasinya lancar. Tidak sabar untuk segera mulai kelas full programnya!"</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
+ <section class="relative pt-24 pb-16 overflow-hidden" style="background: linear-gradient(135deg, #336F7A 0%, #F5C857 100%);">
+    
+    <div class="absolute top-0 left-0 w-full overflow-hidden line-height-0">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[60px]">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#f9fafb"></path>
+        </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-3">Memperkenalkan Tutor Profesional Fluenesia</h2>
+            <p class="text-gray-100 max-w-2xl mx-auto text-sm opacity-90">Belajar bersama para ahli bahasa yang berdedikasi dan memiliki pengalaman internasional.</p>
+        </div>
+
+        <div class="slider-wrapper relative px-2 md:px-10" data-aos="fade-up">
+            <button onclick="slideTutor('left')" class="nav-btn nav-prev" style="top: 50% !important; left: -15px;">❮</button>
+            <button onclick="slideTutor('right')" class="nav-btn nav-next" style="top: 50% !important; right: -15px;">❯</button>
+
+            <div id="tutor-container" class="hide-scrollbar flex gap-6 overflow-x-auto scroll-smooth snap-x pb-8">
+                
+                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                    <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-40"></div>
+                    <img src="orangkursus1.png" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
+                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
+                        <h3 class="text-base font-bold text-[#1A4D57]">Rachelle C. De Castro</h3>
+                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">SERTIFIKAT TESOL</p>
+                        <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">20 Tahun Pengalaman</div>
+                    </div>
+                </div>
+
+                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#C4A603] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                    <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-60"></div>
+                    <img src="orangkursus2.png" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0" style="filter:none">
+                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#1A4D57]">
+                        <h3 class="text-base font-bold text-[#1A4D57]">Aisyah Amilatul</h3>
+                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">SERTIFIKAT TESOL & TEFL</p>
+                        <div class="mt-3 bg-[#1A4D57] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">Pengalaman 8 Tahun</div>
+                    </div>
+                </div>
+
+                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                    <div class="absolute inset-0 bg-pattern-lines pointer-events-none opacity-30"></div>
+                    <img src="orangkursus3.png" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
+                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
+                        <h3 class="text-base font-bold text-[#1A4D57]">Dhimas Dwi Nugraha</h3>
+                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">SERTIFIKAT TESOL</p>
+                        <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">Pengalaman 7 Tahun</div>
+                    </div>
+                </div>
+
+                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#245A64] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                    <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-40"></div>
+                    <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=600" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
+                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
+                        <h3 class="text-base font-bold text-[#1A4D57]">Budi Santoso</h3>
+                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">BAHASA INDONESIA EXPERT</p>
+                        <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">10 Tahun Pengalaman</div>
+                    </div>
+                </div>
+
+                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                    <div class="absolute inset-0 bg-pattern-lines pointer-events-none opacity-30"></div>
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
+                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
+                        <h3 class="text-base font-bold text-[#1A4D57]">Siti Aminah</h3>
+                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">BAHASA INDONESIA NATIVE</p>
+                        <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">5 Tahun Pengalaman</div>
+                    </div>
+                </div>
+
+                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#C4A603] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                    <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-40"></div>
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=600" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
+                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#1A4D57]">
+                        <h3 class="text-base font-bold text-[#1A4D57]">Andi Wijaya</h3>
+                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">LINGUISTIC SPECIALIST</p>
+                        <div class="mt-3 bg-[#1A4D57] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">12 Tahun Pengalaman</div>
+                    </div>
+                </div>
+
+                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                    <div class="absolute inset-0 bg-pattern-lines pointer-events-none opacity-30"></div>
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
+                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
+                        <h3 class="text-base font-bold text-[#1A4D57]">Maria Garcia</h3>
+                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">CROSS-CULTURAL COACH</p>
+                        <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">15 Tahun Pengalaman</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 
  <section class="py-24 bg-white">
         <div class="max-w-4xl mx-auto px-6">
