@@ -105,7 +105,7 @@
             overflow: hidden;
         }
         #mobile-menu.active {
-            max-height: 400px;
+            max-height: 500px;
             padding-bottom: 1.5rem;
         }
 
@@ -254,6 +254,99 @@
             transform: rotate(180deg);
             color: #C4A603;
         }
+
+        /* DROPDOWN STYLES */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: #4a5568;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f7fafc;
+            color: #1A4D57;
+            padding-left: 24px;
+        }
+
+        .dropdown-content a:not(:last-child) {
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        /* Mobile dropdown styles */
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f8fafc;
+            margin: 8px 0;
+            border-radius: 8px;
+        }
+
+        .mobile-dropdown-content.active {
+            max-height: 200px;
+        }
+
+        .mobile-dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: #4a5568;
+            font-size: 14px;
+            text-decoration: none;
+            border-left: 3px solid transparent;
+        }
+
+        .mobile-dropdown-content a:hover {
+            background-color: #edf2f7;
+            color: #1A4D57;
+            border-left-color: #C4A603;
+        }
+
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .mobile-dropdown-toggle .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown-toggle.active .arrow {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -280,7 +373,21 @@
                 </div>
                 
                 <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
-                    <a href="#" class="hover:text-[#1A4D57]">Program</a>
+                    <!-- Dropdown for Program -->
+                    <div class="dropdown relative">
+                        <a href="#" class="hover:text-[#1A4D57] flex items-center gap-1">
+                            Program
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="KursusBasic.html" class="text-[#1A4D57] font-semibold">Basic User (A1-A2)</a>
+                            <a href="#" class="text-[#1A4D57] font-semibold">Independent User (B1-B2)</a>
+                            <a href="#" class="text-[#1A4D57] font-semibold">Proficient User (C1-C2)</a>
+                        </div>
+                    </div>
+                    
                     <a href="#" class="hover:text-[#1A4D57]">CBT Test</a>
                     <a href="#" class="hover:text-[#1A4D57]">Live Class</a>
                     <a href="#" class="hover:text-[#1A4D57]">Future Mentor</a>
@@ -289,7 +396,7 @@
 
                 <div class="flex items-center gap-4">
                     <button class="hidden md:block bg-[#C4A603] hover:bg-[#A38A02] text-white px-7 py-2.5 rounded-full font-bold transition-all shadow-md active:scale-95">
-                        Mulai Belajar
+                        Free Test
                     </button>
                     <button id="menu-btn" class="md:hidden text-[#1A4D57] p-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -299,17 +406,32 @@
                 </div>
             </div>
 
-            <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 font-medium text-gray-600">
-                <a href="#" class="hover:text-[#1A4D57] py-2">Program</a>
-                <a href="#" class="hover:text-[#1A4D57] py-2">CBT Test</a>
-                <a href="#" class="hover:text-[#1A4D57] py-2">Live Class</a>
-                <a href="#" class="hover:text-[#1A4D57] py-2">Future Mentor</a>
-                <a href="#" class="hover:text-[#1A4D57] py-2">Tentang Kami</a>
-                <button class="bg-[#C4A603] text-white px-6 py-3 rounded-xl font-bold w-full">Mulai Belajar</button>
+            <div id="mobile-menu" class="md:hidden flex flex-col space-y-0 font-medium text-gray-600">
+                <!-- Mobile Dropdown for Program -->
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-toggle w-full text-left py-3 px-4 hover:text-[#1A4D57] flex justify-between items-center" onclick="toggleMobileDropdown(this)">
+                        <span>Program</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 arrow text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-content">
+                        <a href="KursusBasic.html" class="py-2 px-8 hover:text-[#1A4D57] font-semibold text-[#1A4D57]">Basic User (A1-A2)</a>
+                        <a href="#" class="py-2 px-8 hover:text-[#1A4D57] font-semibold text-[#1A4D57]">Independent User (B1-B2)</a>
+                        <a href="#" class="py-2 px-8 hover:text-[#1A4D57] font-semibold text-[#1A4D57]">Proficient User (C1-C2)</a>
+                    </div>
+                </div>
+                
+                <a href="#" class="hover:text-[#1A4D57] py-3 px-4">CBT Test</a>
+                <a href="#" class="hover:text-[#1A4D57] py-3 px-4">Live Class</a>
+                <a href="#" class="hover:text-[#1A4D57] py-3 px-4">Future Mentor</a>
+                <a href="#" class="hover:text-[#1A4D57] py-3 px-4">Tentang Kami</a>
+                <button class="bg-[#C4A603] text-white px-6 py-3 mx-4 mt-2 rounded-xl font-bold w-auto">Free Test</button>
             </div>
         </div>
     </nav>
 
+    <!-- Rest of the content remains the same -->
     <section class="bg-gradient-custom pt-16 pb-48 px-4 relative"> 
         <div class="bubble w-32 h-32 top-10 left-10"></div>
         <div class="custom-shape-divider-bottom">
@@ -345,166 +467,168 @@
         </div>
     </section>
 
-    <section class="max-w-5xl mx-auto px-4 -mt-36 relative z-20 mb-24" data-aos="zoom-in">
-        <div class="bg-gradient-to-r from-[#1A4D57] via-[#245A64] to-[#C4A603] p-4 rounded-[2.5rem] shadow-2xl border border-white/10 backdrop-blur-md overflow-x-auto hide-scrollbar">
-            <div class="flex md:grid md:grid-cols-6 gap-3 min-w-[750px] md:min-w-full">
-                <div class="group flex-1 flex flex-col items-center p-4 bg-white/95 rounded-3xl shadow-sm hover:shadow-xl transition-all cursor-pointer">
-                    <img src="https://em-content.zobj.net/source/microsoft-teams/363/calendar_1f4c5.png" class="w-10 h-10 mb-2">
-                    <span class="text-[13px] font-bold text-[#1A4D57] text-center leading-tight">Booking Trial</span>
-                </div>
-                <div class="group flex-1 flex flex-col items-center p-4 bg-white/95 rounded-3xl shadow-sm hover:shadow-xl transition-all cursor-pointer">
-                    <img src="https://em-content.zobj.net/source/microsoft-teams/363/memo_1f4dd.png" class="w-10 h-10 mb-2">
-                    <span class="text-[13px] font-bold text-[#1A4D57] text-center leading-tight">Assessment</span>
-                </div>
-                <div class="group flex-1 flex flex-col items-center p-4 bg-white/95 rounded-3xl shadow-sm hover:shadow-xl transition-all cursor-pointer">
-                    <img src="https://em-content.zobj.net/source/microsoft-teams/363/books_1f4da.png" class="w-10 h-10 mb-2">
-                    <span class="text-[13px] font-bold text-[#1A4D57] text-center leading-tight">Program</span>
-                </div>
-                <div class="group flex-1 flex flex-col items-center p-4 bg-white/95 rounded-3xl shadow-sm hover:shadow-xl transition-all cursor-pointer">
-                    <img src="https://em-content.zobj.net/source/microsoft-teams/363/thought-balloon_1f4ad.png" class="w-10 h-10 mb-2">
-                    <span class="text-[13px] font-bold text-[#1A4D57] text-center leading-tight">Interactive</span>
-                </div>
-                <div class="group flex-1 flex flex-col items-center p-4 bg-white/95 rounded-3xl shadow-sm hover:shadow-xl transition-all cursor-pointer">
-                    <img src="https://em-content.zobj.net/source/microsoft-teams/363/laptop_1f4bb.png" class="w-10 h-10 mb-2">
-                    <span class="text-[13px] font-bold text-[#1A4D57] text-center leading-tight">Dashboard</span>
-                </div>
-                <div class="group flex-1 flex flex-col items-center p-4 bg-white/95 rounded-3xl shadow-sm hover:shadow-xl transition-all cursor-pointer">
-                    <img src="https://em-content.zobj.net/source/microsoft-teams/363/star_2b50.png" class="w-10 h-10 mb-2">
-                    <span class="text-[13px] font-bold text-[#1A4D57] text-center leading-tight">Future Mentor</span>
+   <section class="max-w-6xl mx-auto px-4 -mt-36 relative z-20 mb-24" data-aos="zoom-in">
+    <div class="bg-[#1A4D57] p-6 rounded-[3rem] shadow-2xl border border-white/10 overflow-x-auto hide-scrollbar">
+        <div class="flex gap-4 min-w-[900px] justify-between">
+            
+            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">1</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
+                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Free Test</span>
+            </div>
+
+            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">2</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
+                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Trial Class</span>
+            </div>
+
+            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">3</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/2436/2436636.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
+                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Pilih Kursus</span>
+            </div>
+
+            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">4</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/3503/3503827.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
+                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Pilih Paket</span>
+            </div>
+
+            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#25D366] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">5</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
+                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Konfirmasi WA</span>
+            </div>
+
+            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">6</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/2278/2278049.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
+                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Jadwal</span>
+            </div>
+
+            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#C4A603] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">7</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
+                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Mulai Belajar</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+ <section class="py-20 bg-[#f9fafb]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-[#1A4D57] mb-4">Language Courses</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">Pelajari Bahasa Indonesia dengan metode interaktif bersama tutor berpengalaman.</p>
+            <div class="flex flex-col items-center justify-center mt-10 gap-4">
+                <span class="text-sm font-bold text-[#1A4D57] uppercase tracking-wider">Pilih Level:</span>
+                <div class="w-full max-w-full overflow-x-auto hide-scrollbar px-4 flex justify-center">
+                    <div class="inline-flex bg-white p-1 border border-gray-200 shadow-sm min-w-max">
+                        <button onclick="filterCourses('all')" class="filter-btn active text-sm font-bold">Semua</button>
+                        <button onclick="filterCourses('basic')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Basic</button>
+                        <button onclick="filterCourses('independent')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Independent</button>
+                        <button onclick="filterCourses('proficient')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Proficient</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="py-20 bg-[#f9fafb]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-[#1A4D57] mb-4">Language Courses</h2>
-                <p class="text-gray-500 max-w-2xl mx-auto">Pelajari Bahasa Indonesia dengan metode interaktif bersama tutor berpengalaman.</p>
-                <div class="flex flex-col items-center justify-center mt-10 gap-4">
-                    <span class="text-sm font-bold text-[#1A4D57] uppercase tracking-wider">Pilih Level:</span>
-                    <div class="w-full max-w-full overflow-x-auto hide-scrollbar px-4 flex justify-center">
-                        <div class="inline-flex bg-white p-1 border border-gray-200 shadow-sm min-w-max">
-                            <button onclick="filterCourses('all')" class="filter-btn active text-sm font-bold">Semua</button>
-                            <button onclick="filterCourses('basic')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Basic</button>
-                            <button onclick="filterCourses('independent')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Independent</button>
-                            <button onclick="filterCourses('proficient')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Proficient</button>
+        <div class="slider-wrapper" data-aos="fade-up">
+            <button onclick="slide('left')" class="nav-btn nav-prev">❮</button>
+            <button onclick="slide('right')" class="nav-btn nav-next">❯</button>
+
+            <div id="course-container" class="hide-scrollbar">
+                
+                <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="basic">
+                    <div class="relative h-44 bg-[#336F7A] pattern-dots overflow-visible">
+                        <img src="orangkursus3.png" alt="Dosen A1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <div class="bg-white px-4 py-2 rounded-none shadow-sm">
+                                <p class="text-[11px] font-bold text-[#1A4D57] uppercase">BCBT Test</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-12">
+                        <div class="inline-block px-3 py-1 bg-sky-100 text-sky-700 text-[10px] font-bold rounded-none mb-4 uppercase">Free Assessment</div>
+                        <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">CBT Level Test: Cari Tahu Kemampuanmu</h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Langkah awal sebelum memulai perjalanan belajarmu. Ikuti tes berbasis komputer secara gratis untuk menentukan levelmu.</p>
+                        <div class="pt-6 border-t border-gray-100">
+                            <a href="#" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
+                                Mulai Tes Gratis
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="slider-wrapper" data-aos="fade-up">
-                <button onclick="slide('left')" class="nav-btn nav-prev">❮</button>
-                <button onclick="slide('right')" class="nav-btn nav-next">❯</button>
-
-                <div id="course-container" class="hide-scrollbar">
-                    <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="basic">
-                        <div class="relative h-44 bg-[#336F7A] pattern-dots overflow-visible">
-                            <img src="orangkursus3.png" alt="Dosen A1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
-                            <div class="absolute bottom-4 left-4 z-20">
-                                <div class="bg-white px-4 py-2 rounded-none shadow-sm">
-                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">BCBT Test</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-6 pt-12">
-                            <div class="inline-block px-3 py-1 bg-sky-100 text-sky-700 text-[10px] font-bold rounded-none mb-4 uppercase">Basic Level</div>
-                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">CBT Level Test: Cari Tahu Kemampuanmu</h3>
-                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Langkah awal sebelum memulai perjalanan belajarmu. Ikuti tes berbasis komputer secara gratis untuk menentukan apakah kamu berada di level Basic, Independent, atau Proficient. Hasil ini akan membantu kami menyesuaikan materi yang paling efektif untukmu.</p>
-                            <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-                                <div>
-                                    <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Start from</p>
-                                    <div class="flex items-center gap-2">
-                                        <p class="text-2xl font-extrabold text-[#1A4D57]">Free Test</p>
-                                    </div>
-                                </div>
-                                <button class="w-12 h-12 bg-[#1A4D57] text-white rounded-none flex items-center justify-center transition-all hover:bg-[#C4A603] shadow-md">➜</button>
+                <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="basic">
+                    <div class="relative h-44 bg-[#41644A] pattern-dots overflow-visible">
+                        <img src="orangkursus2.png" alt="Dosen B1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <div class="bg-white px-4 py-2 rounded-none shadow-sm">
+                                <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Basic User (Level A1-A2)</p>
                             </div>
                         </div>
                     </div>
- <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="basic">
-                        <div class="relative h-44 bg-[#41644A] pattern-dots overflow-visible">
-                            <img src="orangkursus2.png" alt="Dosen B1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
-                            <div class="absolute bottom-4 left-4 z-20">
-                                <div class="bg-white px-4 py-2 rounded-none shadow-sm">
-                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Basic User (Level A1-A2)</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-6 pt-12">
-                            <div class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-bold rounded-none mb-4 uppercase">Basic level</div>
-                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Indonesian for Daily Life (Basic)</h3>
-                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Program yang dirancang khusus untuk pemula yang ingin menguasai ungkapan dasar sehari-hari. Kamu akan belajar memperkenalkan diri, bertukar informasi pribadi secara sederhana, hingga melakukan tugas-tugas rutin di lingkungan sekitar dengan percaya diri. Sangat cocok untuk kamu yang baru pertama kali menyentuh Bahasa Indonesia.</p>
-                            <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-                                <div>
-                                    <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Start from</p>
-                                    <div class="flex items-center gap-2">
-                                   <p class="text-2xl font-extrabold text-[#1A4D57]">Rp89.800</p>
-                                        <p class="text-sm text-gray-400 line-through">Rp105.000</p>
-                                    </div>
-                                </div>
-                                <button class="w-12 h-12 bg-[#1A4D57] text-white rounded-none flex items-center justify-center transition-all hover:bg-[#C4A603] shadow-md">➜</button>
-                            </div>
+                    <div class="p-6 pt-12">
+                        <div class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-bold rounded-none mb-4 uppercase">Basic level</div>
+                        <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Indonesian for Daily Life (Basic)</h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Program yang dirancang khusus untuk pemula yang ingin menguasai ungkapan dasar sehari-hari dengan percaya diri.</p>
+                        <div class="pt-6 border-t border-gray-100">
+                            <a href="KursusBasic.html" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
+                                Pilih Kursus
+                            </a>
                         </div>
                     </div>
-
-                    <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="independent">
-                        <div class="relative h-44 bg-[#F4D505] pattern-dots overflow-visible">
-                            <img src="orangkursus4.png" alt="Dosen B1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
-                            <div class="absolute bottom-4 left-4 z-20">
-                                <div class="bg-white px-4 py-2 rounded-none shadow-sm">
-                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Independent User (Level B1-B2)</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-6 pt-12">
-                            <div class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-bold rounded-none mb-4 uppercase">Independent</div>
-                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Fluency & Interaction (Independent)</h3>
-                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Tingkatkan kemampuanmu ke level mandiri. Fokus pada penanganan situasi saat bepergian ke Indonesia, menghasilkan teks sederhana tentang minat pribadi, serta menceritakan pengalaman, harapan, dan rencana masa depan. Kamu juga akan belajar berinteraksi secara lancar dan spontan dengan penutur asli tanpa banyak hambatan.</p>
-                            <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-                                <div>
-                                    <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Start from</p>
-                                    <div class="flex items-center gap-2">
-                                        <p class="text-2xl font-extrabold text-[#1A4D57]">Rp149.800</p>
-                                        <p class="text-sm text-gray-400 line-through">Rp155.000</p>
-                                    </div>
-                                </div>
-                                <button class="w-12 h-12 bg-[#1A4D57] text-white rounded-none flex items-center justify-center transition-all hover:bg-[#C4A603] shadow-md">➜</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="proficient">
-                        <div class="relative h-44 bg-[#D1D5DB] pattern-dots overflow-visible">
-                            <img src="orangkursus1.png" alt="Dosen C1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
-                            <div class="absolute bottom-4 left-4 z-20">
-                                <div class="bg-white px-4 py-2 rounded-none shadow-sm">
-                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Proficient (Level C1-C2)</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-6 pt-12">
-                            <div class="inline-block px-3 py-1 bg-rose-100 text-rose-700 text-[10px] font-bold rounded-none mb-4 uppercase">Proficient</div>
-                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Professional & Academic Mastery (Proficient)</h3>
-                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Penguasaan tingkat tinggi untuk kebutuhan profesional dan akademis yang kompleks. Kamu akan belajar memahami makna tersirat dalam teks yang rumit, menggunakan bahasa secara fleksibel untuk tujuan sosial maupun profesional, serta mampu menyajikan argumen yang terstruktur dan rinci dalam berbagai topik.</p>
-                            <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-                                <div>
-                                    <p class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">Start from</p>
-                                    <div class="flex items-center gap-2">
-                                        <p class="text-2xl font-extrabold text-[#1A4D57]">Rp189.800</p>
-                                        <p class="text-sm text-gray-400 line-through">Rp190.000</p>
-                                    </div>
-                                </div>
-                                <button class="w-12 h-12 bg-[#1A4D57] text-white rounded-none flex items-center justify-center transition-all hover:bg-[#C4A603] shadow-md">➜</button>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+
+                <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="independent">
+                    <div class="relative h-44 bg-[#F4D505] pattern-dots overflow-visible">
+                        <img src="orangkursus4.png" alt="Dosen B1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <div class="bg-white px-4 py-2 rounded-none shadow-sm">
+                                <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Independent User (Level B1-B2)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-12">
+                        <div class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-bold rounded-none mb-4 uppercase">Independent</div>
+                        <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Fluency & Interaction (Independent)</h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Fokus pada penanganan situasi saat bepergian ke Indonesia serta menceritakan pengalaman dan rencana masa depan.</p>
+                        <div class="pt-6 border-t border-gray-100">
+                            <a href="#" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
+                                Pilih Kursus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="proficient">
+                    <div class="relative h-44 bg-[#D1D5DB] pattern-dots overflow-visible">
+                        <img src="orangkursus1.png" alt="Dosen C1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <div class="bg-white px-4 py-2 rounded-none shadow-sm">
+                                <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Proficient (Level C1-C2)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-12">
+                        <div class="inline-block px-3 py-1 bg-rose-100 text-rose-700 text-[10px] font-bold rounded-none mb-4 uppercase">Proficient</div>
+                        <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Professional Mastery (Proficient)</h3>
+                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Penguasaan tingkat tinggi untuk kebutuhan profesional dan akademis yang kompleks dengan argumen terstruktur.</p>
+                        <div class="pt-6 border-t border-gray-100">
+                            <a href="#" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
+                                Pilih Kursus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="py-16 md:py-24 bg-white border-t border-gray-50">
         <div class="max-w-7xl mx-auto px-6">
@@ -891,7 +1015,9 @@
                 <div class="lg:ml-12">
                     <h4 class="text-white font-bold text-lg mb-6">Navigasi</h4>
                     <ul class="space-y-4 text-gray-300 text-sm">
-                        <li><a href="#" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> Program Kursus</a></li>
+                         <li><a href="KursusBasic.html" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> Program Kursus Basic</a></li>
+                         <li><a href="#" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> Program Kursus Independent</a></li>
+                          <li><a href="#" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> Program Kursus Proficient </a></li>
                         <li><a href="#" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> CBT Test Online</a></li>
                         <li><a href="#" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> Mentor Kami</a></li>
                         <li><a href="#" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> FAQ</a></li>
@@ -1000,6 +1126,26 @@
 
             if (!isActive) {
                 item.classList.add('active');
+            }
+        }
+
+        // Mobile Dropdown Toggle Function
+        function toggleMobileDropdown(button) {
+            const dropdown = button.parentElement;
+            const content = dropdown.querySelector('.mobile-dropdown-content');
+            const isActive = button.classList.contains('active');
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+                toggle.classList.remove('active');
+            });
+            document.querySelectorAll('.mobile-dropdown-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            if (!isActive) {
+                button.classList.add('active');
+                content.classList.add('active');
             }
         }
     </script>
