@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Promo Spesial - Fluenesia Bahasa Indonesia Course</title>
+    <meta name="description" content="Dapatkan promo spesial kursus bahasa Indonesia dari Fluenesia! Diskon hingga 40%, kelas gratis, dan paket belajar lengkap untuk semua level.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f9fafb 0%, #f0f4f8 100%);
+            overflow-x: hidden;
+        }
+        
+        .promo-gradient {
+            background: linear-gradient(135deg, #1A4D57 0%, #245A64 50%, #C4A603 100%);
+        }
+        
+        .promo-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .promo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            border-color: #C4A603;
+        }
+        
+        .promo-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF4757, #FF3838);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3);
+            z-index: 10;
+        }
+        
+        .price-original {
+            text-decoration: line-through;
+            color: #94a3b8;
+            font-size: 18px;
+        }
+        
+        .price-discounted {
+            color: #1A4D57;
+            font-size: 32px;
+            font-weight: 900;
+        }
+        
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .feature-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f1f5f9;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+        }
+        
+        .feature-badge svg {
+            color: #C4A603;
+        }
+        
+        .step-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            background: #1A4D57;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+        
+        .nav-gradient {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.98) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .discount-badge {
+            background: linear-gradient(135deg, #C4A603, #F5C857);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        
+        .promo-timer {
+            background: linear-gradient(135deg, #FF3838, #FF4757);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .highlight-text {
+            background: linear-gradient(135deg, #C4A603, #F5C857);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20bertanya%20tentang%20promo%20kursus%20bahasa%20Indonesia" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="floating-whatsapp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/>
+        </svg>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 nav-gradient shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-[#1A4D57] tracking-tight">
+                        FLUE<span class="text-[#C4A603]">NESIA</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                    <a href="index.html" class="hover:text-[#1A4D57]">Home</a>
+                    <a href="#" class="hover:text-[#1A4D57]">Program</a>
+                    <a href="#" class="hover:text-[#1A4D57]">CBT Test</a>
+                    <a href="#" class="hover:text-[#1A4D57] flex items-center">
+                        Promo
+                        <span class="discount-badge">HOT</span>
+                    </a>
+                    <a href="#" class="hover:text-[#1A4D57]">Tentang Kami</a>
+                    <a href="https://wa.me/6287729949195" target="_blank" rel="noopener noreferrer" 
+                       class="bg-[#C4A603] hover:bg-[#A38A02] text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-md">
+                        Konsultasi Gratis
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="promo-gradient pt-20 pb-32 px-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center text-white mb-16" data-aos="fade-up">
+                <span class="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-bold mb-6">
+                    🎉 PROMO SPESIAL TAHUN BARU 2025 🎉
+                </span>
+                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                    Kuasai Bahasa Indonesia
+                    <span class="block text-[#F5C857]">Dengan Harga Spesial!</span>
+                </h1>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto mb-10">
+                    Raih kesempatan belajar bahasa Indonesia dengan diskon hingga 40%. 
+                    Terbatas hanya untuk 100 pendaftar pertama!
+                </p>
+                
+                <div class="mb-12" data-aos="zoom-in">
+                    <div class="promo-timer inline-block">
+                        <div class="flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            PROMO BERAKHIR DALAM:
+                        </div>
+                        <div id="countdown" class="text-2xl font-black mt-2">
+                            05 : 23 : 47 : 12
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up">
+                    <a href="#promo-packages" 
+                       class="bg-white text-[#1A4D57] px-10 py-4 rounded-xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all">
+                        Lihat Paket Promo
+                    </a>
+                    <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20daftar%20promo%20kursus%20bahasa%20Indonesia" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="bg-[#C4A603] hover:bg-[#A38A02] text-white px-10 py-4 rounded-xl font-bold text-lg shadow-2xl transition-all">
+                        Daftar Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="fade-up">
+                    <div class="text-4xl font-black text-[#1A4D57] mb-2">40%</div>
+                    <div class="text-gray-600">Diskon Maksimal</div>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl font-black text-[#C4A603] mb-2">100</div>
+                    <div class="text-gray-600">Kuota Terbatas</div>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl font-black text-[#1A4D57] mb-2">7</div>
+                    <div class="text-gray-600">Hari Promo</div>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl font-black text-[#C4A603] mb-2">500+</div>
+                    <div class="text-gray-600">Siswa Bergabung</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Packages Section -->
+    <section id="promo-packages" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-black text-[#1A4D57] mb-4">
+                    Pilih Paket <span class="highlight-text">Promo Terbaik</span> Anda
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Semua paket termasuk sertifikat, akses materi seumur hidup, dan grup komunitas eksklusif
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Paket Basic -->
+                <div class="promo-card" data-aos="fade-up">
+                    <div class="relative">
+                        <div class="promo-badge">POPULER</div>
+                        <div class="bg-[#1A4D57] text-white p-8">
+                            <h3 class="text-2xl font-black mb-2">Paket Basic</h3>
+                            <p class="opacity-90">Untuk pemula yang ingin mulai belajar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <span class="price-original">Rp 2.500.000</span>
+                            <div class="price-discounted">Rp 1.500.000</div>
+                            <div class="text-sm text-gray-500">/ 3 bulan</div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="feature-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                12 Sesi Live Class
+                            </div>
+                            <div class="feature-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Materi PDF Lengkap
+                            </div>
+                            <div class="feature-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Sertifikat Penyelesaian
+                            </div>
+                            <div class="feature-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Grup WhatsApp Support
+                            </div>
+                        </div>
+                        
+                        <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20beli%20Paket%20Basic%20promo" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="block w-full bg-[#1A4D57] hover:bg-[#245A64] text-white text-center py-4 rounded-xl font-bold transition-all">
+                            Pilih Paket Ini
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Paket Pro (Most Popular) -->
+                <div class="promo-card relative scale-105" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <div class="bg-gradient-to-r from-[#C4A603] to-[#F5C857] text-white px-6 py-2 rounded-full font-black">
+                            VALUE TERBAIK
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="promo-badge">DISKON 40%</div>
+                        <div class="bg-gradient-to-r from-[#C4A603] to-[#F5C857] text-white p-8">
+                            <h3 class="text-2xl font-black mb-2">Paket Pro</h3>
+                            <p class="opacity-90">Paket lengkap untuk penguasaan optimal</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <span class="price-original">Rp 5.000.000</span>
+                            <div class="price-discounted">Rp 3.000.000</div>
+                            <div class="text-sm text-gray-500">/ 6 bulan</div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="feature-badge bg-[#FEF3C7]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                24 Sesi Live Class
+                            </div>
+                            <div class="feature-badge bg-[#FEF3C7]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                2x Private Consultation
+                            </div>
+                            <div class="feature-badge bg-[#FEF3C7]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Video Recording Unlimited
+                            </div>
+                            <div class="feature-badge bg-[#FEF3C7]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                E-book Premium Collection
+                            </div>
+                            <div class="feature-badge bg-[#FEF3C7]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Sertifikat Resmi + Digital Badge
+                            </div>
+                        </div>
+                        
+                        <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20beli%20Paket%20Pro%20promo" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="block w-full bg-gradient-to-r from-[#C4A603] to-[#F5C857] hover:opacity-90 text-white text-center py-4 rounded-xl font-bold transition-all">
+                            Pilih Paket Terbaik
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Paket Ultimate -->
+                <div class="promo-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative">
+                        <div class="promo-badge">PREMIUM</div>
+                        <div class="bg-[#245A64] text-white p-8">
+                            <h3 class="text-2xl font-black mb-2">Paket Ultimate</h3>
+                            <p class="opacity-90">Untuk penguasaan maksimal dan karir</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <span class="price-original">Rp 8.000.000</span>
+                            <div class="price-discounted">Rp 5.500.000</div>
+                            <div class="text-sm text-gray-500">/ 12 bulan</div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="feature-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                48 Sesi Live Class
+                            </div>
+                            <div class="feature-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Private Mentoring 1-on-1
+                            </div>
+                            <div class="feature-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Career Coaching Session
+                            </div>
+                            <div class="feature-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Certificate of Excellence
+                            </div>
+                            <div class="feature-badge">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Lifetime Community Access
+                            </div>
+                        </div>
+                        
+                        <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20beli%20Paket%20Ultimate%20promo" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="block w-full bg-[#245A64] hover:bg-[#1A4D57] text-white text-center py-4 rounded-xl font-bold transition-all">
+                            Pilih Paket Premium
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Get Promo Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-black text-[#1A4D57] mb-4">
+                    Cara Mudah Dapatkan <span class="highlight-text">Promo</span>
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Hanya 4 langkah sederhana untuk mendapatkan promo spesial kami
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="step-box" data-aos="fade-up">
+                    <div class="step-number">1</div>
+                    <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#1A4D57] mb-3">Daftar Akun</h3>
+                    <p class="text-gray-600">Buat akun gratis di website Fluenesia</p>
+                </div>
+
+                <div class="step-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">2</div>
+                    <div class="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#1A4D57] mb-3">Ikuti CBT Test</h3>
+                    <p class="text-gray-600">Tes gratis untuk menentukan level Anda</p>
+                </div>
+
+                <div class="step-box" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">3</div>
+                    <div class="w-20 h-20 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#1A4D57] mb-3">Pilih Paket</h3>
+                    <p class="text-gray-600">Pilih paket promo yang sesuai kebutuhan</p>
+                </div>
+
+                <div class="step-box" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">4</div>
+                    <div class="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#1A4D57] mb-3">Dapatkan Promo</h3>
+                    <p class="text-gray-600">Bayar dan dapatkan diskon langsung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-black text-[#1A4D57] mb-4">
+                    Kata Mereka yang <span class="highlight-text">Sudah Gabung</span>
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Lihat pengalaman siswa yang telah bergabung dengan promo sebelumnya
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-lg" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=100" 
+                             alt="Sarah Johnson" 
+                             class="w-16 h-16 rounded-full border-4 border-[#C4A603]">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-lg">Sarah Johnson</h4>
+                            <p class="text-sm text-gray-500">Paket Pro Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Dapat diskon 40% untuk Paket Pro, worth banget! Materinya lengkap, tutornya profesional, dan komunitasnya sangat supportive."
+                    </p>
+                    <div class="flex text-[#F5C857] mt-4">
+                        ★★★★★
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100" 
+                             alt="Michael Chen" 
+                             class="w-16 h-16 rounded-full border-4 border-[#C4A603]">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-lg">Michael Chen</h4>
+                            <p class="text-sm text-gray-500">Paket Ultimate Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Private mentoring 1-on-1-nya sangat membantu. Harga normal 8 juta, dapat promo jadi 5.5 juta. Investasi terbaik untuk karir saya!"
+                    </p>
+                    <div class="flex text-[#F5C857] mt-4">
+                        ★★★★★
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100" 
+                             alt="Lisa Wang" 
+                             class="w-16 h-16 rounded-full border-4 border-[#C4A603]">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-lg">Lisa Wang</h4>
+                            <p class="text-sm text-gray-500">Paket Basic Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Baru mulai belajar bahasa Indonesia, dapat promo Paket Basic. Sistem pembelajarannya terstruktur dan mudah dipahami pemula."
+                    </p>
+                    <div class="flex text-[#F5C857] mt-4">
+                        ★★★★★
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-black text-[#1A4D57] mb-4">
+                    Pertanyaan <span class="highlight-text">Seputar Promo</span>
+                </h2>
+            </div>
+
+            <div class="space-y-6" data-aos="fade-up">
+                <div class="border border-gray-200 rounded-2xl p-6 hover:border-[#C4A603] transition-all">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-bold text-[#1A4D57]">Berapa lama promo ini berlaku?</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#C4A603]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer mt-4 hidden">
+                        <p class="text-gray-600">Promo ini berlaku hingga 31 Desember 2025 atau sampai kuota 100 pendaftar terpenuhi (mana yang lebih dulu).</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-2xl p-6 hover:border-[#C4A603] transition-all">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-bold text-[#1A4D57]">Apakah promo bisa digabung dengan diskon lain?</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#C4A603]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer mt-4 hidden">
+                        <p class="text-gray-600">Promo ini sudah merupakan harga diskon terbaik dan tidak dapat digabungkan dengan promo atau kode diskon lainnya.</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-2xl p-6 hover:border-[#C4A603] transition-all">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-bold text-[#1A4D57]">Bagaimana cara pembayaran?</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#C4A603]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer mt-4 hidden">
+                        <p class="text-gray-600">Kami menerima pembayaran melalui transfer bank (BCA, Mandiri, BRI), QRIS, dan kartu kredit dengan cicilan 0%.</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-2xl p-6 hover:border-[#C4A603] transition-all">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-bold text-[#1A4D57]">Kapan kelas bisa dimulai?</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#C4A603]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer mt-4 hidden">
+                        <p class="text-gray-600">Kelas bisa dimulai dalam 1x24 jam setelah pembayaran dikonfirmasi. Anda akan dihubungi admin untuk penjadwalan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 promo-gradient relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 text-center text-white relative z-10" data-aos="fade-up">
+            <h2 class="text-3xl md:text-5xl font-black mb-6">
+                Jangan Lewatkan <span class="text-[#F5C857]">Kesempatan Ini!</span>
+            </h2>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto mb-10">
+                Harga akan kembali normal setelah kuota terpenuhi atau waktu promo berakhir. 
+                Daftar sekarang sebelum kehabisan!
+            </p>
+            
+            <div class="mb-10">
+                <div id="final-countdown" class="flex justify-center gap-4">
+                    <div class="countdown-box">
+                        <div class="countdown-number">05</div>
+                        <div class="countdown-label">Hari</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number">23</div>
+                        <div class="countdown-label">Jam</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number">47</div>
+                        <div class="countdown-label">Menit</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-number">12</div>
+                        <div class="countdown-label">Detik</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20daftar%20promo%20sekarang!" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="bg-white text-[#1A4D57] px-12 py-5 rounded-xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-1">
+                    DAFTAR VIA WHATSAPP
+                </a>
+                <a href="#promo-packages" 
+                   class="bg-transparent border-2 border-white text-white px-12 py-5 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
+                    LIHAT PAKET LENGKAP
+                </a>
+            </div>
+            
+            <p class="text-sm opacity-80 mt-8">
+                *Kuota terbatas hanya 100 pendaftar pertama
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1A4D57] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <div class="text-3xl font-bold tracking-tight mb-4">
+                        FLUE<span class="text-[#C4A603]">NESIA</span>
+                    </div>
+                    <p class="text-gray-300 max-w-md">
+                        Platform belajar bahasa Indonesia terpercaya dengan tutor native speaker dan metode pembelajaran interaktif.
+                    </p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-300 mb-4">
+                        Butuh bantuan? Hubungi kami:
+                    </p>
+                    <div class="flex items-center justify-center md:justify-end gap-4">
+                        <a href="https://wa.me/6287729949195" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-full font-bold flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/>
+                            </svg>
+                            WhatsApp Support
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 mt-12 pt-8 text-center text-gray-300 text-sm">
+                <p>&copy; 2025 Fluenesia. All rights reserved. | 
+                   <a href="index.html" class="hover:text-[#C4A603]">Home</a> | 
+                   <a href="#" class="hover:text-[#C4A603]">Syarat & Ketentuan</a> | 
+                   <a href="#" class="hover:text-[#C4A603]">Kebijakan Privasi</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date('2025-12-31T23:59:59').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            
+            if (timeLeft < 0) {
+                document.getElementById('countdown').innerHTML = "PROMO TELAH BERAKHIR";
+                document.getElementById('final-countdown').innerHTML = "<div class='text-2xl font-bold'>PROMO TELAH BERAKHIR</div>";
+                return;
+            }
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = 
+                `${days.toString().padStart(2, '0')} : ${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
+            
+            const countdownElements = document.querySelectorAll('#final-countdown .countdown-number');
+            if (countdownElements.length === 4) {
+                countdownElements[0].textContent = days.toString().padStart(2, '0');
+                countdownElements[1].textContent = hours.toString().padStart(2, '0');
+                countdownElements[2].textContent = minutes.toString().padStart(2, '0');
+                countdownElements[3].textContent = seconds.toString().padStart(2, '0');
+            }
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // FAQ Toggle
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            answer.classList.toggle('hidden');
+            
+            const icon = button.querySelector('svg');
+            if (answer.classList.contains('hidden')) {
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+        
+        // Initialize all FAQ icons
+        document.querySelectorAll('.faq-answer').forEach(answer => {
+            answer.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluenesia | Kursus Bahasa Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #336F7A;
+            --secondary: #F4D505;
+            --success: #2eb82e;
+            --error: #ff4d4d;
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100vw;
+            background: linear-gradient(135deg, #336F7A 0%, #F4D505 100%);
+            display: flex; align-items: center; justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* Dekorasi Background */
+        .bg-element {
+            position: absolute; border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            z-index: 0; pointer-events: none;
+            animation: floatBG 15s infinite alternate ease-in-out;
+        }
+        .el-1 { width: 300px; height: 300px; top: -50px; left: -50px; }
+        .el-2 { width: 150px; height: 150px; bottom: 10%; right: 5%; }
+
+        @keyframes floatBG {
+            from { transform: translateY(0); }
+            to { transform: translateY(-30px); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 980px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
+            display: grid; 
+            grid-template-columns: 1.1fr 0.9fr; 
+            overflow: hidden; 
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            position: relative; 
+            z-index: 1;
+        }
+
+        /* BAGIAN KANAN (GAMBAR) */
+        .image-section {
+            background: rgba(51, 111, 122, 0.05);
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 40px;
+            text-align: center;
+            order: 2;
+        }
+
+        .illustration {
+            width: 85%;
+            max-width: 240px;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+            animation: floating 5s infinite ease-in-out;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* BAGIAN KIRI (FORM) */
+        .form-section { 
+            padding: 40px 55px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            order: 1;
+        }
+        
+        .brand-title { font-size: 26px; font-weight: 700; color: var(--primary); margin-bottom: 5px; }
+        .brand-title span { color: #d1b400; }
+        .form-header h3 { font-size: 22px; color: #1e293b; margin-top: 10px; }
+        .form-header p { font-size: 13px; color: #64748b; margin-bottom: 25px; }
+
+        .input-wrapper { position: relative; margin-bottom: 15px; }
+        .input-wrapper i.field-icon {
+            position: absolute; left: 18px; top: 50%;
+            transform: translateY(-50%); color: #94a3b8; font-size: 14px;
+        }
+        .input-wrapper input {
+            width: 100%; padding: 12px 45px;
+            border-radius: 12px; border: 1.5px solid #e2e8f0;
+            background: rgba(255, 255, 255, 0.6);
+            font-size: 14px; outline: none; transition: 0.3s;
+        }
+
+        /* Efek Validasi Sederhana */
+        .input-wrapper input:valid:not(:placeholder-shown) { border-color: var(--success); }
+
+        .toggle-password { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #94a3b8; cursor: pointer; }
+
+        .btn-submit {
+            width: 100%; padding: 15px; border-radius: 12px; border: none;
+            background: var(--primary); color: white; font-weight: 600;
+            cursor: pointer; transition: 0.4s; font-size: 15px;
+            box-shadow: 0 8px 20px rgba(51, 111, 122, 0.2);
+        }
+
+        .social-login { display: flex; gap: 12px; margin-top: 15px; }
+        .social-btn {
+            flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 10px; border-radius: 12px; border: 1.5px solid #e2e8f0;
+            background: white; font-size: 12px; font-weight: 600; cursor: pointer;
+        }
+        .social-btn img { width: 16px; height: 16px; }
+
+        .login-redirect { text-align: center; margin-top: 25px; font-size: 13px; color: #64748b; }
+        .login-redirect a { 
+            color: var(--primary); 
+            font-weight: 700; 
+            text-decoration: none; 
+            margin-left: 5px; 
+            padding: 5px 12px;
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        .login-redirect a:hover { background: var(--primary); color: white; }
+
+        /* --- RESPONSIVE OPTIMIZATION (HP) --- */
+        @media (max-width: 850px) {
+            body { height: auto; overflow-y: auto; padding: 10px; }
+            .container { grid-template-columns: 1fr; max-height: none; }
+            .image-section { 
+                order: 1; 
+                padding: 20px;
+                background: linear-gradient(180deg, rgba(51, 111, 122, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+            }
+            .illustration { max-width: 160px; }
+            .image-section h2, .image-section p { display: none; }
+            .form-section { order: 2; padding: 20px 25px 40px 25px; }
+            .brand-title, .form-header { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-element el-1"></div>
+    <div class="bg-element el-2"></div>
+
+    <div class="container">
+        
+        <div class="image-section">
+            <img src="orangbanner.png" alt="Illustration" class="illustration">
+            <h2 style="font-size: 20px; color: #0f172a; margin-top: 20px;">Belajar Lebih Pro</h2>
+            <p style="font-size: 12px; color: #475569; margin-top: 5px;">Mulai kuasai Bahasa Indonesia hari ini.</p>
+        </div>
+
+        <div class="form-section">
+            <div class="brand-title">Fluenesia<span>Bahasa</span></div>
+            <div class="form-header">
+                <h3>Daftar Sekarang</h3>
+                <p>Silakan lengkapi data diri Anda.</p>
+            </div>
+
+            <form>
+                <div class="input-wrapper">
+                    <i class="fas fa-user field-icon"></i>
+                    <input type="text" placeholder="Nama Lengkap" required>
+                </div>
+                <div class="input-wrapper">
+                    <i class="fas fa-envelope field-icon"></i>
+                    <input type="email" placeholder="Email Anda" required>
+                </div>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock field-icon"></i>
+                    <input type="password" id="passwordField" placeholder="Kata Sandi" required>
+                    <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                </div>
+                
+                <button type="submit" class="btn-submit">Buat Akun Gratis</button>
+            </form>
+
+            <div style="text-align: center; margin: 15px 0; font-size: 11px; color: #94a3b8;">Atau daftar dengan</div>
+
+            <div class="social-login">
+                <button type="button" class="social-btn"><img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"> Google</button>
+                <button type="button" class="social-btn"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"> Facebook</button>
+            </div>
+
+            <div class="login-redirect">
+                Sudah punya akun? <a href="#">Masuk</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const passwordField = document.querySelector('#passwordField');
+        const togglePassword = document.querySelector('#togglePassword');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+</body>
+</html>

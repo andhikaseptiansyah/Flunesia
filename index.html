@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Fluenesia</title>
+    <title>Fluenesia - Platform Belajar Bahasa Indonesia dengan Tutor Native</title>
+    <meta name="description" content="Fluenesia - Platform belajar Bahasa Indonesia dengan tutor native. Kursus dari level Basic (A1) hingga Proficient (C2). CBT Test gratis tersedia. Belajar bahasa Indonesia dengan pendekatan budaya.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Fluenesia",
+        "description": "Platform pembelajaran Bahasa Indonesia dengan tutor native speaker",
+        "url": "https://fluenesia.com",
+        "logo": "https://fluenesia.com/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+62-877-2994-9195",
+            "contactType": "Customer Service",
+            "availableLanguage": ["Indonesian", "English"]
+        },
+        "sameAs": [
+            "https://facebook.com/fluenesia",
+            "https://instagram.com/fluenesia",
+            "https://twitter.com/fluenesia"
+        ]
+    }
+    </script>
     
     <style>
         /* KUNCI GESTUR KIRI-KANAN PADA BODY */
@@ -16,6 +40,8 @@
             background-color: #f9fafb;
             width: 100%;
             position: relative;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
         }
         
         .bg-gradient-custom {
@@ -36,22 +62,22 @@
         }
 
         /* Utility class untuk motif tanpa gambar luar */
-    .bg-pattern-dots {
-        background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px);
-        background-size: 15px 15px;
-    }
-    .bg-pattern-lines {
-        background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 10px);
-    }
-    /* Memastikan transisi grayscale halus */
-    .tutor-img {
-        filter: grayscale(100%);
-        transition: all 0.5s ease;
-    }
-    .tutor-card:hover .tutor-img {
-        filter: grayscale(0%);
-        transform: scale(1.05);
-    }
+        .bg-pattern-dots {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px);
+            background-size: 15px 15px;
+        }
+        .bg-pattern-lines {
+            background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 10px);
+        }
+        /* Memastikan transisi grayscale halus */
+        .tutor-img {
+            filter: grayscale(100%);
+            transition: all 0.5s ease;
+        }
+        .tutor-card:hover .tutor-img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
 
         @keyframes float {
             0%, 100% { transform: translateY(0) translateX(0) scale(1); }
@@ -88,6 +114,7 @@
             border: 4px solid rgba(255,255,255,0.1);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 10;
+            min-height: 150px;
         }
 
         .img-box:hover {
@@ -108,7 +135,41 @@
             max-height: 500px;
             padding-bottom: 1.5rem;
         }
+.promo-divider-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
 
+.promo-divider-top svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 50px;
+}
+
+.promo-divider-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.promo-divider-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 50px;
+}
+
+.shape-fill-light {
+    fill: #f9fafb; /* Sesuai warna background section sebelumnya */
+}
         /* PERBAIKAN RESPONSIVE FILTER */
         .filter-btn {
             padding: 8px 24px;
@@ -123,12 +184,6 @@
             }
         }
 
-        .filter-btn.active {
-            background-color: #1A4D57;
-            color: white !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        
         .pattern-dots {
             background-image: radial-gradient(rgba(255,255,255,0.3) 2px, transparent 2px);
             background-size: 20px 20px;
@@ -174,6 +229,8 @@
             color: #1A4D57;
             font-weight: bold;
             transition: all 0.3s ease;
+            border: none;
+            outline: none;
         }
         .nav-btn:hover {
             background: #1A4D57;
@@ -338,6 +395,9 @@
             align-items: center;
             width: 100%;
             cursor: pointer;
+            background: none;
+            border: none;
+            font-family: inherit;
         }
 
         .mobile-dropdown-toggle .arrow {
@@ -349,13 +409,12 @@
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-800 safe-area">
 
     <div class="fixed bottom-8 right-8 z-[1000] flex flex-col items-end gap-2 drop-shadow-2xl">
-        
-        <a href="https://wa.me/6287729949195" target="_blank" class="relative group">
+        <a href="https://wa.me/6287729949195" target="_blank" rel="noopener noreferrer" class="relative group">
             <div class="w-16 h-16 rounded-full border-4 border-[#25D366] p-0.5 bg-white overflow-hidden shadow-lg transition-transform group-hover:scale-110 active:scale-95">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200" alt="Admin Flunesia" class="w-full h-full object-cover rounded-full">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200" alt="Admin Fluenesia" class="w-full h-full object-cover rounded-full" loading="lazy">
             </div>
             <div class="absolute bottom-0 left-0 bg-[#25D366] p-1 rounded-full border-2 border-white shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="white" viewBox="0 0 16 16">
@@ -383,22 +442,22 @@
                         </a>
                         <div class="dropdown-content">
                             <a href="KursusBasic.html" class="text-[#1A4D57] font-semibold">Basic User (A1-A2)</a>
-                            <a href="KursusIndependent.html"text-[#1A4D57] font-semibold">Independent User (B1-B2)</a>
-                            <a href="KursusProficient.html"text-[#1A4D57] font-semibold">Proficient User (C1-C2)</a>
+                            <a href="KursusIndependent.html" class="text-[#1A4D57] font-semibold">Independent User (B1-B2)</a>
+                            <a href="KursusProficient.html" class="text-[#1A4D57] font-semibold">Proficient User (C1-C2)</a>
                         </div>
                     </div>
-                    
-                    <a href="FreeTestCBT.html"hover:text-[#1A4D57]">CBT Test</a>
+
+                    <a href="FreeTestCBT.html" class="hover:text-[#1A4D57]">CBT Test</a>
                     <a href="#" class="hover:text-[#1A4D57]">Live Class</a>
                     <a href="#" class="hover:text-[#1A4D57]">Future Mentor</a>
                     <a href="#" class="hover:text-[#1A4D57]">Tentang Kami</a>
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <button class="hidden md:block bg-[#C4A603] hover:bg-[#A38A02] text-white px-7 py-2.5 rounded-full font-bold transition-all shadow-md active:scale-95">
-                        Free Test
-                    </button>
-                    <button id="menu-btn" class="md:hidden text-[#1A4D57] p-2">
+                   <a href="login.html" class="hidden md:block bg-[#C4A603] hover:bg-[#A38A02] text-white px-7 py-2.5 rounded-full font-bold transition-all shadow-md active:scale-95 text-center">
+                      Daftar
+                  </a>
+                    <button id="menu-btn" class="md:hidden text-[#1A4D57] p-2" aria-label="Toggle menu">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -409,7 +468,7 @@
             <div id="mobile-menu" class="md:hidden flex flex-col space-y-0 font-medium text-gray-600">
                 <!-- Mobile Dropdown for Program -->
                 <div class="mobile-dropdown">
-                    <button class="mobile-dropdown-toggle w-full text-left py-3 px-4 hover:text-[#1A4D57] flex justify-between items-center" onclick="toggleMobileDropdown(this)">
+                    <button class="mobile-dropdown-toggle w-full text-left py-3 px-4 hover:text-[#1A4D57] flex justify-between items-center">
                         <span>Program</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 arrow text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -417,21 +476,22 @@
                     </button>
                     <div class="mobile-dropdown-content">
                         <a href="KursusBasic.html" class="py-2 px-8 hover:text-[#1A4D57] font-semibold text-[#1A4D57]">Basic User (A1-A2)</a>
-                        <a href="KursusIndependent.html"py-2 px-8 hover:text-[#1A4D57] font-semibold text-[#1A4D57]">Independent User (B1-B2)</a>
-                        <a href="KursusProficient.html"py-2 px-8 hover:text-[#1A4D57] font-semibold text-[#1A4D57]">Proficient User (C1-C2)</a>
+                        <a href="KursusIndependent.html" class="py-2 px-8 hover:text-[#1A4D57] font-semibold text-[#1A4D57]">Independent User (B1-B2)</a>
+                        <a href="KursusProficient.html" class="py-2 px-8 hover:text-[#1A4D57] font-semibold text-[#1A4D57]">Proficient User (C1-C2)</a>
                     </div>
                 </div>
-                
-                <a href="FreeTestCBT.html"hover:text-[#1A4D57] py-3 px-4">CBT Test</a>
+
+                <a href="FreeTestCBT.html" class="hover:text-[#1A4D57] py-3 px-4">CBT Test</a>
                 <a href="#" class="hover:text-[#1A4D57] py-3 px-4">Live Class</a>
                 <a href="#" class="hover:text-[#1A4D57] py-3 px-4">Future Mentor</a>
                 <a href="#" class="hover:text-[#1A4D57] py-3 px-4">Tentang Kami</a>
-                <button class="bg-[#C4A603] text-white px-6 py-3 mx-4 mt-2 rounded-xl font-bold w-auto">Free Test</button>
+               <a href="login.html" class="inline-block bg-[#C4A603] hover:bg-[#A38A02] text-white px-6 py-3 mx-4 mt-2 rounded-xl font-bold w-auto text-center transition-all active:scale-95">
+                 Daftar
+              </a>
             </div>
         </div>
     </nav>
 
-    <!-- Rest of the content remains the same -->
     <section class="bg-gradient-custom pt-16 pb-48 px-4 relative"> 
         <div class="bubble w-32 h-32 top-10 left-10"></div>
         <div class="custom-shape-divider-bottom">
@@ -456,180 +516,275 @@
 
             <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto md:ml-auto" data-aos="fade-left">
                 <div class="space-y-4">
-                    <div class="img-box h-40 md:h-56"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600" class="w-full h-full object-cover"></div>
-                    <div class="img-box h-32 md:h-40"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600" class="w-full h-full object-cover"></div>
+                    <div class="img-box h-40 md:h-56">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600" alt="Sesi belajar kelompok di Fluenesia" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="img-box h-32 md:h-40">
+                        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600" alt="Diskusi interaktif dalam kelas bahasa" class="w-full h-full object-cover" loading="lazy">
+                    </div>
                 </div>
                 <div class="space-y-4 pt-8 md:pt-12">
-                    <div class="img-box h-32 md:h-40"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600" class="w-full h-full object-cover"></div>
-                    <div class="img-box h-40 md:h-56"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600" class="w-full h-full object-cover"></div>
+                    <div class="img-box h-32 md:h-40">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600" alt="Presentasi materi bahasa Indonesia" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="img-box h-40 md:h-56">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600" alt="Tutor Fluenesia mengajar online" class="w-full h-full object-cover" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-   <section class="max-w-6xl mx-auto px-4 -mt-36 relative z-20 mb-24" data-aos="zoom-in">
-    <div class="bg-[#1A4D57] p-6 rounded-[3rem] shadow-2xl border border-white/10 overflow-x-auto hide-scrollbar">
-        <div class="flex gap-4 min-w-[900px] justify-between">
-            
-            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
-                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">1</span>
-                <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
-                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Free Test</span>
-            </div>
-
-            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
-                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">2</span>
-                <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
-                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Trial Class</span>
-            </div>
-
-            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
-                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">3</span>
-                <img src="https://cdn-icons-png.flaticon.com/512/2436/2436636.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
-                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Pilih Kursus</span>
-            </div>
-
-            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
-                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">4</span>
-                <img src="https://cdn-icons-png.flaticon.com/512/3503/3503827.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
-                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Pilih Paket</span>
-            </div>
-
-            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
-                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#25D366] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">5</span>
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
-                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Konfirmasi WA</span>
-            </div>
-
-            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
-                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">6</span>
-                <img src="https://cdn-icons-png.flaticon.com/512/2278/2278049.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
-                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Jadwal</span>
-            </div>
-
-            <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
-                <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#C4A603] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">7</span>
-                <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0">
-                <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Mulai Belajar</span>
-            </div>
-
-        </div>
-    </div>
-</section>
-
- <section class="py-20 bg-[#f9fafb]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-[#1A4D57] mb-4">Language Courses</h2>
-            <p class="text-gray-500 max-w-2xl mx-auto">Pelajari Bahasa Indonesia dengan metode interaktif bersama tutor berpengalaman.</p>
-            <div class="flex flex-col items-center justify-center mt-10 gap-4">
-                <span class="text-sm font-bold text-[#1A4D57] uppercase tracking-wider">Pilih Level:</span>
-                <div class="w-full max-w-full overflow-x-auto hide-scrollbar px-4 flex justify-center">
-                    <div class="inline-flex bg-white p-1 border border-gray-200 shadow-sm min-w-max">
-                        <button onclick="filterCourses('all')" class="filter-btn active text-sm font-bold">Semua</button>
-                        <button onclick="filterCourses('basic')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Basic</button>
-                        <button onclick="filterCourses('independent')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Independent</button>
-                        <button onclick="filterCourses('proficient')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Proficient</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="slider-wrapper" data-aos="fade-up">
-            <button onclick="slide('left')" class="nav-btn nav-prev">❮</button>
-            <button onclick="slide('right')" class="nav-btn nav-next">❯</button>
-
-            <div id="course-container" class="hide-scrollbar">
+    <section class="max-w-6xl mx-auto px-4 -mt-36 relative z-20 mb-24" data-aos="zoom-in">
+        <div class="bg-[#1A4D57] p-6 rounded-[3rem] shadow-2xl border border-white/10 overflow-x-auto hide-scrollbar">
+            <div class="flex gap-4 min-w-[900px] justify-between">
                 
-                <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="basic">
-                    <div class="relative h-44 bg-[#336F7A] pattern-dots overflow-visible">
-                        <img src="orangkursus3.png" alt="Dosen A1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
-                        <div class="absolute bottom-4 left-4 z-20">
-                            <div class="bg-white px-4 py-2 rounded-none shadow-sm">
-                                <p class="text-[11px] font-bold text-[#1A4D57] uppercase">BCBT Test</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-12">
-                        <div class="inline-block px-3 py-1 bg-sky-100 text-sky-700 text-[10px] font-bold rounded-none mb-4 uppercase">Free Assessment</div>
-                        <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">CBT Level Test: Cari Tahu Kemampuanmu</h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Langkah awal sebelum memulai perjalanan belajarmu. Ikuti tes berbasis komputer secara gratis untuk menentukan levelmu.</p>
-                        <div class="pt-6 border-t border-gray-100">
-                            <a href="FreeTestCBT.html" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
-                                Mulai Tes Gratis
-                            </a>
-                        </div>
-                    </div>
+                <!-- 1. Trial Class -->
+                <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                    <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">1</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" alt="Icon Trial Class" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0" loading="lazy">
+                    <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Trial Class</span>
                 </div>
 
-                <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="basic">
-                    <div class="relative h-44 bg-[#41644A] pattern-dots overflow-visible">
-                        <img src="orangkursus2.png" alt="Dosen B1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
-                        <div class="absolute bottom-4 left-4 z-20">
-                            <div class="bg-white px-4 py-2 rounded-none shadow-sm">
-                                <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Basic User (Level A1-A2)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-12">
-                        <div class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-bold rounded-none mb-4 uppercase">Basic level</div>
-                        <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Indonesian for Daily Life (Basic)</h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Program yang dirancang khusus untuk pemula yang ingin menguasai ungkapan dasar sehari-hari dengan percaya diri.</p>
-                        <div class="pt-6 border-t border-gray-100">
-                            <a href="KursusBasic.html" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
-                                Pilih Kursus
-                            </a>
-                        </div>
-                    </div>
+                <!-- 2. Free Test -->
+                <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                    <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">2</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Icon Free Test" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0" loading="lazy">
+                    <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Free Test</span>
                 </div>
 
-                <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="independent">
-                    <div class="relative h-44 bg-[#F4D505] pattern-dots overflow-visible">
-                        <img src="orangkursus4.png" alt="Dosen B1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
-                        <div class="absolute bottom-4 left-4 z-20">
-                            <div class="bg-white px-4 py-2 rounded-none shadow-sm">
-                                <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Independent User (Level B1-B2)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-12">
-                        <div class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-bold rounded-none mb-4 uppercase">Independent</div>
-                        <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Fluency & Interaction (Independent)</h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Fokus pada penanganan situasi saat bepergian ke Indonesia serta menceritakan pengalaman dan rencana masa depan.</p>
-                        <div class="pt-6 border-t border-gray-100">
-                            <a href="KursusIndependent.html" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
-                                Pilih Kursus
-                            </a>
-                        </div>
-                    </div>
+                <!-- 3. Pilih Level Kursus -->
+                <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                    <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">3</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2436/2436636.png" alt="Icon Pilih Level" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0" loading="lazy">
+                    <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Pilih Level Kursus</span>
                 </div>
 
-                <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="proficient">
-                    <div class="relative h-44 bg-[#D1D5DB] pattern-dots overflow-visible">
-                        <img src="orangkursus1.png" alt="Dosen C1" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10">
-                        <div class="absolute bottom-4 left-4 z-20">
-                            <div class="bg-white px-4 py-2 rounded-none shadow-sm">
-                                <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Proficient (Level C1-C2)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-12">
-                        <div class="inline-block px-3 py-1 bg-rose-100 text-rose-700 text-[10px] font-bold rounded-none mb-4 uppercase">Proficient</div>
-                        <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Professional Mastery (Proficient)</h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">Penguasaan tingkat tinggi untuk kebutuhan profesional dan akademis yang kompleks dengan argumen terstruktur.</p>
-                        <div class="pt-6 border-t border-gray-100">
-                            <a href="KursusProficient.html" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
-                                Pilih Kursus
-                            </a>
-                        </div>
-                    </div>
+                <!-- 4. Pilih Paket -->
+                <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                    <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">4</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3503/3503827.png" alt="Icon Pilih Paket" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0" loading="lazy">
+                    <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Pilih Paket</span>
+                </div>
+
+                <!-- 5. Konfirmasi Pembayaran -->
+                <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                    <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">5</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/743/743014.png" alt="Icon Konfirmasi Pembayaran" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0" loading="lazy">
+                    <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Konfirmasi Pembayaran</span>
+                </div>
+
+                <!-- 6. Jadwal -->
+                <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                    <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#1A4D57] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">6</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/2278/2278049.png" alt="Icon Jadwal" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0" loading="lazy">
+                    <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Jadwal</span>
+                </div>
+
+                <!-- 7. Mulai Belajar -->
+                <div class="group flex-1 flex flex-col items-center p-4 bg-white rounded-3xl relative transition-all hover:scale-105">
+                    <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#C4A603] text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">7</span>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" alt="Icon Mulai Belajar" class="w-10 h-10 mb-2 grayscale group-hover:grayscale-0" loading="lazy">
+                    <span class="text-[12px] font-bold text-[#1A4D57] text-center leading-tight">Mulai Belajar</span>
                 </div>
 
             </div>
         </div>
+    </section>
+
+    <section class="py-20 bg-[#f9fafb]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-[#1A4D57] mb-4">Language Courses</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">Pelajari Bahasa Indonesia dengan metode interaktif bersama tutor berpengalaman.</p>
+                <div class="flex flex-col items-center justify-center mt-10 gap-4">
+                    <span class="text-sm font-bold text-[#1A4D57] uppercase tracking-wider">Pilih Level:</span>
+                    <div class="w-full max-w-full overflow-x-auto hide-scrollbar px-4 flex justify-center">
+                        <div class="inline-flex bg-white p-1 border border-gray-200 shadow-sm min-w-max">
+                            <button onclick="filterCourses('all')" class="filter-btn bg-[#1A4D57] text-white text-sm font-bold">Semua</button>
+                            <button onclick="filterCourses('basic')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Basic</button>
+                            <button onclick="filterCourses('independent')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Independent</button>
+                            <button onclick="filterCourses('proficient')" class="filter-btn text-gray-500 text-sm font-bold hover:bg-gray-50">Proficient</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-wrapper" data-aos="fade-up">
+                <button onclick="slide('left')" class="nav-btn nav-prev" aria-label="Slide ke kiri">❮</button>
+                <button onclick="slide('right')" class="nav-btn nav-next" aria-label="Slide ke kanan">❯</button>
+
+                <div id="course-container" class="hide-scrollbar">
+                    
+                    <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="basic">
+                        <div class="relative h-44 bg-[#336F7A] pattern-dots overflow-visible">
+                            <img src="orangkursus3.png" alt="CBT Level Test - Tes kemampuan bahasa Indonesia" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10" loading="lazy">
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <div class="bg-white px-4 py-2 rounded-none shadow-sm">
+                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">CBT Test</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-12">
+                            <div class="inline-block px-3 py-1 bg-sky-100 text-sky-700 text-[10px] font-bold rounded-none mb-4 uppercase">Free Assessment</div>
+                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">CBT Level Test: Cari Tahu Kemampuanmu</h3>
+                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Langkah awal sebelum memulai perjalanan belajarmu. Ikuti tes berbasis komputer secara gratis untuk menentukan levelmu.</p>
+                            <div class="pt-6 border-t border-gray-100">
+                                <a href="FreeTestCBT.html" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
+                                    Mulai Tes Gratis
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="basic">
+                        <div class="relative h-44 bg-[#41644A] pattern-dots overflow-visible">
+                            <img src="orangkursus2.png" alt="Kursus Basic User - Belajar bahasa Indonesia level A1-A2" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10" loading="lazy">
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <div class="bg-white px-4 py-2 rounded-none shadow-sm">
+                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Basic User (Level A1-A2)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-12">
+                            <div class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-bold rounded-none mb-4 uppercase">Basic level</div>
+                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Indonesian for Daily Life (Basic)</h3>
+                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Program yang dirancang khusus untuk pemula yang ingin menguasai ungkapan dasar sehari-hari dengan percaya diri.</p>
+                            <div class="pt-6 border-t border-gray-100">
+                                <a href="KursusBasic.html" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
+                                    Pilih Kursus
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="independent">
+                        <div class="relative h-44 bg-[#F4D505] pattern-dots overflow-visible">
+                            <img src="orangkursus4.png" alt="Kursus Independent User - Belajar bahasa Indonesia level B1-B2" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10" loading="lazy">
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <div class="bg-white px-4 py-2 rounded-none shadow-sm">
+                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Independent User (Level B1-B2)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-12">
+                            <div class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-[10px] font-bold rounded-none mb-4 uppercase">Independent</div>
+                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Fluency & Interaction (Independent)</h3>
+                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Fokus pada penanganan situasi saat bepergian ke Indonesia serta menceritakan pengalaman dan rencana masa depan.</p>
+                            <div class="pt-6 border-t border-gray-100">
+                                <a href="KursusIndependent.html" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
+                                    Pilih Kursus
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card bg-white rounded-none shadow-lg border border-gray-100 group transition-all duration-300" data-level="proficient">
+                        <div class="relative h-44 bg-[#D1D5DB] pattern-dots overflow-visible">
+                            <img src="orangkursus1.png" alt="Kursus Proficient User - Belajar bahasa Indonesia level C1-C2" class="absolute bottom-0 left-1/2 -translate-x-1/2 h-56 w-auto object-contain z-10" loading="lazy">
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <div class="bg-white px-4 py-2 rounded-none shadow-sm">
+                                    <p class="text-[11px] font-bold text-[#1A4D57] uppercase">Proficient (Level C1-C2)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-12">
+                            <div class="inline-block px-3 py-1 bg-rose-100 text-rose-700 text-[10px] font-bold rounded-none mb-4 uppercase">Proficient</div>
+                            <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Professional Mastery (Proficient)</h3>
+                            <p class="text-gray-500 text-sm mb-6 leading-relaxed">Penguasaan tingkat tinggi untuk kebutuhan profesional dan akademis yang kompleks dengan argumen terstruktur.</p>
+                            <div class="pt-6 border-t border-gray-100">
+                                <a href="KursusProficient.html" class="block w-full text-center bg-[#1A4D57] hover:bg-[#C4A603] text-white font-bold py-3.5 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
+                                    Pilih Kursus
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="py-20 bg-[#f0f4f0] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            
+            <div class="lg:w-1/2 text-center lg:text-left" data-aos="fade-right">
+                <div class="inline-flex items-center gap-2 bg-[#1A4D57]/10 text-[#1A4D57] px-4 py-2 rounded-full mb-6">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1A4D57] opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-[#1A4D57]"></span>
+                    </span>
+                    <span class="text-sm font-bold uppercase tracking-wider">Kesempatan Terbatas</span>
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl font-extrabold text-[#1A4D57] leading-tight mb-6">
+                    Mulai Perjalanan Anda <br>
+                    <span class="text-[#C4A603]">Tanpa Biaya!</span>
+                </h2>
+                
+                <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                    Bergabunglah dengan ribuan siswa lainnya. Dapatkan akses penuh ke materi belajar dan ukur kemampuan Anda dengan <span class="font-bold text-[#1A4D57]">Free CBT Assessment Test</span> hari ini.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 mb-10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-[#C4A603]">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <span class="font-semibold text-[#1A4D57]">Daftar Gratis</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-[#C4A603]">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <span class="font-semibold text-[#1A4D57]">Hasil Tes Instan</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-center lg:justify-start">
+                    <a href="FreeTestCBT.html" class="bg-[#1A4D57] text-white px-10 py-4 rounded-2xl font-bold shadow-xl hover:bg-[#245A64] transition-all transform hover:-translate-y-1 text-center">
+                        Ambil Free Test Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2 relative" data-aos="fade-left">
+                <div class="absolute inset-0 bg-[#1A4D57]/10 rounded-[3rem] transform -rotate-3 scale-105"></div>
+                
+                <div class="relative bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl border-4 border-white overflow-hidden">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-24 h-24 bg-[#C4A603]/10 rounded-full flex items-center justify-center mb-6 animate-bounce">
+                            <span class="text-5xl">🎁</span>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-[#1A4D57] mb-2">Bonus Pendaftaran!</h3>
+                        <p class="text-gray-500 mb-10">Daftar akun sekarang dan dapatkan voucher diskon 15% untuk paket pertama Anda setelah tes.</p>
+                        
+                        <div class="w-full space-y-4 mb-2">
+                            <div class="h-12 bg-gray-50 rounded-xl border border-gray-100 w-full"></div>
+                            <div class="h-12 bg-gray-50 rounded-xl border border-gray-100 w-full"></div>
+                            <div class="h-14 bg-[#1A4D57]/80 rounded-xl w-full flex items-center justify-center shadow-lg">
+                                <span class="text-white font-bold text-sm tracking-widest uppercase">Proses Pendaftaran...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-0 left-0 w-full h-2 bg-gray-100">
+                        <div class="h-full bg-[#C4A603] w-3/4 animate-pulse"></div>
+                    </div>
+                </div>
+
+                <div class="absolute -bottom-6 -right-6 bg-[#C4A603] text-white p-6 rounded-2xl shadow-2xl transform rotate-6 hidden md:block">
+                    <p class="text-xs font-bold uppercase tracking-widest opacity-90">Peserta Hari Ini</p>
+                    <p class="text-3xl font-black">+1,240</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
-
+    
     <section class="py-16 md:py-24 bg-white border-t border-gray-50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-12 gap-12 items-start">
@@ -681,7 +836,7 @@
         </div>
     </section>
 
-  <section class="w-full bg-[#336F7A] relative overflow-hidden pt-12 pb-24">
+    <section class="w-full bg-[#336F7A] relative overflow-hidden pt-12 pb-24">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-[#245A64] -skew-x-12 translate-x-1/4 z-0 hidden lg:block"></div>
         <div class="max-w-7xl mx-auto w-full px-6 md:px-12 relative z-10">
             <div class="grid lg:grid-cols-2 gap-8 items-center">
@@ -689,11 +844,11 @@
                     <span class="text-[#C4A603] font-bold tracking-widest uppercase text-xs">#FluenesiaAcademy</span>
                     <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-2 mb-4 leading-tight">Wujudkan Kemampuan <br> Berbahasa Indonesia Anda</h2>
                     <p class="text-gray-300 mb-8 text-base max-w-md opacity-90">Kami siap membimbing Anda dari level dasar hingga mahir dengan kurikulum standar internasional.</p>
-                    <a href="https://wa.me/6287729949195" class="inline-flex items-center gap-3 bg-white text-[#1A4D57] px-8 py-3.5 rounded-full font-bold shadow-xl hover:-translate-y-1 text-sm">Konsultasi Gratis Sekarang</a>
+                    <a href="https://wa.me/6287729949195" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-white text-[#1A4D57] px-8 py-3.5 rounded-full font-bold shadow-xl hover:-translate-y-1 text-sm">Konsultasi Gratis Sekarang</a>
                 </div>
                 <div class="relative flex justify-center lg:justify-end" data-aos="fade-left">
                     <div class="relative group">
-                        <img src="orangbanner.png" class="w-full h-[280px] object-cover"></div>
+                        <img src="orangbanner.png" alt="Siswa Fluenesia berdiskusi dengan tutor" class="w-full h-[280px] object-cover" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -706,195 +861,195 @@
     </section>
     
     <section class="py-16 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-6" data-aos="fade-up">
-            <span class="text-[#C4A603] font-bold tracking-widest uppercase text-xs">Cerita Fluenesia</span>
-            <h2 class="text-3xl md:text-5xl font-extrabold text-[#1A4D57] mt-2 mb-3">Pengalaman First-Timer Kami</h2>
-            <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base">Lihat kesan mereka yang telah mencoba Free CBT Test dan sesi Trial Class interaktif kami.</p>
-        </div>
-
-        <div id="testi-container" class="flex gap-8 overflow-x-auto hide-scrollbar scroll-smooth snap-x snap-mandatory pt-12 pb-10 px-4 cursor-grab active:cursor-grabbing" data-aos="fade-up">
-            
-            <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
-                <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
-                    <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=150" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
-                        <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
-                    </div>
-                    <div class="mt-4 flex-grow">
-                        <h4 class="text-xl font-bold text-[#1A4D57]">Ivan Ray</h4>
-                        <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">💻 Free CBT Test User</p>
-                        <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Awalnya bingung mulai dari mana, tapi fitur Free CBT Test-nya ngebantu banget! Hasilnya akurat dan saya langsung disarankan masuk ke level Independent. User interface-nya juga modern."</p>
-                    </div>
-                </div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-6" data-aos="fade-up">
+                <span class="text-[#C4A603] font-bold tracking-widest uppercase text-xs">Cerita Fluenesia</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-[#1A4D57] mt-2 mb-3">Pengalaman First-Timer Kami</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base">Lihat kesan mereka yang telah mencoba Free CBT Test dan sesi Trial Class interaktif kami.</p>
             </div>
 
-            <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
-                <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
-                    <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
-                        <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
-                    </div>
-                    <div class="mt-4 flex-grow">
-                        <h4 class="text-xl font-bold text-[#1A4D57]">Idni</h4>
-                        <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">🛡️ Trial Class Participant</p>
-                        <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Baru ikut sesi trial 30 menit, tapi sudah belajar banyak kosakata slang yang praktis. Tutornya sangat friendly dan cara mengajarnya santai tapi materi tetap tersampaikan dengan baik."</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
-                <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
-                    <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
-                        <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
-                    </div>
-                    <div class="mt-4 flex-grow">
-                        <h4 class="text-xl font-bold text-[#1A4D57]">Farah D</h4>
-                        <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">📋 Assessment User</p>
-                        <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Sistem assessment-nya tidak membosankan. Setelah tes, saya langsung dapat feedback tentang kelemahan saya. Fluenesia benar-benar memperhatikan detail kemampuan siswa."</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
-                <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
-                    <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
-                        <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
-                    </div>
-                    <div class="mt-4 flex-grow">
-                        <h4 class="text-xl font-bold text-[#1A4D57]">Michael Chen</h4>
-                        <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">✨ Beta User</p>
-                        <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Suka sekali dengan kemudahan booking trial class-nya. Admin WhatsApp-nya sangat responsif membantu saya menjadwalkan kelas pertama untuk anak saya."</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
-                <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
-                    <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
-                        <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
-                    </div>
-                    <div class="mt-4 flex-grow">
-                        <h4 class="text-xl font-bold text-[#1A4D57]">Sarah Jenkins</h4>
-                        <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">📱 Mobile User</p>
-                        <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Saya mencoba mengerjakan CBT Test melalui HP sambil di jalan, dan aplikasinya lancar. Tidak sabar untuk segera mulai kelas full programnya!"</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
- <section class="relative pt-24 pb-16 overflow-hidden" style="background: linear-gradient(135deg, #336F7A 0%, #F5C857 100%);">
-    
-    <div class="absolute top-0 left-0 w-full overflow-hidden line-height-0">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[60px]">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#f9fafb"></path>
-        </svg>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-3">Memperkenalkan Tutor Profesional Fluenesia</h2>
-            <p class="text-gray-100 max-w-2xl mx-auto text-sm opacity-90">Belajar bersama para ahli bahasa yang berdedikasi dan memiliki pengalaman internasional.</p>
-        </div>
-
-        <div class="slider-wrapper relative px-2 md:px-10" data-aos="fade-up">
-            <button onclick="slideTutor('left')" class="nav-btn nav-prev" style="top: 50% !important; left: -15px;">❮</button>
-            <button onclick="slideTutor('right')" class="nav-btn nav-next" style="top: 50% !important; right: -15px;">❯</button>
-
-            <div id="tutor-container" class="hide-scrollbar flex gap-6 overflow-x-auto scroll-smooth snap-x pb-8">
+            <div id="testi-container" class="flex gap-8 overflow-x-auto hide-scrollbar scroll-smooth snap-x snap-mandatory pt-12 pb-10 px-4 cursor-grab active:cursor-grabbing" data-aos="fade-up">
                 
-                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
-                    <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-40"></div>
-                    <img src="orangkursus1.png" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
-                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
-                        <h3 class="text-base font-bold text-[#1A4D57]">Rachelle C. De Castro</h3>
-                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">SERTIFIKAT TESOL</p>
-                        <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">20 Tahun Pengalaman</div>
+                <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
+                    <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
+                        <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=150" alt="Ivan Ray - Free CBT Test User" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
+                            <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
+                        </div>
+                        <div class="mt-4 flex-grow">
+                            <h4 class="text-xl font-bold text-[#1A4D57]">Ivan Ray</h4>
+                            <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">💻 Free CBT Test User</p>
+                            <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Awalnya bingung mulai dari mana, tapi fitur Free CBT Test-nya ngebantu banget! Hasilnya akurat dan saya langsung disarankan masuk ke level Independent. User interface-nya juga modern."</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#C4A603] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
-                    <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-60"></div>
-                    <img src="orangkursus2.png" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0" style="filter:none">
-                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#1A4D57]">
-                        <h3 class="text-base font-bold text-[#1A4D57]">Aisyah Amilatul</h3>
-                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">SERTIFIKAT TESOL & TEFL</p>
-                        <div class="mt-3 bg-[#1A4D57] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">Pengalaman 8 Tahun</div>
+                <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
+                    <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
+                        <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150" alt="Idni - Trial Class Participant" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
+                            <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
+                        </div>
+                        <div class="mt-4 flex-grow">
+                            <h4 class="text-xl font-bold text-[#1A4D57]">Idni</h4>
+                            <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">🛡️ Trial Class Participant</p>
+                            <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Baru ikut sesi trial 30 menit, tapi sudah belajar banyak kosakata slang yang praktis. Tutornya sangat friendly dan cara mengajarnya santai tapi materi tetap tersampaikan dengan baik."</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
-                    <div class="absolute inset-0 bg-pattern-lines pointer-events-none opacity-30"></div>
-                    <img src="orangkursus3.png" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
-                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
-                        <h3 class="text-base font-bold text-[#1A4D57]">Dhimas Dwi Nugraha</h3>
-                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">SERTIFIKAT TESOL</p>
-                        <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">Pengalaman 7 Tahun</div>
+                <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
+                    <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
+                        <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150" alt="Farah D - Assessment User" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
+                            <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
+                        </div>
+                        <div class="mt-4 flex-grow">
+                            <h4 class="text-xl font-bold text-[#1A4D57]">Farah D</h4>
+                            <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">📋 Assessment User</p>
+                            <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Sistem assessment-nya tidak membosankan. Setelah tes, saya langsung dapat feedback tentang kelemahan saya. Fluenesia benar-benar memperhatikan detail kemampuan siswa."</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#245A64] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
-                    <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-40"></div>
-                    <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=600" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
-                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
-                        <h3 class="text-base font-bold text-[#1A4D57]">Budi Santoso</h3>
-                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">BAHASA INDONESIA EXPERT</p>
-                        <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">10 Tahun Pengalaman</div>
+                <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
+                    <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
+                        <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150" alt="Michael Chen - Beta User" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
+                            <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
+                        </div>
+                        <div class="mt-4 flex-grow">
+                            <h4 class="text-xl font-bold text-[#1A4D57]">Michael Chen</h4>
+                            <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">✨ Beta User</p>
+                            <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Suka sekali dengan kemudahan booking trial class-nya. Admin WhatsApp-nya sangat responsif membantu saya menjadwalkan kelas pertama untuk anak saya."</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
-                    <div class="absolute inset-0 bg-pattern-lines pointer-events-none opacity-30"></div>
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
-                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
-                        <h3 class="text-base font-bold text-[#1A4D57]">Siti Aminah</h3>
-                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">BAHASA INDONESIA NATIVE</p>
-                        <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">5 Tahun Pengalaman</div>
-                    </div>
-                </div>
-
-                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#C4A603] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
-                    <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-40"></div>
-                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=600" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
-                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#1A4D57]">
-                        <h3 class="text-base font-bold text-[#1A4D57]">Andi Wijaya</h3>
-                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">LINGUISTIC SPECIALIST</p>
-                        <div class="mt-3 bg-[#1A4D57] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">12 Tahun Pengalaman</div>
-                    </div>
-                </div>
-
-                <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
-                    <div class="absolute inset-0 bg-pattern-lines pointer-events-none opacity-30"></div>
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0">
-                    <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
-                        <h3 class="text-base font-bold text-[#1A4D57]">Maria Garcia</h3>
-                        <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">CROSS-CULTURAL COACH</p>
-                        <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">15 Tahun Pengalaman</div>
+                <div class="testi-card flex-none w-[85%] md:w-[calc(33.333%-22px)] snap-center md:snap-start">
+                    <div class="relative bg-white p-8 pt-16 rounded-[2rem] shadow-xl shadow-gray-100 border border-gray-50 h-full flex flex-col transition-transform hover:scale-[1.02]">
+                        <div class="absolute -top-6 left-8 w-20 h-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150" alt="Sarah Jenkins - Mobile User" class="w-full h-full object-cover" loading="lazy">
+                        </div>
+                        <div class="absolute -top-4 right-8 w-16 h-16 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[#1A4D57] to-[#C4A603]">
+                            <svg class="w-8 h-8 text-white fill-current opacity-90" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017V14H15.017C13.9124 14 13.017 13.1046 13.017 12V10C13.017 8.89543 13.9124 8 15.017 8H19.017C20.1216 8 21.017 8.89543 21.017 10V16C21.017 18.7614 18.7784 21 16.017 21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017V14H4.017C2.91243 14 2.017 13.1046 2.017 12V10C2.017 8.89543 2.91243 8 4.017 8H8.017C9.12157 8 10.017 8.89543 10.017 10V16C10.017 18.7614 7.77843 21 5.017 21H3.017Z"/></svg>
+                        </div>
+                        <div class="mt-4 flex-grow">
+                            <h4 class="text-xl font-bold text-[#1A4D57]">Sarah Jenkins</h4>
+                            <p class="text-[#C4A603] text-xs font-bold mb-4 flex items-center gap-1 uppercase tracking-tighter">📱 Mobile User</p>
+                            <p class="text-gray-600 text-sm leading-relaxed italic border-t border-gray-50 pt-4">"Saya mencoba mengerjakan CBT Test melalui HP sambil di jalan, dan aplikasinya lancar. Tidak sabar untuk segera mulai kelas full programnya!"</p>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
- <section class="py-24 bg-white">
+    <section class="relative pt-24 pb-16 overflow-hidden" style="background: linear-gradient(135deg, #336F7A 0%, #F5C857 100%);">
+        
+        <div class="absolute top-0 left-0 w-full overflow-hidden line-height-0">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[60px]">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#f9fafb"></path>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-3">Memperkenalkan Tutor Profesional Fluenesia</h2>
+                <p class="text-gray-100 max-w-2xl mx-auto text-sm opacity-90">Belajar bersama para ahli bahasa yang berdedikasi dan memiliki pengalaman internasional.</p>
+            </div>
+
+            <div class="slider-wrapper relative px-2 md:px-10" data-aos="fade-up">
+                <button onclick="slideTutor('left')" class="nav-btn nav-prev" style="top: 50% !important; left: -15px;" aria-label="Slide tutor ke kiri">❮</button>
+                <button onclick="slideTutor('right')" class="nav-btn nav-next" style="top: 50% !important; right: -15px;" aria-label="Slide tutor ke kanan">❯</button>
+
+                <div id="tutor-container" class="hide-scrollbar flex gap-6 overflow-x-auto scroll-smooth snap-x pb-8">
+                    
+                    <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                        <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-40"></div>
+                        <img src="orangkursus1.png" alt="Tutor Fluenesia - Rachelle C. De Castro" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0" loading="lazy">
+                        <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
+                            <h3 class="text-base font-bold text-[#1A4D57]">Rachelle C. De Castro</h3>
+                            <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">SERTIFIKAT TESOL</p>
+                            <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">20 Tahun Pengalaman</div>
+                        </div>
+                    </div>
+
+                    <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#C4A603] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                        <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-60"></div>
+                        <img src="orangkursus2.png" alt="Tutor Fluenesia - Aisyah Amilatul" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0" style="filter:none" loading="lazy">
+                        <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#1A4D57]">
+                            <h3 class="text-base font-bold text-[#1A4D57]">Aisyah Amilatul</h3>
+                            <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">SERTIFIKAT TESOL & TEFL</p>
+                            <div class="mt-3 bg-[#1A4D57] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">Pengalaman 8 Tahun</div>
+                        </div>
+                    </div>
+
+                    <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                        <div class="absolute inset-0 bg-pattern-lines pointer-events-none opacity-30"></div>
+                        <img src="orangkursus3.png" alt="Tutor Fluenesia - Dhimas Dwi Nugraha" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0" loading="lazy">
+                        <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
+                            <h3 class="text-base font-bold text-[#1A4D57]">Dhimas Dwi Nugraha</h3>
+                            <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">SERTIFIKAT TESOL</p>
+                            <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">Pengalaman 7 Tahun</div>
+                        </div>
+                    </div>
+
+                    <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#245A64] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                        <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-40"></div>
+                        <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=600" alt="Tutor Fluenesia - Budi Santoso" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0" loading="lazy">
+                        <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
+                            <h3 class="text-base font-bold text-[#1A4D57]">Budi Santoso</h3>
+                            <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">BAHASA INDONESIA EXPERT</p>
+                            <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">10 Tahun Pengalaman</div>
+                        </div>
+                    </div>
+
+                    <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                        <div class="absolute inset-0 bg-pattern-lines pointer-events-none opacity-30"></div>
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600" alt="Tutor Fluenesia - Siti Aminah" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0" loading="lazy">
+                        <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
+                            <h3 class="text-base font-bold text-[#1A4D57]">Siti Aminah</h3>
+                            <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">BAHASA INDONESIA NATIVE</p>
+                            <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">5 Tahun Pengalaman</div>
+                        </div>
+                    </div>
+
+                    <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#C4A603] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                        <div class="absolute inset-0 bg-pattern-dots pointer-events-none opacity-40"></div>
+                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=600" alt="Tutor Fluenesia - Andi Wijaya" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0" loading="lazy">
+                        <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#1A4D57]">
+                            <h3 class="text-base font-bold text-[#1A4D57]">Andi Wijaya</h3>
+                            <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">LINGUISTIC SPECIALIST</p>
+                            <div class="mt-3 bg-[#1A4D57] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">12 Tahun Pengalaman</div>
+                        </div>
+                    </div>
+
+                    <div class="tutor-card relative group h-[380px] w-[280px] flex-none snap-start overflow-hidden bg-[#1A4D57] p-3 shadow-2xl flex flex-col justify-end rounded-none border border-white/10">
+                        <div class="absolute inset-0 bg-pattern-lines pointer-events-none opacity-30"></div>
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600" alt="Tutor Fluenesia - Maria Garcia" class="tutor-img absolute inset-0 w-full h-full object-cover object-top z-0" loading="lazy">
+                        <div class="bg-white p-4 text-center shadow-md relative z-10 rounded-none border-t-4 border-[#C4A603]">
+                            <h3 class="text-base font-bold text-[#1A4D57]">Maria Garcia</h3>
+                            <p class="text-[9px] text-gray-400 font-bold uppercase mt-1">CROSS-CULTURAL COACH</p>
+                            <div class="mt-3 bg-[#C4A603] text-white py-1.5 px-4 text-[10px] font-bold inline-block rounded-none uppercase">15 Tahun Pengalaman</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="text-[#C4A603] font-bold tracking-widest uppercase text-xs">Informasi Program</span>
@@ -905,7 +1060,7 @@
             <div class="space-y-6" data-aos="fade-up">
                 
                 <div class="faq-item group bg-gray-50 rounded-2xl border border-transparent transition-all hover:border-[#C4A603]/20">
-                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
+                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none">
                         <div class="flex flex-col gap-1">
                             <span class="text-[10px] font-bold text-[#C4A603] uppercase tracking-widest">Kurikulum & Budaya</span>
                             <span class="text-lg font-bold text-[#1A4D57] group-hover:text-[#C4A603] transition-colors">Apakah saya hanya belajar bahasa formal?</span>
@@ -920,7 +1075,7 @@
                 </div>
 
                 <div class="faq-item group bg-gray-50 rounded-2xl border border-transparent transition-all hover:border-[#C4A603]/20">
-                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
+                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none">
                         <div class="flex flex-col gap-1">
                             <span class="text-[10px] font-bold text-[#C4A603] uppercase tracking-widest">Metode Belajar</span>
                             <span class="text-lg font-bold text-[#1A4D57] group-hover:text-[#C4A603] transition-colors">Bagaimana jika saya ketinggalan sesi Live Class?</span>
@@ -935,7 +1090,7 @@
                 </div>
 
                 <div class="faq-item group bg-gray-50 rounded-2xl border border-transparent transition-all hover:border-[#C4A603]/20">
-                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
+                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none">
                         <div class="flex flex-col gap-1">
                             <span class="text-[10px] font-bold text-[#C4A603] uppercase tracking-widest">Level & Assessment</span>
                             <span class="text-lg font-bold text-[#1A4D57] group-hover:text-[#C4A603] transition-colors">Bagaimana cara menentukan level yang tepat untuk saya?</span>
@@ -950,7 +1105,7 @@
                 </div>
 
                 <div class="faq-item group bg-gray-50 rounded-2xl border border-transparent transition-all hover:border-[#C4A603]/20">
-                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
+                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none">
                         <div class="flex flex-col gap-1">
                             <span class="text-[10px] font-bold text-[#C4A603] uppercase tracking-widest">Paket & Harga</span>
                             <span class="text-lg font-bold text-[#1A4D57] group-hover:text-[#C4A603] transition-colors">Apa perbedaan paket Semi Private dan 1-on-1 Class?</span>
@@ -965,7 +1120,7 @@
                 </div>
 
                 <div class="faq-item group bg-gray-50 rounded-2xl border border-transparent transition-all hover:border-[#C4A603]/20">
-                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
+                    <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none">
                         <div class="flex flex-col gap-1">
                             <span class="text-[10px] font-bold text-[#C4A603] uppercase tracking-widest">Karier</span>
                             <span class="text-lg font-bold text-[#1A4D57] group-hover:text-[#C4A603] transition-colors">Apakah saya bisa menjadi pengajar di Fluenesia?</span>
@@ -980,11 +1135,62 @@
                 </div>
 
             </div>
-
-           
         </div>
     </section>
 
+<section class="relative py-24 my-20 overflow-hidden bg-gradient-to-r from-[#1A4D57] via-[#245A64] to-[#C4A603]">
+    
+    <div class="promo-divider-top">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V0H1200V95.83C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill-light"></path>
+        </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 text-center relative z-10" data-aos="zoom-in">
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">
+            Jangan Lewatkan <span class="text-[#C4A603]">Kesempatan Ini!</span>
+        </h2>
+        <p class="text-white/90 mb-10 max-w-2xl mx-auto text-sm md:text-base">
+            Dapatkan voucher khusus untuk pendaftar minggu ini. Klik tombol di bawah untuk klaim kupon Anda di halaman promo.
+        </p>
+
+        <div class="flex justify-center gap-3 md:gap-4 mb-12">
+            <div class="flex flex-col items-center">
+                <div class="bg-black/20 backdrop-blur-md border border-white/20 w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-2xl md:text-3xl font-bold text-white shadow-lg" id="days">04</div>
+                <span class="text-white text-[10px] uppercase font-bold mt-2 tracking-widest">Hari</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="bg-black/20 backdrop-blur-md border border-white/20 w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-2xl md:text-3xl font-bold text-white shadow-lg" id="hours">03</div>
+                <span class="text-white text-[10px] uppercase font-bold mt-2 tracking-widest">Jam</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="bg-black/20 backdrop-blur-md border border-white/20 w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-2xl md:text-3xl font-bold text-white shadow-lg" id="minutes">11</div>
+                <span class="text-white text-[10px] uppercase font-bold mt-2 tracking-widest">Menit</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="bg-black/20 backdrop-blur-md border border-white/20 w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-2xl md:text-3xl font-bold text-white shadow-lg" id="seconds">12</div>
+                <span class="text-white text-[10px] uppercase font-bold mt-2 tracking-widest">Detik</span>
+            </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a href="https://wa.me/6287729949195" target="_blank" class="w-full sm:w-auto bg-white text-[#1A4D57] px-10 py-4 rounded-full font-extrabold shadow-xl hover:bg-gray-100 transition-all transform hover:-translate-y-1 text-center uppercase text-sm tracking-wider">
+                Daftar Via WhatsApp
+            </a>
+            <a href="promo.html" class="w-full sm:w-auto border-2 border-white text-white px-10 py-4 rounded-full font-extrabold hover:bg-white/10 transition-all text-center uppercase text-sm tracking-wider">
+                Klaim Voucher Promo
+            </a>
+        </div>
+    </div>
+
+    <div class="promo-divider-bottom">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill-light"></path>
+        </svg>
+    </div>
+
+</section>
+    
     <footer class="relative bg-gradient-to-br from-[#1A4D57] via-[#245A64] to-[#C4A603] pt-24 pb-12 overflow-hidden border-t border-white/10">
         <div class="bubble w-64 h-64 -top-20 -left-20 opacity-10"></div>
         <div class="bubble w-32 h-32 bottom-10 right-10 opacity-20" style="animation-delay: 2s;"></div>
@@ -1016,9 +1222,9 @@
                     <h4 class="text-white font-bold text-lg mb-6">Navigasi</h4>
                     <ul class="space-y-4 text-gray-300 text-sm">
                         <li><a href="KursusBasic.html" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> Program Kursus Basic</a></li>
-                         <li><a href="KursusIndependent.html"hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> Program Kursus Independent</a></li>
-                          <li><a href="KursusProficient.html"hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> Program Kursus Proficient </a></li>
-                        <li><a href="FreeTestCBT.html"hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> CBT Test Online</a></li>
+                        <li><a href="KursusIndependent.html" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> Program Kursus Independent</a></li>
+                        <li><a href="KursusProficient.html" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> Program Kursus Proficient</a></li>
+                        <li><a href="FreeTestCBT.html" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> CBT Test Online</a></li>
                         <li><a href="#" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> Mentor Kami</a></li>
                         <li><a href="#" class="hover:text-[#C4A603] transition-colors flex items-center gap-2"><span>›</span> FAQ</a></li>
                     </ul>
@@ -1039,9 +1245,9 @@
                     <p class="text-gray-300 text-sm mb-4">Dapatkan info promo dan tips belajar setiap minggu.</p>
                     <form class="space-y-3">
                         <div class="relative">
-                            <input type="email" placeholder="Email Anda" class="w-full bg-white/10 border border-white/20 rounded-xl py-3 px-4 text-white text-sm focus:outline-none focus:border-[#C4A603] placeholder:text-gray-400">
+                            <input type="email" placeholder="Email Anda" class="w-full bg-white/10 border border-white/20 rounded-xl py-3 px-4 text-white text-sm focus:outline-none focus:border-[#C4A603] placeholder:text-gray-400" required>
                         </div>
-                        <button class="w-full bg-[#C4A603] hover:bg-[#A38A02] text-white font-bold py-3 rounded-xl transition-all shadow-lg active:scale-95">
+                        <button type="submit" class="w-full bg-[#C4A603] hover:bg-[#A38A02] text-white font-bold py-3 rounded-xl transition-all shadow-lg active:scale-95">
                             Berlangganan
                         </button>
                     </form>
@@ -1064,6 +1270,7 @@
     <script>
         AOS.init({ duration: 1000, once: true });
         
+        // Event delegation for mobile menu
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         if(menuBtn) {
@@ -1074,6 +1281,7 @@
 
         function slide(direction) {
             const container = document.getElementById('course-container');
+            if(!container) return;
             const card = container.querySelector('.course-card');
             if(!card) return;
             const cardWidth = card.offsetWidth + 48; 
@@ -1086,6 +1294,7 @@
 
         function slideTutor(direction) {
             const container = document.getElementById('tutor-container');
+            if(!container) return;
             const card = container.querySelector('.tutor-card');
             if(!card) return;
             const cardWidth = card.offsetWidth + 32; 
@@ -1101,8 +1310,9 @@
             const cards = document.querySelectorAll('.course-card');
             buttons.forEach(btn => {
                 btn.classList.remove('active');
+                btn.classList.remove('bg-[#1A4D57]', 'text-white');
                 if(btn.innerText.toLowerCase() === level || (level === 'all' && btn.innerText.toLowerCase() === 'semua')) {
-                    btn.classList.add('active');
+                    btn.classList.add('active', 'bg-[#1A4D57]', 'text-white');
                 }
             });
             cards.forEach(card => {
@@ -1114,40 +1324,79 @@
             });
         }
 
-        // FAQ Toggle Function
-        function toggleFAQ(button) {
-            const item = button.parentElement;
-            const isActive = item.classList.contains('active');
-            
-            // Close all other items (optional - remove if you want multiple open)
-            document.querySelectorAll('.faq-item').forEach(faq => {
-                faq.classList.remove('active');
-            });
+        // Event delegation for FAQ and dropdown
+        document.addEventListener('click', function(e) {
+            // FAQ toggle
+            if (e.target.closest('.faq-item button')) {
+                const button = e.target.closest('.faq-item button');
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
 
-            if (!isActive) {
-                item.classList.add('active');
+                if (!isActive) {
+                    item.classList.add('active');
+                }
             }
-        }
-
-        // Mobile Dropdown Toggle Function
-        function toggleMobileDropdown(button) {
-            const dropdown = button.parentElement;
-            const content = dropdown.querySelector('.mobile-dropdown-content');
-            const isActive = button.classList.contains('active');
             
-            // Close all other dropdowns
-            document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
-                toggle.classList.remove('active');
-            });
-            document.querySelectorAll('.mobile-dropdown-content').forEach(content => {
-                content.classList.remove('active');
-            });
+            // Mobile dropdown toggle
+            if (e.target.closest('.mobile-dropdown-toggle')) {
+                const button = e.target.closest('.mobile-dropdown-toggle');
+                const dropdown = button.parentElement;
+                const content = dropdown.querySelector('.mobile-dropdown-content');
+                const isActive = button.classList.contains('active');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+                    toggle.classList.remove('active');
+                });
+                document.querySelectorAll('.mobile-dropdown-content').forEach(content => {
+                    content.classList.remove('active');
+                });
 
-            if (!isActive) {
-                button.classList.add('active');
-                content.classList.add('active');
+                if (!isActive) {
+                    button.classList.add('active');
+                    content.classList.add('active');
+                }
             }
-        }
+        });
+
+        // Initialize filter buttons state
+        document.addEventListener('DOMContentLoaded', function() {
+            const activeBtn = document.querySelector('.filter-btn.active');
+            if (activeBtn) {
+                activeBtn.classList.add('bg-[#1A4D57]', 'text-white');
+            }
+        });
+    // Set durasi promo (misal 4 hari ke depan)
+    const countDate = new Date().getTime() + (4 * 24 * 60 * 60 * 1000);
+
+    function countdown() {
+        const now = new Date().getTime();
+        const gap = countDate - now;
+
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+
+        const d = Math.floor(gap / day);
+        const h = Math.floor((gap % day) / hour);
+        const m = Math.floor((gap % hour) / minute);
+        const s = Math.floor((gap % minute) / second);
+
+        document.getElementById('days').innerText = d.toString().padStart(2, '0');
+        document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+        document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+        document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+    }
+
+    setInterval(countdown, 1000);
+    countdown();
+
     </script>
 </body>
 </html>
