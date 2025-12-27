@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Promo Spesial - Fluenesia Bahasa Indonesia Course</title>
-    <meta name="description" content="Dapatkan promo spesial kursus bahasa Indonesia dari Fluenesia! Diskon hingga 40%, kelas gratis, dan paket belajar lengkap untuk semua level.">
+    <title>Kode Voucher & Promo - Fluenesia Bahasa Indonesia Course</title>
+    <meta name="description" content="Kumpulan kode voucher promo kursus bahasa Indonesia Fluenesia. Diskon khusus untuk Basic, Independent, Proficient, Semi-Private, dan Private Class.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -15,125 +15,164 @@
         }
         
         body {
-            background: linear-gradient(135deg, #f9fafb 0%, #f0f4f8 100%);
-            overflow-x: hidden;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
         }
         
-        .promo-gradient {
-            background: linear-gradient(135deg, #1A4D57 0%, #245A64 50%, #C4A603 100%);
-        }
-        
-        .promo-card {
+        .voucher-card {
             background: white;
-            border-radius: 24px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 2px solid #e2e8f0;
+            position: relative;
+            flex: 0 0 auto;
+            width: 320px;
+            min-height: 550px;
+            display: flex;
+            flex-direction: column;
         }
         
-        .promo-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        .voucher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
             border-color: #C4A603;
         }
         
-        .promo-badge {
+        .voucher-badge {
             position: absolute;
             top: 20px;
             right: 20px;
             background: linear-gradient(135deg, #FF4757, #FF3838);
             color: white;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 14px;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
             z-index: 10;
         }
         
-        .price-original {
-            text-decoration: line-through;
-            color: #94a3b8;
-            font-size: 18px;
-        }
-        
-        .price-discounted {
-            color: #1A4D57;
-            font-size: 32px;
-            font-weight: 900;
-        }
-        
-        .countdown-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
-            padding: 15px;
+        .voucher-code-box {
+            background: linear-gradient(135deg, #1A4D57 0%, #245A64 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
             text-align: center;
-        }
-        
-        .countdown-number {
-            font-size: 32px;
-            font-weight: 800;
             color: white;
-            line-height: 1;
-        }
-        
-        .countdown-label {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.9);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .feature-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #f1f5f9;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #475569;
-        }
-        
-        .feature-badge svg {
-            color: #C4A603;
-        }
-        
-        .step-box {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
         }
         
-        .step-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        .voucher-code {
+            font-family: 'Courier New', monospace;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            margin: 10px 0;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: all;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            line-height: 1.4;
         }
         
-        .step-number {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 40px;
-            height: 40px;
-            background: #1A4D57;
+        .voucher-code:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #C4A603;
+        }
+        
+        .voucher-code.copied {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+            color: #d1fae5;
+        }
+        
+        .copy-btn {
+            background: #C4A603;
             color: white;
-            border-radius: 50%;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
-            font-size: 18px;
+            gap: 10px;
+            width: 100%;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+        
+        .copy-btn:hover {
+            background: #A38A02;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(196, 166, 3, 0.3);
+        }
+        
+        .copy-btn.copied {
+            background: #10b981;
+        }
+        
+        .level-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .basic-badge {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+        
+        .independent-badge {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .proficient-badge {
+            background: #f3e8ff;
+            color: #7c3aed;
+        }
+        
+        .package-badge {
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        
+        .expiry-badge {
+            background: #fee2e2;
+            color: #dc2626;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-weight: 600;
         }
         
         .floating-whatsapp {
@@ -159,51 +198,360 @@
             box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
         }
         
-        .nav-gradient {
-            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.98) 100%);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .discount-badge {
-            background: linear-gradient(135deg, #C4A603, #F5C857);
-            color: white;
-            padding: 4px 12px;
+        .step-box {
+            background: white;
+            padding: 30px;
             border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-left: 8px;
-        }
-        
-        .promo-timer {
-            background: linear-gradient(135deg, #FF3838, #FF4757);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             text-align: center;
-            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3);
-            animation: pulse 2s infinite;
+            position: relative;
+            overflow: hidden;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .step-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 36px;
+            height: 36px;
+            background: #1A4D57;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
         }
         
-        .highlight-text {
-            background: linear-gradient(135deg, #C4A603, #F5C857);
+        .section-title {
+            background: linear-gradient(135deg, #1A4D57, #245A64);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+        
+        .highlight {
+            color: #C4A603;
+            font-weight: 700;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-left: 4px solid #C4A603;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .tab-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            background: #1A4D57;
+            color: white;
+            border-color: #1A4D57;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            border-color: #C4A603;
+            color: #1A4D57;
+        }
+        
+        .voucher-header {
+            background: linear-gradient(135deg, #1A4D57 0%, #245A64 100%);
+            padding: 25px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .voucher-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            transform: rotate(45deg);
+        }
+        
+        .discount-badge {
+            background: white;
+            color: #1A4D57;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 32px;
+            display: inline-block;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .voucher-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: #4b5563;
+        }
+        
+        .feature-icon {
+            color: #C4A603;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .quota-badge {
+            background: #f0f9ff;
+            color: #0369a1;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid #bae6fd;
+        }
+        
+        .person-count {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid #fde68a;
+        }
+        
+        .bonus-tag {
+            background: linear-gradient(135deg, #C4A603, #F5C857);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        
+        /* Slider Styles */
+        .voucher-slider-container {
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .voucher-slider {
+            display: flex;
+            gap: 24px;
+            transition: transform 0.5s ease;
+            padding: 10px 0;
+            scroll-behavior: smooth;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .voucher-slider::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-btn:hover {
+            background: #1A4D57;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .slider-btn:hover svg {
+            color: white;
+        }
+        
+        .slider-btn.prev {
+            left: -24px;
+        }
+        
+        .slider-btn.next {
+            right: -24px;
+        }
+        
+        .slider-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: translateY(-50%);
+        }
+        
+        .slider-btn:disabled:hover {
+            background: white;
+            transform: translateY(-50%);
+        }
+        
+        .slider-btn:disabled:hover svg {
+            color: #1A4D57;
+        }
+        
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+        
+        .slider-dot.active {
+            background: #1A4D57;
+            transform: scale(1.2);
+        }
+        
+        .level-section {
+            margin-bottom: 60px;
+        }
+        
+        .level-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding: 0 20px;
+        }
+        
+        .level-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .basic-icon {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+        
+        .independent-icon {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .proficient-icon {
+            background: #f3e8ff;
+            color: #7c3aed;
+        }
+        
+        .content-wrapper {
+            max-width: 100%;
+            overflow-x: hidden;
+            padding: 0 20px;
+        }
+        
+        .voucher-features {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+        
+        .feature-text {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .voucher-card {
+                width: 280px;
+                min-height: 520px;
+            }
+            
+            .slider-btn {
+                display: none;
+            }
+            
+            .voucher-slider {
+                padding: 10px 16px;
+            }
+            
+            .voucher-code {
+                font-size: 20px;
+                letter-spacing: 1px;
+                padding: 10px;
+            }
+            
+            .discount-badge {
+                font-size: 28px;
+                padding: 6px 16px;
+            }
+            
+            .voucher-header {
+                padding: 20px;
+            }
+            
+            .voucher-content {
+                padding: 20px;
+            }
+            
+            .level-title {
+                padding: 0 16px;
+            }
+            
+            .content-wrapper {
+                padding: 0 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .voucher-code {
+                font-size: 18px;
+                letter-spacing: 0.5px;
+            }
         }
     </style>
 </head>
 <body class="text-gray-800">
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20bertanya%20tentang%20promo%20kursus%20bahasa%20Indonesia" 
+    <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20punya%20kode%20voucher%20dan%20ingin%20bertanya" 
        target="_blank" 
        rel="noopener noreferrer"
        class="floating-whatsapp">
@@ -212,632 +560,1337 @@
         </svg>
     </a>
 
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 nav-gradient shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-[#1A4D57] tracking-tight">
-                        FLUE<span class="text-[#C4A603]">NESIA</span>
-                    </a>
-                </div>
-                
-                <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
-                    <a href="index.html" class="hover:text-[#1A4D57]">Home</a>
-                    <a href="#" class="hover:text-[#1A4D57]">Program</a>
-                    <a href="#" class="hover:text-[#1A4D57]">CBT Test</a>
-                    <a href="#" class="hover:text-[#1A4D57] flex items-center">
-                        Promo
-                        <span class="discount-badge">HOT</span>
-                    </a>
-                    <a href="#" class="hover:text-[#1A4D57]">Tentang Kami</a>
-                    <a href="https://wa.me/6287729949195" target="_blank" rel="noopener noreferrer" 
-                       class="bg-[#C4A603] hover:bg-[#A38A02] text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-md">
-                        Konsultasi Gratis
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
     <!-- Hero Section -->
-    <section class="promo-gradient pt-20 pb-32 px-4 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center text-white mb-16" data-aos="fade-up">
-                <span class="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-bold mb-6">
-                    🎉 PROMO SPESIAL TAHUN BARU 2025 🎉
-                </span>
-                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
-                    Kuasai Bahasa Indonesia
-                    <span class="block text-[#F5C857]">Dengan Harga Spesial!</span>
+    <section class="pt-12 pb-20 px-4 bg-gradient-to-br from-[#1A4D57] via-[#245A64] to-[#C4A603]">
+        <div class="max-w-7xl mx-auto text-center text-white">
+            <div class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-black mb-6 leading-tight">
+                    Kode Voucher Eksklusif
+                    <span class="block text-[#F5C857]">Fluenesia Bahasa Indonesia</span>
                 </h1>
-                <p class="text-xl opacity-90 max-w-3xl mx-auto mb-10">
-                    Raih kesempatan belajar bahasa Indonesia dengan diskon hingga 40%. 
-                    Terbatas hanya untuk 100 pendaftar pertama!
+                <p class="text-lg opacity-90 max-w-3xl mx-auto">
+                    Salin kode voucher di bawah untuk mendapatkan diskon spesial pada kursus bahasa Indonesia. 
+                    Setiap kode berlaku untuk program tertentu.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tab Navigation -->
+    <section class="py-6 bg-white border-b">
+        <div class="content-wrapper">
+            <div class="flex flex-wrap gap-3 justify-center">
+                <button class="tab-btn active" onclick="filterVouchers('all')">
+                    Semua Voucher
+                </button>
+                <button class="tab-btn" onclick="filterVouchers('basic')">
+                    Level Basic
+                </button>
+                <button class="tab-btn" onclick="filterVouchers('independent')">
+                    Level Independent
+                </button>
+                <button class="tab-btn" onclick="filterVouchers('proficient')">
+                    Level Proficient
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vouchers Section -->
+    <section class="py-12 bg-gray-50" id="vouchers">
+        <div class="content-wrapper">
+            <!-- Info Box -->
+            <div class="info-box mb-10" data-aos="fade-up">
+                <div class="flex items-start gap-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#C4A603] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">Cara Menggunakan Voucher:</h3>
+                        <p class="text-gray-700">1. Salin kode voucher yang diinginkan → 2. Pilih program/kursus di website → 3. Tempel kode pada kolom "Kode Promo" saat checkout → 4. Diskon akan otomatis diterapkan!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Basic Level Vouchers -->
+            <div class="level-section" data-aos="fade-up" id="basic-section">
+                <div class="level-title">
+                    <div class="level-icon basic-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-black text-gray-800">Level Basic (A1-A2)</h2>
+                        <p class="text-gray-600">Voucher untuk pemula belajar bahasa Indonesia dari dasar</p>
+                    </div>
+                </div>
+
+                <div class="voucher-slider-container">
+                    <button class="slider-btn prev" onclick="slideVouchers('basic', 'prev')" id="basic-prev-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#1A4D57]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    
+                    <div class="voucher-slider" id="basic-slider">
+                        <!-- Basic Voucher 1 -->
+                        <div class="voucher-card" data-category="basic new">
+                            <div class="voucher-badge">TERPOPULER</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Basic Starter Pack</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level A1</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge basic-badge">Basic</span>
+                                </div>
+                                <div class="discount-badge">40% OFF</div>
+                                <p class="text-white/90 text-sm">Paket lengkap untuk pemula</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 28 Feb 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">20 sesi belajar interaktif</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                        </svg>
+                                        <span class="feature-text">Materi PDF + Audio gratis</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+200 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-basic-1">FLUENE40BASIC</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-basic-1', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Basic Voucher 2 -->
+                        <div class="voucher-card" data-category="basic">
+                            <div class="voucher-badge">HOT DEAL</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Basic Conversation</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level A2</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge basic-badge">Basic</span>
+                                </div>
+                                <div class="discount-badge">35% OFF</div>
+                                <p class="text-white/90 text-sm">Fokus percakapan sehari-hari</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 15 Mar 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">16 sesi praktik percakapan</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                                        </svg>
+                                        <span class="feature-text">Role-play dengan native speaker</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+150 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-basic-2">BASIC35CONVO</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-basic-2', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Basic Voucher 3 -->
+                        <div class="voucher-card" data-category="basic new">
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Basic Grammar</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level A1-A2</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge basic-badge">Basic</span>
+                                </div>
+                                <div class="discount-badge">30% OFF</div>
+                                <p class="text-white/90 text-sm">Master tata bahasa dasar</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 10 Apr 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">12 sesi grammar intensif</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                        <span class="feature-text">Worksheet latihan gratis</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+300 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-basic-3">BASIC30GRAM</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-basic-3', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Basic Voucher 4 -->
+                        <div class="voucher-card" data-category="basic">
+                            <div class="voucher-badge">BEST VALUE</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Basic Vocabulary</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level A1</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge basic-badge">Basic</span>
+                                </div>
+                                <div class="discount-badge">25% OFF</div>
+                                <p class="text-white/90 text-sm">500+ kosakata dasar</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 30 Mar 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">10 sesi vocabulary building</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                        </svg>
+                                        <span class="feature-text">Flashcard digital gratis</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+400 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-basic-4">BASIC25VOCAB</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-basic-4', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Basic Voucher 5 -->
+                        <div class="voucher-card" data-category="basic">
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Basic Listening</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level A2</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge basic-badge">Basic</span>
+                                </div>
+                                <div class="discount-badge">20% OFF</div>
+                                <p class="text-white/90 text-sm">Latihan menyimak bahasa Indonesia</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 25 Apr 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">8 sesi listening practice</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        <span class="feature-text">Audio lessons + transcript</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+250 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-basic-5">BASIC20LISTEN</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-basic-5', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Basic Voucher 6 -->
+                        <div class="voucher-card" data-category="basic">
+                            <div class="voucher-badge">NEW</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Basic Writing</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level A1-A2</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge basic-badge">Basic</span>
+                                </div>
+                                <div class="discount-badge">15% OFF</div>
+                                <p class="text-white/90 text-sm">Menulis kalimat sederhana</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 20 Mei 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">6 sesi writing practice</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                        <span class="feature-text">Personal feedback dari tutor</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+180 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-basic-6">BASIC15WRITE</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-basic-6', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="slider-btn next" onclick="slideVouchers('basic', 'next')" id="basic-next-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#1A4D57]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
                 
-                <div class="mb-12" data-aos="zoom-in">
-                    <div class="promo-timer inline-block">
-                        <div class="flex items-center justify-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            PROMO BERAKHIR DALAM:
+                <div class="slider-dots" id="basic-dots"></div>
+            </div>
+
+            <!-- Independent Level Vouchers -->
+            <div class="level-section" data-aos="fade-up" data-aos-delay="100" id="independent-section">
+                <div class="level-title">
+                    <div class="level-icon independent-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-black text-gray-800">Level Independent (B1-B2)</h2>
+                        <p class="text-gray-600">Voucher untuk level menengah yang sudah bisa berkomunikasi dasar</p>
+                    </div>
+                </div>
+
+                <div class="voucher-slider-container">
+                    <button class="slider-btn prev" onclick="slideVouchers('independent', 'prev')" id="independent-prev-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#1A4D57]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    
+                    <div class="voucher-slider" id="independent-slider">
+                        <!-- Independent Voucher 1 -->
+                        <div class="voucher-card" data-category="independent new">
+                            <div class="voucher-badge">PREMIUM</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Business Indonesian</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level B2</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge independent-badge">Independent</span>
+                                </div>
+                                <div class="discount-badge">45% OFF</div>
+                                <p class="text-white/90 text-sm">Bahasa Indonesia bisnis profesional</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 31 Mar 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">24 sesi profesional</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                        <span class="feature-text">Case study bisnis Indonesia</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+100 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-indep-1">INDEP45BIZ</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-indep-1', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <div id="countdown" class="text-2xl font-black mt-2">
-                            05 : 23 : 47 : 12
+
+                        <!-- Independent Voucher 2 -->
+                        <div class="voucher-card" data-category="independent">
+                            <div class="voucher-badge">BEST SELLER</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Advanced Conversation</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level B1</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge independent-badge">Independent</span>
+                                </div>
+                                <div class="discount-badge">40% OFF</div>
+                                <p class="text-white/90 text-sm">Percakapan topik kompleks</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 15 Apr 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">20 sesi diskusi mendalam</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                                        </svg>
+                                        <span class="feature-text">Debat & presentasi</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+200 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-indep-2">INDEP40CONVO</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-indep-2', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Independent Voucher 3 -->
+                        <div class="voucher-card" data-category="independent new">
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Academic Writing</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level B2</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge independent-badge">Independent</span>
+                                </div>
+                                <div class="discount-badge">35% OFF</div>
+                                <p class="text-white/90 text-sm">Menulis akademik & formal</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 10 Mei 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">16 sesi writing intensif</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                        <span class="feature-text">Essay & report writing</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+150 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-indep-3">INDEP35WRITE</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-indep-3', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Independent Voucher 4 -->
+                        <div class="voucher-card" data-category="independent">
+                            <div class="voucher-badge">LIMITED</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Media Comprehension</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level B1-B2</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge independent-badge">Independent</span>
+                                </div>
+                                <div class="discount-badge">30% OFF</div>
+                                <p class="text-white/90 text-sm">Memahami media Indonesia</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 25 Mei 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">12 sesi analisis media</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        <span class="feature-text">Berita, film, podcast Indonesia</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+120 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-indep-4">INDEP30MEDIA</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-indep-4', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Independent Voucher 5 -->
+                        <div class="voucher-card" data-category="independent">
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Cultural Insights</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level B1</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge independent-badge">Independent</span>
+                                </div>
+                                <div class="discount-badge">25% OFF</div>
+                                <p class="text-white/90 text-sm">Memahami budaya Indonesia</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 30 Jun 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">10 sesi cultural immersion</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                        </svg>
+                                        <span class="feature-text">Tradisi & etika Indonesia</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+180 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-indep-5">INDEP25CULTURE</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-indep-5', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Independent Voucher 6 -->
+                        <div class="voucher-card" data-category="independent">
+                            <div class="voucher-badge">NEW</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Professional Email</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level B2</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge independent-badge">Independent</span>
+                                </div>
+                                <div class="discount-badge">20% OFF</div>
+                                <p class="text-white/90 text-sm">Menulis email profesional</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 15 Jul 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">8 sesi email writing</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 012.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                        <span class="feature-text">Template & contoh real</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+220 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-indep-6">INDEP20EMAIL</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-indep-6', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    
+                    <button class="slider-btn next" onclick="slideVouchers('independent', 'next')" id="independent-next-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#1A4D57]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
                 </div>
                 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up">
-                    <a href="#promo-packages" 
-                       class="bg-white text-[#1A4D57] px-10 py-4 rounded-xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all">
-                        Lihat Paket Promo
-                    </a>
-                    <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20daftar%20promo%20kursus%20bahasa%20Indonesia" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="bg-[#C4A603] hover:bg-[#A38A02] text-white px-10 py-4 rounded-xl font-bold text-lg shadow-2xl transition-all">
-                        Daftar Sekarang
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center" data-aos="fade-up">
-                    <div class="text-4xl font-black text-[#1A4D57] mb-2">40%</div>
-                    <div class="text-gray-600">Diskon Maksimal</div>
-                </div>
-                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-4xl font-black text-[#C4A603] mb-2">100</div>
-                    <div class="text-gray-600">Kuota Terbatas</div>
-                </div>
-                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-4xl font-black text-[#1A4D57] mb-2">7</div>
-                    <div class="text-gray-600">Hari Promo</div>
-                </div>
-                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-4xl font-black text-[#C4A603] mb-2">500+</div>
-                    <div class="text-gray-600">Siswa Bergabung</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Promo Packages Section -->
-    <section id="promo-packages" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-black text-[#1A4D57] mb-4">
-                    Pilih Paket <span class="highlight-text">Promo Terbaik</span> Anda
-                </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Semua paket termasuk sertifikat, akses materi seumur hidup, dan grup komunitas eksklusif
-                </p>
+                <div class="slider-dots" id="independent-dots"></div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Paket Basic -->
-                <div class="promo-card" data-aos="fade-up">
-                    <div class="relative">
-                        <div class="promo-badge">POPULER</div>
-                        <div class="bg-[#1A4D57] text-white p-8">
-                            <h3 class="text-2xl font-black mb-2">Paket Basic</h3>
-                            <p class="opacity-90">Untuk pemula yang ingin mulai belajar</p>
+            <!-- Proficient Level Vouchers -->
+            <div class="level-section" data-aos="fade-up" data-aos-delay="200" id="proficient-section">
+                <div class="level-title">
+                    <div class="level-icon proficient-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-black text-gray-800">Level Proficient (C1-C2)</h2>
+                        <p class="text-gray-600">Voucher untuk level mahir yang ingin menguasai bahasa Indonesia secara profesional</p>
+                    </div>
+                </div>
+
+                <div class="voucher-slider-container">
+                    <button class="slider-btn prev" onclick="slideVouchers('proficient', 'prev')" id="proficient-prev-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#1A4D57]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    
+                    <div class="voucher-slider" id="proficient-slider">
+                        <!-- Proficient Voucher 1 -->
+                        <div class="voucher-card" data-category="proficient new">
+                            <div class="voucher-badge">ELITE</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Executive Mastery</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level C2</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge proficient-badge">Proficient</span>
+                                </div>
+                                <div class="discount-badge">50% OFF</div>
+                                <p class="text-white/90 text-sm">Kelas eksekutif bahasa Indonesia</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 30 Apr 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">30 sesi privat eksklusif</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                        <span class="feature-text">Strategic communication</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+50 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-prof-1">PROF50EXEC</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-prof-1', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proficient Voucher 2 -->
+                        <div class="voucher-card" data-category="proficient">
+                            <div class="voucher-badge">PREMIUM</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Academic Research</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level C1</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge proficient-badge">Proficient</span>
+                                </div>
+                                <div class="discount-badge">45% OFF</div>
+                                <p class="text-white/90 text-sm">Bahasa Indonesia akademik</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 20 Mei 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">25 sesi research writing</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                        </svg>
+                                        <span class="feature-text">Journal & paper writing</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+80 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-prof-2">PROF45RESEARCH</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-prof-2', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proficient Voucher 3 -->
+                        <div class="voucher-card" data-category="proficient new">
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Legal Indonesian</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level C2</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge proficient-badge">Proficient</span>
+                                </div>
+                                <div class="discount-badge">40% OFF</div>
+                                <p class="text-white/90 text-sm">Bahasa hukum Indonesia</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 10 Jun 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">20 sesi legal terminology</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                        <span class="feature-text">Contract & document analysis</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+60 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-prof-3">PROF40LEGAL</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-prof-3', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proficient Voucher 4 -->
+                        <div class="voucher-card" data-category="proficient">
+                            <div class="voucher-badge">LIMITED</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Public Speaking</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level C1</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge proficient-badge">Proficient</span>
+                                </div>
+                                <div class="discount-badge">35% OFF</div>
+                                <p class="text-white/90 text-sm">Presentasi & pidato profesional</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 25 Jun 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">18 sesi public speaking</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 13v-1m4 1v-3m4 3V8M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                                        </svg>
+                                        <span class="feature-text">Conference & seminar prep</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+90 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-prof-4">PROF35SPEAK</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-prof-4', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proficient Voucher 5 -->
+                        <div class="voucher-card" data-category="proficient">
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Translation Master</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level C2</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge proficient-badge">Proficient</span>
+                                </div>
+                                <div class="discount-badge">30% OFF</div>
+                                <p class="text-white/90 text-sm">Advanced translation skills</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 15 Jul 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">22 sesi translation practice</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                                        </svg>
+                                        <span class="feature-text">Technical & literary translation</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+70 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-prof-5">PROF30TRANS</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-prof-5', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proficient Voucher 6 -->
+                        <div class="voucher-card" data-category="proficient">
+                            <div class="voucher-badge">NEW</div>
+                            <div class="voucher-header">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white mb-2">Media Production</h3>
+                                        <div class="flex items-center gap-2">
+                                            <span class="person-count">Level C1</span>
+                                        </div>
+                                    </div>
+                                    <span class="level-badge proficient-badge">Proficient</span>
+                                </div>
+                                <div class="discount-badge">25% OFF</div>
+                                <p class="text-white/90 text-sm">Content creation in Indonesian</p>
+                            </div>
+                            <div class="voucher-content">
+                                <div class="voucher-features">
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">Berlaku hingga 30 Aug 2025</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="feature-text">15 sesi media production</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        <span class="feature-text">Video script & podcast writing</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="quota-badge inline-block mb-4">+110 pengguna tersisa</div>
+                                
+                                <div class="voucher-code-box">
+                                    <p class="text-sm text-white/80 mb-2">Gunakan kode:</p>
+                                    <div class="voucher-code" id="code-prof-6">PROF25MEDIA</div>
+                                    <button class="copy-btn mt-4" onclick="copyCode('code-prof-6', this)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                        </svg>
+                                        Salin Kode
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="p-8">
-                        <div class="mb-6">
-                            <span class="price-original">Rp 2.500.000</span>
-                            <div class="price-discounted">Rp 1.500.000</div>
-                            <div class="text-sm text-gray-500">/ 3 bulan</div>
-                        </div>
-                        
-                        <div class="space-y-4 mb-8">
-                            <div class="feature-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                12 Sesi Live Class
-                            </div>
-                            <div class="feature-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Materi PDF Lengkap
-                            </div>
-                            <div class="feature-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Sertifikat Penyelesaian
-                            </div>
-                            <div class="feature-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Grup WhatsApp Support
-                            </div>
-                        </div>
-                        
-                        <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20beli%20Paket%20Basic%20promo" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="block w-full bg-[#1A4D57] hover:bg-[#245A64] text-white text-center py-4 rounded-xl font-bold transition-all">
-                            Pilih Paket Ini
-                        </a>
-                    </div>
+                    <button class="slider-btn next" onclick="slideVouchers('proficient', 'next')" id="proficient-next-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#1A4D57]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
                 </div>
-
-                <!-- Paket Pro (Most Popular) -->
-                <div class="promo-card relative scale-105" data-aos="fade-up" data-aos-delay="100">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <div class="bg-gradient-to-r from-[#C4A603] to-[#F5C857] text-white px-6 py-2 rounded-full font-black">
-                            VALUE TERBAIK
-                        </div>
-                    </div>
-                    
-                    <div class="relative">
-                        <div class="promo-badge">DISKON 40%</div>
-                        <div class="bg-gradient-to-r from-[#C4A603] to-[#F5C857] text-white p-8">
-                            <h3 class="text-2xl font-black mb-2">Paket Pro</h3>
-                            <p class="opacity-90">Paket lengkap untuk penguasaan optimal</p>
-                        </div>
-                    </div>
-                    
-                    <div class="p-8">
-                        <div class="mb-6">
-                            <span class="price-original">Rp 5.000.000</span>
-                            <div class="price-discounted">Rp 3.000.000</div>
-                            <div class="text-sm text-gray-500">/ 6 bulan</div>
-                        </div>
-                        
-                        <div class="space-y-4 mb-8">
-                            <div class="feature-badge bg-[#FEF3C7]">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                24 Sesi Live Class
-                            </div>
-                            <div class="feature-badge bg-[#FEF3C7]">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                2x Private Consultation
-                            </div>
-                            <div class="feature-badge bg-[#FEF3C7]">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Video Recording Unlimited
-                            </div>
-                            <div class="feature-badge bg-[#FEF3C7]">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                E-book Premium Collection
-                            </div>
-                            <div class="feature-badge bg-[#FEF3C7]">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Sertifikat Resmi + Digital Badge
-                            </div>
-                        </div>
-                        
-                        <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20beli%20Paket%20Pro%20promo" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="block w-full bg-gradient-to-r from-[#C4A603] to-[#F5C857] hover:opacity-90 text-white text-center py-4 rounded-xl font-bold transition-all">
-                            Pilih Paket Terbaik
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Paket Ultimate -->
-                <div class="promo-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative">
-                        <div class="promo-badge">PREMIUM</div>
-                        <div class="bg-[#245A64] text-white p-8">
-                            <h3 class="text-2xl font-black mb-2">Paket Ultimate</h3>
-                            <p class="opacity-90">Untuk penguasaan maksimal dan karir</p>
-                        </div>
-                    </div>
-                    
-                    <div class="p-8">
-                        <div class="mb-6">
-                            <span class="price-original">Rp 8.000.000</span>
-                            <div class="price-discounted">Rp 5.500.000</div>
-                            <div class="text-sm text-gray-500">/ 12 bulan</div>
-                        </div>
-                        
-                        <div class="space-y-4 mb-8">
-                            <div class="feature-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                48 Sesi Live Class
-                            </div>
-                            <div class="feature-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Private Mentoring 1-on-1
-                            </div>
-                            <div class="feature-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Career Coaching Session
-                            </div>
-                            <div class="feature-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Certificate of Excellence
-                            </div>
-                            <div class="feature-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Lifetime Community Access
-                            </div>
-                        </div>
-                        
-                        <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20beli%20Paket%20Ultimate%20promo" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="block w-full bg-[#245A64] hover:bg-[#1A4D57] text-white text-center py-4 rounded-xl font-bold transition-all">
-                            Pilih Paket Premium
-                        </a>
-                    </div>
-                </div>
+                
+                <div class="slider-dots" id="proficient-dots"></div>
             </div>
         </div>
     </section>
 
-    <!-- How to Get Promo Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-black text-[#1A4D57] mb-4">
-                    Cara Mudah Dapatkan <span class="highlight-text">Promo</span>
-                </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Hanya 4 langkah sederhana untuk mendapatkan promo spesial kami
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="step-box" data-aos="fade-up">
-                    <div class="step-number">1</div>
-                    <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#1A4D57] mb-3">Daftar Akun</h3>
-                    <p class="text-gray-600">Buat akun gratis di website Fluenesia</p>
-                </div>
-
-                <div class="step-box" data-aos="fade-up" data-aos-delay="100">
-                    <div class="step-number">2</div>
-                    <div class="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#1A4D57] mb-3">Ikuti CBT Test</h3>
-                    <p class="text-gray-600">Tes gratis untuk menentukan level Anda</p>
-                </div>
-
-                <div class="step-box" data-aos="fade-up" data-aos-delay="200">
-                    <div class="step-number">3</div>
-                    <div class="w-20 h-20 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#1A4D57] mb-3">Pilih Paket</h3>
-                    <p class="text-gray-600">Pilih paket promo yang sesuai kebutuhan</p>
-                </div>
-
-                <div class="step-box" data-aos="fade-up" data-aos-delay="300">
-                    <div class="step-number">4</div>
-                    <div class="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#1A4D57] mb-3">Dapatkan Promo</h3>
-                    <p class="text-gray-600">Bayar dan dapatkan diskon langsung</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-black text-[#1A4D57] mb-4">
-                    Kata Mereka yang <span class="highlight-text">Sudah Gabung</span>
-                </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Lihat pengalaman siswa yang telah bergabung dengan promo sebelumnya
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-3xl shadow-lg" data-aos="fade-up">
-                    <div class="flex items-center mb-6">
-                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=100" 
-                             alt="Sarah Johnson" 
-                             class="w-16 h-16 rounded-full border-4 border-[#C4A603]">
-                        <div class="ml-4">
-                            <h4 class="font-bold text-lg">Sarah Johnson</h4>
-                            <p class="text-sm text-gray-500">Paket Pro Student</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic">
-                        "Dapat diskon 40% untuk Paket Pro, worth banget! Materinya lengkap, tutornya profesional, dan komunitasnya sangat supportive."
-                    </p>
-                    <div class="flex text-[#F5C857] mt-4">
-                        ★★★★★
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-3xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-center mb-6">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100" 
-                             alt="Michael Chen" 
-                             class="w-16 h-16 rounded-full border-4 border-[#C4A603]">
-                        <div class="ml-4">
-                            <h4 class="font-bold text-lg">Michael Chen</h4>
-                            <p class="text-sm text-gray-500">Paket Ultimate Student</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic">
-                        "Private mentoring 1-on-1-nya sangat membantu. Harga normal 8 juta, dapat promo jadi 5.5 juta. Investasi terbaik untuk karir saya!"
-                    </p>
-                    <div class="flex text-[#F5C857] mt-4">
-                        ★★★★★
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-3xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-center mb-6">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100" 
-                             alt="Lisa Wang" 
-                             class="w-16 h-16 rounded-full border-4 border-[#C4A603]">
-                        <div class="ml-4">
-                            <h4 class="font-bold text-lg">Lisa Wang</h4>
-                            <p class="text-sm text-gray-500">Paket Basic Student</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 italic">
-                        "Baru mulai belajar bahasa Indonesia, dapat promo Paket Basic. Sistem pembelajarannya terstruktur dan mudah dipahami pemula."
-                    </p>
-                    <div class="flex text-[#F5C857] mt-4">
-                        ★★★★★
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-black text-[#1A4D57] mb-4">
-                    Pertanyaan <span class="highlight-text">Seputar Promo</span>
-                </h2>
-            </div>
-
-            <div class="space-y-6" data-aos="fade-up">
-                <div class="border border-gray-200 rounded-2xl p-6 hover:border-[#C4A603] transition-all">
-                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
-                        <h3 class="text-lg font-bold text-[#1A4D57]">Berapa lama promo ini berlaku?</h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#C4A603]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <div class="faq-answer mt-4 hidden">
-                        <p class="text-gray-600">Promo ini berlaku hingga 31 Desember 2025 atau sampai kuota 100 pendaftar terpenuhi (mana yang lebih dulu).</p>
-                    </div>
-                </div>
-
-                <div class="border border-gray-200 rounded-2xl p-6 hover:border-[#C4A603] transition-all">
-                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
-                        <h3 class="text-lg font-bold text-[#1A4D57]">Apakah promo bisa digabung dengan diskon lain?</h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#C4A603]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <div class="faq-answer mt-4 hidden">
-                        <p class="text-gray-600">Promo ini sudah merupakan harga diskon terbaik dan tidak dapat digabungkan dengan promo atau kode diskon lainnya.</p>
-                    </div>
-                </div>
-
-                <div class="border border-gray-200 rounded-2xl p-6 hover:border-[#C4A603] transition-all">
-                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
-                        <h3 class="text-lg font-bold text-[#1A4D57]">Bagaimana cara pembayaran?</h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#C4A603]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <div class="faq-answer mt-4 hidden">
-                        <p class="text-gray-600">Kami menerima pembayaran melalui transfer bank (BCA, Mandiri, BRI), QRIS, dan kartu kredit dengan cicilan 0%.</p>
-                    </div>
-                </div>
-
-                <div class="border border-gray-200 rounded-2xl p-6 hover:border-[#C4A603] transition-all">
-                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(this)">
-                        <h3 class="text-lg font-bold text-[#1A4D57]">Kapan kelas bisa dimulai?</h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#C4A603]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <div class="faq-answer mt-4 hidden">
-                        <p class="text-gray-600">Kelas bisa dimulai dalam 1x24 jam setelah pembayaran dikonfirmasi. Anda akan dihubungi admin untuk penjadwalan.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- CTA Section -->
-    <section class="py-20 promo-gradient relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 text-center text-white relative z-10" data-aos="fade-up">
-            <h2 class="text-3xl md:text-5xl font-black mb-6">
-                Jangan Lewatkan <span class="text-[#F5C857]">Kesempatan Ini!</span>
+    <section class="py-16 bg-gradient-to-br from-[#1A4D57] via-[#245A64] to-[#C4A603]">
+        <div class="content-wrapper text-center text-white" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-black mb-6">
+                Siap Gunakan <span class="text-[#F5C857]">Voucher Promo</span> Anda?
             </h2>
-            <p class="text-xl opacity-90 max-w-2xl mx-auto mb-10">
-                Harga akan kembali normal setelah kuota terpenuhi atau waktu promo berakhir. 
-                Daftar sekarang sebelum kehabisan!
+            <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+                Salin kode voucher favorit Anda dan dapatkan diskon spesial untuk kursus bahasa Indonesia berkualitas.
             </p>
-            
-            <div class="mb-10">
-                <div id="final-countdown" class="flex justify-center gap-4">
-                    <div class="countdown-box">
-                        <div class="countdown-number">05</div>
-                        <div class="countdown-label">Hari</div>
-                    </div>
-                    <div class="countdown-box">
-                        <div class="countdown-number">23</div>
-                        <div class="countdown-label">Jam</div>
-                    </div>
-                    <div class="countdown-box">
-                        <div class="countdown-number">47</div>
-                        <div class="countdown-label">Menit</div>
-                    </div>
-                    <div class="countdown-box">
-                        <div class="countdown-number">12</div>
-                        <div class="countdown-label">Detik</div>
-                    </div>
-                </div>
-            </div>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20ingin%20daftar%20promo%20sekarang!" 
+                <a href="#vouchers" 
+                   class="bg-white text-[#1A4D57] px-8 py-3 rounded-xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all">
+                    LIHAT VOUCHER LAGI
+                </a>
+                <a href="https://wa.me/6287729949195?text=Halo%20Fluenesia,%20saya%20punya%20pertanyaan%20tentang%20voucher%20promo" 
                    target="_blank" 
                    rel="noopener noreferrer"
-                   class="bg-white text-[#1A4D57] px-12 py-5 rounded-xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-1">
-                    DAFTAR VIA WHATSAPP
-                </a>
-                <a href="#promo-packages" 
-                   class="bg-transparent border-2 border-white text-white px-12 py-5 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
-                    LIHAT PAKET LENGKAP
+                   class="bg-[#C4A603] hover:bg-[#A38A02] text-white px-8 py-3 rounded-xl font-bold text-lg shadow-2xl transition-all">
+                    TANYA VIA WHATSAPP
                 </a>
             </div>
-            
-            <p class="text-sm opacity-80 mt-8">
-                *Kuota terbatas hanya 100 pendaftar pertama
-            </p>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-[#1A4D57] text-white py-12">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-8 md:mb-0">
-                    <div class="text-3xl font-bold tracking-tight mb-4">
-                        FLUE<span class="text-[#C4A603]">NESIA</span>
-                    </div>
-                    <p class="text-gray-300 max-w-md">
-                        Platform belajar bahasa Indonesia terpercaya dengan tutor native speaker dan metode pembelajaran interaktif.
-                    </p>
-                </div>
-                
-                <div class="text-center md:text-right">
-                    <p class="text-gray-300 mb-4">
-                        Butuh bantuan? Hubungi kami:
-                    </p>
-                    <div class="flex items-center justify-center md:justify-end gap-4">
-                        <a href="https://wa.me/6287729949195" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-3 rounded-full font-bold flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/>
-                            </svg>
-                            WhatsApp Support
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-white/10 mt-12 pt-8 text-center text-gray-300 text-sm">
-                <p>&copy; 2025 Fluenesia. All rights reserved. | 
-                   <a href="index.html" class="hover:text-[#C4A603]">Home</a> | 
-                   <a href="#" class="hover:text-[#C4A603]">Syarat & Ketentuan</a> | 
-                   <a href="#" class="hover:text-[#C4A603]">Kebijakan Privasi</a>
-                </p>
-            </div>
-        </div>
-    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
         
-        // Countdown Timer
-        function updateCountdown() {
-            const targetDate = new Date('2025-12-31T23:59:59').getTime();
-            const now = new Date().getTime();
-            const timeLeft = targetDate - now;
+        // Copy Code Function
+        function copyCode(codeId, button) {
+            const codeElement = document.getElementById(codeId);
+            const code = codeElement.textContent;
             
-            if (timeLeft < 0) {
-                document.getElementById('countdown').innerHTML = "PROMO TELAH BERAKHIR";
-                document.getElementById('final-countdown').innerHTML = "<div class='text-2xl font-bold'>PROMO TELAH BERAKHIR</div>";
-                return;
-            }
-            
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            
-            document.getElementById('countdown').innerHTML = 
-                `${days.toString().padStart(2, '0')} : ${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
-            
-            const countdownElements = document.querySelectorAll('#final-countdown .countdown-number');
-            if (countdownElements.length === 4) {
-                countdownElements[0].textContent = days.toString().padStart(2, '0');
-                countdownElements[1].textContent = hours.toString().padStart(2, '0');
-                countdownElements[2].textContent = minutes.toString().padStart(2, '0');
-                countdownElements[3].textContent = seconds.toString().padStart(2, '0');
-            }
+            // Copy to clipboard
+            navigator.clipboard.writeText(code).then(() => {
+                // Visual feedback
+                codeElement.classList.add('copied');
+                button.classList.add('copied');
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Kode Disalin!
+                `;
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    codeElement.classList.remove('copied');
+                    button.classList.remove('copied');
+                    button.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                        Salin Kode
+                    `;
+                }, 2000);
+            });
         }
         
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        // Slider functionality for each level
+        const sliders = {
+            'basic': {
+                currentIndex: 0,
+                itemsPerView: 4,
+                totalItems: 6,
+                slider: null,
+                prevBtn: null,
+                nextBtn: null,
+                dots: null
+            },
+            'independent': {
+                currentIndex: 0,
+                itemsPerView: 4,
+                totalItems: 6,
+                slider: null,
+                prevBtn: null,
+                nextBtn: null,
+                dots: null
+            },
+            'proficient': {
+                currentIndex: 0,
+                itemsPerView: 4,
+                totalItems: 6,
+                slider: null,
+                prevBtn: null,
+                nextBtn: null,
+                dots: null
+            }
+        };
         
-        // FAQ Toggle
-        function toggleFAQ(button) {
-            const answer = button.nextElementSibling;
-            answer.classList.toggle('hidden');
+        function initSliders() {
+            Object.keys(sliders).forEach(level => {
+                const config = sliders[level];
+                config.slider = document.getElementById(`${level}-slider`);
+                config.prevBtn = document.getElementById(`${level}-prev-btn`);
+                config.nextBtn = document.getElementById(`${level}-next-btn`);
+                config.dots = document.getElementById(`${level}-dots`);
+                
+                // Create dots
+                if (config.dots) {
+                    const totalDots = Math.ceil(config.totalItems / config.itemsPerView);
+                    config.dots.innerHTML = '';
+                    for (let i = 0; i < totalDots; i++) {
+                        const dot = document.createElement('button');
+                        dot.className = `slider-dot ${i === 0 ? 'active' : ''}`;
+                        dot.addEventListener('click', () => {
+                            goToSlide(level, i);
+                        });
+                        config.dots.appendChild(dot);
+                    }
+                }
+                
+                updateSliderButtons(level);
+            });
             
-            const icon = button.querySelector('svg');
-            if (answer.classList.contains('hidden')) {
-                icon.style.transform = 'rotate(0deg)';
+            // Adjust items per view based on screen size
+            updateItemsPerView();
+            window.addEventListener('resize', updateItemsPerView);
+        }
+        
+        function updateItemsPerView() {
+            const width = window.innerWidth;
+            Object.keys(sliders).forEach(level => {
+                const config = sliders[level];
+                if (width < 768) {
+                    config.itemsPerView = 1;
+                } else if (width < 1024) {
+                    config.itemsPerView = 2;
+                } else {
+                    config.itemsPerView = 4;
+                }
+                config.currentIndex = 0;
+                updateSlider(level);
+            });
+        }
+        
+        function slideVouchers(level, direction) {
+            const config = sliders[level];
+            const maxIndex = Math.ceil(config.totalItems / config.itemsPerView) - 1;
+            
+            if (direction === 'next') {
+                config.currentIndex = Math.min(config.currentIndex + 1, maxIndex);
             } else {
-                icon.style.transform = 'rotate(180deg)';
+                config.currentIndex = Math.max(config.currentIndex - 1, 0);
+            }
+            
+            updateSlider(level);
+        }
+        
+        function goToSlide(level, index) {
+            const config = sliders[level];
+            const maxIndex = Math.ceil(config.totalItems / config.itemsPerView) - 1;
+            config.currentIndex = Math.min(Math.max(index, 0), maxIndex);
+            updateSlider(level);
+        }
+        
+        function updateSlider(level) {
+            const config = sliders[level];
+            if (!config.slider) return;
+            
+            const cardWidth = 320; // width of voucher card + gap
+            const translateX = -(config.currentIndex * cardWidth * config.itemsPerView);
+            config.slider.style.transform = `translateX(${translateX}px)`;
+            
+            // Update dots
+            if (config.dots) {
+                const dots = config.dots.querySelectorAll('.slider-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === config.currentIndex);
+                });
+            }
+            
+            updateSliderButtons(level);
+        }
+        
+        function updateSliderButtons(level) {
+            const config = sliders[level];
+            const maxIndex = Math.ceil(config.totalItems / config.itemsPerView) - 1;
+            
+            if (config.prevBtn) {
+                config.prevBtn.disabled = config.currentIndex === 0;
+            }
+            
+            if (config.nextBtn) {
+                config.nextBtn.disabled = config.currentIndex === maxIndex;
             }
         }
         
-        // Initialize all FAQ icons
-        document.querySelectorAll('.faq-answer').forEach(answer => {
-            answer.classList.add('hidden');
+        // Filter Vouchers
+        function filterVouchers(category) {
+            const sections = document.querySelectorAll('.level-section');
+            const tabs = document.querySelectorAll('.tab-btn');
+            
+            // Update active tab
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.textContent.includes(category === 'all' ? 'Semua' : 
+                                            category === 'basic' ? 'Basic' :
+                                            category === 'independent' ? 'Independent' :
+                                            'Proficient')) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            // Show/hide sections
+            sections.forEach(section => {
+                if (category === 'all') {
+                    section.style.display = 'block';
+                } else {
+                    const sectionId = section.id;
+                    section.style.display = sectionId.includes(category) ? 'block' : 'none';
+                }
+            });
+        }
+        
+        // Select all code elements on click
+        document.querySelectorAll('.voucher-code').forEach(codeElement => {
+            codeElement.addEventListener('click', function() {
+                const codeId = this.id;
+                const button = this.nextElementSibling;
+                copyCode(codeId, button);
+            });
+        });
+        
+        // Initialize sliders when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initSliders();
         });
     </script>
 </body>

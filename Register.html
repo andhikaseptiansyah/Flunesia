@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluenesia | Kursus Bahasa Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #336F7A;
+            --secondary: #F4D505;
+            --dark-blue: #0f172a;
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100vw;
+            background: linear-gradient(135deg, #336F7A 0%, #F4D505 100%);
+            display: flex; align-items: center; justify-content: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
+            display: grid; 
+            grid-template-columns: 1.1fr 0.9fr; 
+            overflow: hidden; 
+            position: relative; 
+            z-index: 1;
+        }
+
+        /* --- BAGIAN VISUAL --- */
+        .image-section {
+            background: rgba(51, 111, 122, 0.05);
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 50px;
+            text-align: center;
+        }
+
+        .illustration-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .illustration {
+            width: 100%;
+            max-width: 260px;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+            z-index: 1;
+        }
+
+        .rating-badge {
+            margin-top: -30px;
+            background: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            z-index: 2;
+            animation: floating 4s infinite ease-in-out;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .btn-level {
+            background: #0d2a45;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .mini-testimonial {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 30px;
+            font-size: 13px;
+            font-style: italic;
+            color: #475569;
+            border-left: 5px solid var(--primary);
+            max-width: 320px;
+        }
+
+        /* --- BAGIAN FORM --- */
+        .form-section { 
+            padding: 40px 60px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+        }
+        
+        .brand-title { font-size: 26px; font-weight: 700; color: var(--primary); }
+        .brand-title span { color: #d1b400; }
+        
+        .input-wrapper { 
+            position: relative; 
+            margin-bottom: 12px; 
+        }
+
+        .input-wrapper i.field-icon { 
+            position: absolute; 
+            left: 18px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            color: #94a3b8; 
+            font-size: 14px;
+        }
+
+        .input-wrapper input { 
+            width: 100%; 
+            padding: 12px 45px; 
+            border-radius: 12px; 
+            border: 1.5px solid #e2e8f0; 
+            outline: none; 
+            font-size: 14px;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .input-wrapper input:focus {
+            border-color: var(--primary);
+            background: white;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            width: 100%; 
+            padding: 15px; 
+            border-radius: 12px; 
+            border: none;
+            background: var(--primary); 
+            color: white; 
+            font-weight: 600; 
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(51, 111, 122, 0.2);
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover { transform: translateY(-2px); background: #26555d; }
+
+        /* RESPONSIVE MODE (HP) */
+        @media (max-width: 850px) {
+            .container { grid-template-columns: 1fr; }
+            .image-section { order: 1; padding: 30px 20px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+            .form-section { order: 2; padding: 30px 20px; }
+            .illustration { max-width: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="image-section">
+            <div class="illustration-wrapper">
+                <img src="orangbanner.png" alt="Illustration" class="illustration">
+                <div class="rating-badge">
+                    <i class="fas fa-star" style="color: #F4D505;"></i>
+                    <span>4.9/5 Rating Siswa</span>
+                </div>
+            </div>
+            
+            <button class="btn-level">Cari Level Kursus Anda</button>
+            
+            <h2 style="font-size: 22px; color: #0f172a; margin-top: 25px;">Metode Teruji ✅</h2>
+            <p style="font-size: 13px; color: #475569; margin-top: 5px;">Gabung dengan 15,000+ pelajar lainnya.</p>
+            
+            <div class="mini-testimonial">
+                "Belajar di Fluenesia sangat menyenangkan! Materinya mudah dimengerti bahkan untuk pemula."
+                <div style="margin-top: 10px; font-weight: 700; font-style: normal; color: var(--primary);">- Sarah, Siswa Level Pro</div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="brand-title">FLUE<span>NESIA</span></div>
+            <div class="form-header" style="margin-bottom: 20px;">
+                <h3 style="margin-top: 10px;">Buat Akun Sekarang ✨</h3>
+                <p style="font-size: 13px; color: #64748b;">Mulailah perjalanan bahasa Anda secara gratis.</p>
+            </div>
+
+            <form>
+                <div class="input-wrapper">
+                    <i class="fas fa-user field-icon"></i>
+                    <input type="text" placeholder="Nama Lengkap" required>
+                </div>
+
+                <div class="input-wrapper">
+                    <i class="fas fa-envelope field-icon"></i>
+                    <input type="email" placeholder="Email Aktif" required>
+                </div>
+
+                <div class="input-wrapper">
+                    <i class="fas fa-phone field-icon"></i>
+                    <input type="tel" placeholder="Nomor WhatsApp (Contoh: 0812...)" required>
+                </div>
+                
+                <div class="input-wrapper">
+                    <i class="fas fa-lock field-icon"></i>
+                    <input type="password" id="password" placeholder="Kata Sandi" required>
+                    <i class="fas fa-eye toggle-password" id="eyeIcon"></i>
+                </div>
+
+                <button type="submit" class="btn-submit">Daftar & Mulai Belajar</button>
+            </form>
+
+            <div style="text-align: center; margin-top: 20px; font-size: 13px; color: #64748b;">
+                Sudah punya akun? <a href="login.html" style="color: var(--primary); font-weight: 700; text-decoration: none;">Masuk</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        eyeIcon.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            eyeIcon.classList.toggle('fa-eye');
+            eyeIcon.classList.toggle('fa-eye-slash');
+        });
+    </script>
+
+</body>
+</html>
