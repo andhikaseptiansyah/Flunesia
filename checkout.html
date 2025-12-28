@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Fluenesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/css/intlTelInput.css">
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/intlTelInput.min.js"></script>
+    
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .checkout-container {
+            background: white;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(196, 166, 3, 0.1);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1A4D57 0%, #245A64 75%, #C4A603 100%);
+        }
+        
+        .package-badge {
+            background: linear-gradient(135deg, #C4A603 0%, #E0B805 100%);
+            color: white;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 14px;
+        }
+        
+        .level-badge-basic {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+        }
+        
+        .level-badge-independent {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .level-badge-proficient {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+        }
+        
+        .payment-option {
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+        
+        .payment-option:hover {
+            border-color: #1A4D57;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -8px rgba(26, 77, 87, 0.15);
+        }
+        
+        .payment-option.selected {
+            border-color: #1A4D57;
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+            box-shadow: 0 10px 25px -8px rgba(26, 77, 87, 0.2);
+        }
+        
+        .payment-option.selected::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: #1A4D57;
+            border-bottom-left-radius: 40px;
+        }
+        
+        .payment-option.selected::after {
+            content: '✓';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .form-input {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            width: 100%;
+            background: #f9fafb;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #1A4D57;
+            box-shadow: 0 0 0 3px rgba(26, 77, 87, 0.15);
+            background: white;
+        }
+        
+        .form-label {
+            color: #1A4D57;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #1A4D57 0%, #245A64 100%);
+            color: white;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 16px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px -8px rgba(26, 77, 87, 0.3);
+            background: linear-gradient(135deg, #245A64 0%, #1A4D57 100%);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-primary:active:not(:disabled) {
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #1A4D57;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 16px;
+            border: 2px solid #1A4D57;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn-secondary:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+        
+        .summary-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+            border-radius: 20px;
+            padding: 24px;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .price-tag {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1A4D57;
+            line-height: 1;
+        }
+        
+        .qr-code-placeholder {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .qr-code-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 49%, #cbd5e1 49%, #cbd5e1 51%, transparent 51%) repeat-x,
+                linear-gradient(0deg, transparent 49%, #cbd5e1 49%, #cbd5e1 51%, transparent 51%) repeat-y;
+            background-size: 20px 20px;
+        }
+        
+        .qr-code-placeholder::after {
+            content: 'QRIS';
+            position: absolute;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            color: #1A4D57;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .bank-logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: contain;
+            background: white;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-right: 16px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .bank-logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #1A4D57;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-right: 16px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .floating-bubble {
+            position: fixed;
+            border-radius: 50%;
+            background: rgba(196, 166, 3, 0.1);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-20px) translateX(10px); }
+        }
+        
+        .success-checkmark {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .bank-details {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            border: 2px dashed #e5e7eb;
+            margin-top: 20px;
+        }
+        
+        .copy-btn {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .copy-btn:hover {
+            background: #e5e7eb;
+        }
+        
+        .copy-btn.copied {
+            background: #10b981;
+            color: white;
+            border-color: #059669;
+        }
+        
+        .step-content {
+            display: none;
+        }
+        
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .alert-success {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 2px solid #10b981;
+            color: #065f46;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .payment-instructions {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 24px;
+            border-left: 4px solid #C4A603;
+        }
+        
+        .payment-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #e5e7eb;
+        }
+        
+        .payment-step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: #1A4D57;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        /* Custom styles for intl-tel-input */
+        .iti {
+            width: 100%;
+        }
+        
+        .iti__flag {
+            background-image: url("https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/img/flags.png");
+        }
+        
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .iti__flag {
+                background-image: url("https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/img/flags@2x.png");
+            }
+        }
+        
+        .iti__selected-flag {
+            border-radius: 12px 0 0 12px;
+            padding-left: 16px;
+        }
+        
+        .iti__country-list {
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .iti__country {
+            padding: 8px 16px;
+        }
+        
+        .iti__country.iti__highlight {
+            background-color: rgba(26, 77, 87, 0.1);
+        }
+        
+        .iti__arrow {
+            border-top-color: #4b5563;
+        }
+        
+        .iti__arrow--up {
+            border-bottom-color: #4b5563;
+        }
+        
+        /* Country dropdown select */
+        .country-select-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        
+        .country-select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 16px;
+            background: #f9fafb;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231A4D57' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .country-select:focus {
+            outline: none;
+            border-color: #1A4D57;
+            box-shadow: 0 0 0 3px rgba(26, 77, 87, 0.15);
+            background: white;
+        }
+        
+        .country-select:hover {
+            border-color: #9ca3af;
+        }
+        
+        /* Container untuk full width */
+        .full-width-container {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        @media (min-width: 768px) {
+            .full-width-container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .full-width-container {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+        }
+        
+        /* Grid layout untuk konten */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1.5fr 1fr;
+                gap: 3rem;
+            }
+        }
+        
+        /* Form grid untuk responsive */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        /* Styles untuk verifikasi admin */
+        .alert-verification {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            color: #92400e;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .alert-success-final {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 2px solid #10b981;
+            color: #065f46;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .verification-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .step-icon {
+            width: 36px;
+            height: 36px;
+            background: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+        }
+        
+        .step-icon.active {
+            background: #1A4D57;
+            color: white;
+        }
+        
+        .step-icon.completed {
+            background: #10b981;
+            color: white;
+        }
+        
+        .countdown-timer {
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1A4D57;
+            padding: 8px 16px;
+            background: #f0f9ff;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .verification-timeline {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 24px;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-verified {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        /* Styles untuk bank options */
+        .bank-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 100px;
+            position: relative;
+        }
+        
+        .bank-option:hover {
+            border-color: #1A4D57;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 77, 87, 0.1);
+        }
+        
+        .bank-option.selected {
+            border-color: #1A4D57;
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+            box-shadow: 0 4px 12px rgba(26, 77, 87, 0.15);
+        }
+        
+        .bank-option.selected::after {
+            content: '✓';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #1A4D57;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .checkout-container {
+                border-radius: 0;
+            }
+            
+            .price-tag {
+                font-size: 28px;
+            }
+            
+            .qr-code-placeholder {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 14px 20px;
+                font-size: 16px;
+            }
+            
+            .countdown-timer {
+                font-size: 16px;
+                padding: 6px 12px;
+            }
+            
+            .bank-option {
+                min-width: 80px;
+                padding: 8px;
+            }
+            
+            .bank-logo-img, .bank-logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    
+    <!-- Floating Bubbles -->
+    <div class="floating-bubble w-64 h-64 top-0 right-0 opacity-10" style="animation: float 20s infinite ease-in-out;"></div>
+    <div class="floating-bubble w-32 h-32 bottom-0 left-0 opacity-20" style="animation: float 15s infinite ease-in-out reverse; animation-delay: 2s;"></div>
+    
+    <!-- Header -->
+    <div class="gradient-bg text-white py-6 px-4 md:px-8">
+        <div class="max-w-full mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold">FLUE<span class="text-[#C4A603]">NESIA</span></h1>
+                    <p class="text-white/80 text-sm">Checkout Pembelian Kursus</p>
+                </div>
+                <a href="index.html" class="bg-white/10 hover:bg-white/20 text-white px-6 py-2 rounded-xl font-bold transition-colors border border-white/20">
+                    <i class="fas fa-arrow-left mr-2"></i>Kembali ke Beranda
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="full-width-container">
+        <div class="checkout-container">
+            <div class="content-grid p-4 md:p-8 lg:p-12">
+                
+                <!-- Left Column - Form & Payment -->
+                <div>
+                    <!-- Step 1: Input Data Pribadi & Pilih Pembayaran -->
+                    <div id="step1" class="step-content active">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 bg-[#1A4D57] text-white rounded-xl flex items-center justify-center text-xl font-bold">1</div>
+                            <div>
+                                <h2 class="text-2xl md:text-3xl font-bold text-[#1A4D57]">Data Pribadi & Pembayaran</h2>
+                                <p class="text-gray-500">Isi data diri dan pilih metode pembayaran</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Package Info -->
+                        <div class="summary-card mb-8">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-4">
+                                <div>
+                                    <h3 class="font-bold text-xl text-[#1A4D57]" id="packageName">Semi Private Class - Independent</h3>
+                                    <div class="flex items-center mt-2">
+                                        <span class="level-badge-independent px-3 py-1 rounded-full text-xs font-bold mr-2" id="levelBadge">B1-B2</span>
+                                        <span class="text-gray-500 text-sm">12 sesi @ 90 menit</span>
+                                    </div>
+                                </div>
+                                <div class="text-left md:text-right">
+                                    <div class="price-tag" id="packagePrice">Rp 1.500.000</div>
+                                    <div class="text-gray-500 text-sm mt-1">Sudah termasuk PPN 10%</div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-gray-500 text-sm space-y-2">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2 w-4"></i>
+                                    <span>Kelas kecil (2-4 siswa)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2 w-4"></i>
+                                    <span>Native tutor bersertifikat</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2 w-4"></i>
+                                    <span>Modul budaya Indonesia</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Data Pribadi Form -->
+                        <h3 class="font-bold text-xl text-[#1A4D57] mb-6">Data Pribadi</h3>
+                        <form id="personalDataForm" class="space-y-6 mb-8">
+                            <div class="form-grid">
+                                <div>
+                                    <label class="form-label">Nama Lengkap <span class="text-red-500">*</span></label>
+                                    <input type="text" id="fullName" class="form-input" placeholder="Masukkan nama lengkap" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="form-label">Email <span class="text-red-500">*</span></label>
+                                    <input type="email" id="email" class="form-input" placeholder="nama@email.com" required>
+                                </div>
+                                
+                                <div class="md:col-span-2">
+                                    <label class="form-label">Nomor WhatsApp <span class="text-red-500">*</span></label>
+                                    <div id="phone-container">
+                                        <input type="tel" id="phone" class="form-input" placeholder="Masukkan nomor WhatsApp" required>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-2">Pilih kode negara dari dropdown yang muncul saat mengisi nomor</p>
+                                </div>
+                                
+                                <div class="md:col-span-2">
+                                    <label class="form-label">Negara Asal</label>
+                                    <div class="country-select-wrapper">
+                                        <select id="country" class="country-select">
+                                            <option value="" selected disabled>Pilih negara asal Anda</option>
+                                            <option value="ID">Indonesia</option>
+                                            <option value="MY">Malaysia</option>
+                                            <option value="SG">Singapore</option>
+                                            <option value="JP">Japan</option>
+                                            <option value="KR">South Korea</option>
+                                            <option value="CN">China</option>
+                                            <option value="US">United States</option>
+                                            <option value="CA">Canada</option>
+                                            <option value="GB">United Kingdom</option>
+                                            <option value="AU">Australia</option>
+                                            <option value="DE">Germany</option>
+                                            <option value="FR">France</option>
+                                            <option value="IT">Italy</option>
+                                            <option value="ES">Spain</option>
+                                            <option value="NL">Netherlands</option>
+                                            <option value="RU">Russia</option>
+                                            <option value="BR">Brazil</option>
+                                            <option value="MX">Mexico</option>
+                                            <option value="IN">India</option>
+                                            <option value="SA">Saudi Arabia</option>
+                                            <option value="AE">United Arab Emirates</option>
+                                            <option value="TH">Thailand</option>
+                                            <option value="VN">Vietnam</option>
+                                            <option value="PH">Philippines</option>
+                                            <option value="OTHER">Lainnya</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Pilih Metode Pembayaran -->
+                        <h3 class="font-bold text-xl text-[#1A4D57] mb-6">Pilih Metode Pembayaran</h3>
+                        <div class="mb-8">
+                            <!-- QRIS Option -->
+                            <div class="payment-option" onclick="selectPayment('qris')" id="qrisOption">
+                                <div class="flex items-center">
+                                    <div class="w-16 h-16 bg-[#C4A603] text-white rounded-xl flex items-center justify-center text-2xl mr-4">
+                                        <i class="fas fa-qrcode"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-bold text-lg text-[#1A4D57]">QRIS (QR Code Indonesian Standard)</h3>
+                                        <p class="text-gray-500 text-sm">Scan QR code dengan aplikasi bank/mobile banking Anda</p>
+                                        <div class="mt-2">
+                                            <span class="text-xs font-bold bg-green-100 text-green-800 px-2 py-1 rounded">Rekomendasi</span>
+                                            <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded ml-2">Instan</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Transfer Bank Option -->
+                            <div class="payment-option" onclick="selectPayment('transfer')" id="transferOption">
+                                <div class="flex items-center">
+                                    <div class="w-16 h-16 bg-[#1A4D57] text-white rounded-xl flex items-center justify-center text-2xl mr-4">
+                                        <i class="fas fa-university"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-bold text-lg text-[#1A4D57]">Transfer Bank</h3>
+                                        <p class="text-gray-500 text-sm">Transfer manual ke rekening bank Fluenesia</p>
+                                        <div class="mt-2">
+                                            <span class="text-xs font-bold bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Manual Verifikasi</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Next Button -->
+                        <div class="pt-6 border-t border-gray-100">
+                            <button type="button" onclick="nextStep()" class="btn-primary" id="nextBtn" disabled>
+                                Lanjut ke Detail Pembayaran <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Detail Checkout & Pembayaran -->
+                    <div id="step2" class="step-content">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 bg-[#1A4D57] text-white rounded-xl flex items-center justify-center text-xl font-bold">2</div>
+                            <div>
+                                <h2 class="text-2xl md:text-3xl font-bold text-[#1A4D57]">Detail Checkout</h2>
+                                <p class="text-gray-500">Lakukan pembayaran sesuai instruksi berikut</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Data Pribadi Review -->
+                        <div class="summary-card mb-8">
+                            <h3 class="font-bold text-xl text-[#1A4D57] mb-4">Data Pribadi</h3>
+                            <div class="form-grid">
+                                <div>
+                                    <div class="text-gray-500 text-sm">Nama Lengkap</div>
+                                    <div class="font-bold text-[#1A4D57]" id="reviewName">-</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-500 text-sm">Email</div>
+                                    <div class="font-bold text-[#1A4D57]" id="reviewEmail">-</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-500 text-sm">WhatsApp</div>
+                                    <div class="font-bold text-[#1A4D57]" id="reviewPhone">-</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-500 text-sm">Negara Asal</div>
+                                    <div class="font-bold text-[#1A4D57]" id="reviewCountry">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Package Review -->
+                        <div class="summary-card mb-8">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-4">
+                                <div>
+                                    <h3 class="font-bold text-xl text-[#1A4D57]" id="reviewPackage">Semi Private Class - Independent</h3>
+                                    <div class="flex items-center mt-2">
+                                        <span class="level-badge-independent px-3 py-1 rounded-full text-xs font-bold mr-2">B1-B2</span>
+                                        <span class="text-gray-500 text-sm">12 sesi @ 90 menit</span>
+                                    </div>
+                                </div>
+                                <div class="text-left md:text-right">
+                                    <div class="text-2xl md:text-3xl font-bold text-[#C4A603]" id="reviewPrice">Rp 1.650.000</div>
+                                    <div class="text-gray-500 text-sm mt-1">Sudah termasuk PPN 10%</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Detail Pembayaran -->
+                        <div id="qrisPayment" class="payment-details hidden">
+                            <div class="text-center mb-8">
+                                <h3 class="font-bold text-xl text-[#1A4D57] mb-6">Pembayaran via QRIS</h3>
+                                
+                                <div class="qr-code-placeholder mb-6">
+                                    <!-- QR Code will be displayed here -->
+                                </div>
+                                
+                                <p class="text-gray-600 mb-4">
+                                    Scan QR code di atas dengan aplikasi bank/mobile banking Anda
+                                </p>
+                                
+                                <div class="alert-success" id="qrisAlert">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check-circle mr-2"></i>
+                                        <div>
+                                            <strong>Pembayaran berhasil terdeteksi!</strong> 
+                                            <span id="paymentStatus">Sedang memverifikasi...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="transferPayment" class="payment-details hidden">
+                            <div class="mb-8">
+                                <h3 class="font-bold text-xl text-[#1A4D57] mb-6">Pembayaran via Transfer Bank</h3>
+                                
+                                <!-- Pilih Bank -->
+                                <div class="mb-6">
+                                    <label class="form-label mb-4">Pilih Bank Tujuan:</label>
+                                    <div class="flex flex-wrap gap-3">
+                                        <div class="bank-option" onclick="selectBank('bca')">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/512px-Bank_Central_Asia.svg.png" alt="BCA" class="bank-logo-img">
+                                            <span class="text-sm font-medium mt-1">BCA</span>
+                                        </div>
+                                        <div class="bank-option" onclick="selectBank('mandiri')">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Bank_Mandiri_logo.svg/512px-Bank_Mandiri_logo.svg.png" alt="Mandiri" class="bank-logo-img">
+                                            <span class="text-sm font-medium mt-1">Mandiri</span>
+                                        </div>
+                                        <div class="bank-option" onclick="selectBank('bri')">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Bank_Rakyat_Indonesia_%28BRI%29_logo.svg/512px-Bank_Rakyat_Indonesia_%28BRI%29_logo.svg.png" alt="BRI" class="bank-logo-img">
+                                            <span class="text-sm font-medium mt-1">BRI</span>
+                                        </div>
+                                        <div class="bank-option" onclick="selectBank('bni')">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/BNI_logo.svg/512px-BNI_logo.svg.png" alt="BNI" class="bank-logo-img">
+                                            <span class="text-sm font-medium mt-1">BNI</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Detail Bank yang Dipilih -->
+                                <div class="bank-details">
+                                    <div class="flex items-center mb-4">
+                                        <img id="selectedBankLogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/512px-Bank_Central_Asia.svg.png" alt="Bank Logo" class="bank-logo-img">
+                                        <div>
+                                            <h4 class="font-bold text-[#1A4D57]" id="selectedBankName">Bank Central Asia (BCA)</h4>
+                                            <p class="text-gray-500 text-sm" id="selectedBankBranch">Cabang Jakarta Selatan</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label class="form-label text-sm">Nomor Rekening</label>
+                                            <div class="flex items-center">
+                                                <div class="font-mono font-bold text-lg text-[#1A4D57] flex-1" id="accountNumber">1234567890</div>
+                                                <button type="button" class="copy-btn" onclick="copyToClipboard('accountNumber', this)">
+                                                    <i class="fas fa-copy mr-1"></i> Salin
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="form-label text-sm">Nama Penerima</label>
+                                            <div class="flex items-center">
+                                                <div class="font-bold text-lg text-[#1A4D57] flex-1" id="accountName">PT. Fluenesia Indonesia</div>
+                                                <button type="button" class="copy-btn" onclick="copyToClipboard('accountName', this)">
+                                                    <i class="fas fa-copy mr-1"></i> Salin
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="form-label text-sm">Total Transfer</label>
+                                            <div class="font-bold text-2xl text-[#C4A603]" id="transferAmount">Rp 1.650.000</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Instruksi Pembayaran -->
+                        <div class="payment-instructions">
+                            <h4 class="font-bold text-lg text-[#1A4D57] mb-4">Tata Cara Pembayaran:</h4>
+                            
+                            <div id="qrisInstructions" class="instructions hidden">
+                                <div class="payment-step">
+                                    <div class="step-number">1</div>
+                                    <div>
+                                        <div class="font-bold text-[#1A4D57]">Buka aplikasi mobile banking atau e-wallet Anda</div>
+                                        <div class="text-gray-600 text-sm mt-1">Pastikan saldo mencukupi untuk pembayaran</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-step">
+                                    <div class="step-number">2</div>
+                                    <div>
+                                        <div class="font-bold text-[#1A4D57]">Pilih menu "Scan QR" atau "Bayar dengan QRIS"</div>
+                                        <div class="text-gray-600 text-sm mt-1">Di aplikasi bank/e-wallet Anda</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-step">
+                                    <div class="step-number">3</div>
+                                    <div>
+                                        <div class="font-bold text-[#1A4D57]">Scan QR code di atas</div>
+                                        <div class="text-gray-600 text-sm mt-1">Pastikan QR code terbaca dengan jelas</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-step">
+                                    <div class="step-number">4</div>
+                                    <div>
+                                        <div class="font-bold text-[#1A4D57]">Konfirmasi pembayaran</div>
+                                        <div class="text-gray-600 text-sm mt-1">Periksa nominal dan klik konfirmasi</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-step">
+                                    <div class="step-number">5</div>
+                                    <div>
+                                        <div class="font-bold text-[#1A4D57]">Selesai!</div>
+                                        <div class="text-gray-600 text-sm mt-1">Sistem akan otomatis mendeteksi pembayaran Anda</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="transferInstructions" class="instructions hidden">
+                                <div class="payment-step">
+                                    <div class="step-number">1</div>
+                                    <div>
+                                        <div class="font-bold text-[#1A4D57]">Pilih bank dan salin nomor rekening di atas</div>
+                                        <div class="text-gray-600 text-sm mt-1">Klik tombol "Salin" untuk menyalin nomor rekening</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-step">
+                                    <div class="step-number">2</div>
+                                    <div>
+                                        <div class="font-bold text-[#1A4D57]">Buka aplikasi mobile/internet banking</div>
+                                        <div class="text-gray-600 text-sm mt-1">Dari bank Anda (sesuai dengan yang dipilih)</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-step">
+                                    <div class="step-number">3</div>
+                                    <div>
+                                        <div class="font-bold text-[#1A4D57]">Transfer sesuai nominal yang tertera</div>
+                                        <div class="text-gray-600 text-sm mt-1" id="transferInstructionAmount">Rp 1.650.000 (sudah termasuk PPN)</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-step">
+                                    <div class="step-number">4</div>
+                                    <div>
+                                        <div class="font-bold text-[#1A4D57]">Simpan bukti transfer</div>
+                                        <div class="text-gray-600 text-sm mt-1">Screenshot atau foto bukti transfer</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-step">
+                                    <div class="step-number">5</div>
+                                    <div>
+                                        <div class="font-bold text-[#1A4D57]">Konfirmasi ke Admin</div>
+                                        <div class="text-gray-600 text-sm mt-1">Kirim bukti transfer ke WhatsApp: <strong>+62 877-2994-9195</strong> sertakan kode pesanan</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="pt-6 border-t border-gray-100">
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <button type="button" onclick="prevStep()" class="btn-secondary">
+                                    <i class="fas fa-arrow-left mr-2"></i>Kembali
+                                </button>
+                                <button type="button" onclick="completeOrder()" class="btn-primary" id="completeBtn">
+                                    Saya Sudah Bayar <i class="fas fa-check ml-2"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <div class="flex items-start">
+                                    <i class="fas fa-info-circle text-blue-500 mt-1 mr-2"></i>
+                                    <div class="text-sm text-blue-700">
+                                        <strong>Perhatian:</strong> Pesanan Anda akan diproses setelah pembayaran terverifikasi. 
+                                        Jika dalam 1x24 jam belum terverifikasi, hubungi WhatsApp Admin.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Success dengan Verifikasi Admin -->
+                    <div id="step3" class="step-content">
+                        <div class="text-center py-8 md:py-12">
+                            <div class="success-checkmark" id="successIcon">
+                                <i class="fas fa-clock text-white text-3xl"></i>
+                            </div>
+                            
+                            <h2 class="text-2xl md:text-3xl font-bold text-[#1A4D57] mb-4" id="successTitle">Pembayaran Diterima!</h2>
+                            <p class="text-gray-600 text-lg mb-6 max-w-lg mx-auto" id="successMessage">
+                                Pembayaran Anda telah berhasil dikirim dan sedang menunggu verifikasi admin.
+                                Proses verifikasi membutuhkan waktu maksimal 2x24 jam.
+                            </p>
+                            
+                            <!-- Alert untuk verifikasi admin -->
+                            <div class="alert-verification mb-8 max-w-lg mx-auto" id="verificationAlert">
+                                <div class="flex items-center">
+                                    <i class="fas fa-clock mr-3 text-xl"></i>
+                                    <div class="flex-1">
+                                        <strong>Menunggu Verifikasi Admin</strong> 
+                                        <div class="mt-1 text-sm">
+                                            Pembayaran Anda telah terdeteksi dan sedang menunggu verifikasi oleh tim admin.
+                                            Proses verifikasi maksimal 2x24 jam.
+                                        </div>
+                                        <div class="mt-2 flex items-center">
+                                            <div class="countdown-timer" id="countdownTimer">48:00:00</div>
+                                            <span class="ml-3 text-sm">Waktu tersisa</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Alert untuk pembayaran berhasil (akan muncul setelah verifikasi) -->
+                            <div class="alert-success-final mb-8 max-w-lg mx-auto" id="successFinalAlert">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle mr-3 text-xl"></i>
+                                    <div>
+                                        <strong>Pembayaran Telah Diverifikasi!</strong> 
+                                        <span>Pesanan Anda sekarang aktif dan dapat diakses.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-card mb-8 max-w-lg mx-auto">
+                                <div class="mb-4">
+                                    <div class="font-bold text-[#1A4D57] mb-2">Status Pesanan</div>
+                                    <div class="inline-flex items-center status-badge status-pending" id="statusBadge">
+                                        <i class="fas fa-clock mr-2"></i> Menunggu Verifikasi
+                                    </div>
+                                </div>
+                                
+                                <div class="font-mono text-lg font-bold text-[#1A4D57] mb-2" id="orderNumber">ORDER#FLN202312345</div>
+                                <p class="text-gray-500 text-sm mb-4">Simpan kode pesanan ini untuk keperluan verifikasi</p>
+                                
+                                <div class="pt-4 border-t border-gray-200">
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-600">Paket:</span>
+                                        <span class="font-bold" id="successPackage">-</span>
+                                    </div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-gray-600">Total:</span>
+                                        <span class="font-bold text-[#C4A603]" id="successTotal">-</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Metode:</span>
+                                        <span class="font-bold" id="successMethod">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Timeline Verifikasi -->
+                            <div class="verification-timeline mb-8 max-w-lg mx-auto">
+                                <h4 class="font-bold text-lg text-[#1A4D57] mb-4">Proses Verifikasi:</h4>
+                                
+                                <div class="verification-step">
+                                    <div class="step-icon completed">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="font-bold text-[#1A4D57]">Pembayaran Dikirim</div>
+                                        <div class="text-gray-600 text-sm">Anda telah mengirim pembayaran</div>
+                                    </div>
+                                    <div class="text-green-600">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="verification-step">
+                                    <div class="step-icon active" id="verificationIcon">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="font-bold text-[#1A4D57]">Verifikasi Admin</div>
+                                        <div class="text-gray-600 text-sm">Tim admin memverifikasi pembayaran (maks 2x24 jam)</div>
+                                    </div>
+                                    <div class="text-gray-400" id="verificationStatus">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="verification-step">
+                                    <div class="step-icon" id="completionIcon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="font-bold text-[#1A4D57]">Akses Kelas</div>
+                                        <div class="text-gray-600 text-sm">Setelah diverifikasi, Anda bisa mengakses kelas</div>
+                                    </div>
+                                    <div class="text-gray-400" id="completionStatus">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tombol aksi -->
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8" id="actionButtons">
+                                <a href="https://wa.me/6287729949195" target="_blank" class="px-6 py-3 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition-colors">
+                                    <i class="fab fa-whatsapp mr-2"></i>Konfirmasi ke Admin
+                                </a>
+                                <a href="index.html" class="px-6 py-3 border-2 border-[#1A4D57] text-[#1A4D57] font-bold rounded-xl hover:bg-[#1A4D57] hover:text-white transition-colors">
+                                    <i class="fas fa-home mr-2"></i>Kembali ke Beranda
+                                </a>
+                            </div>
+                            
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-lg mx-auto">
+                                <div class="flex items-start">
+                                    <i class="fas fa-info-circle text-blue-500 mt-1 mr-2"></i>
+                                    <div class="text-sm text-blue-700">
+                                        <strong>Perhatian:</strong> Anda akan menerima email notifikasi ketika pembayaran sudah diverifikasi. 
+                                        Jika dalam 2x24 jam belum diverifikasi, hubungi WhatsApp Admin.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Order Summary -->
+                <div>
+                    <!-- Order Summary -->
+                    <div class="summary-card sticky top-8">
+                        <h3 class="font-bold text-xl text-[#1A4D57] mb-6 flex items-center">
+                            <i class="fas fa-shopping-cart mr-2"></i> Ringkasan Pesanan
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Package Info -->
+                            <div>
+                                <div class="flex justify-between items-start mb-2">
+                                    <div>
+                                        <div class="font-bold text-[#1A4D57]" id="summaryPackage">Semi Private Class</div>
+                                        <div class="text-gray-500 text-sm mt-1">
+                                            <span class="level-badge-independent px-2 py-1 rounded-full text-xs font-bold mr-2">Independent (B1-B2)</span>
+                                            12 sesi @ 90 menit
+                                        </div>
+                                    </div>
+                                    <div class="package-badge" id="summaryLevel">Independent</div>
+                                </div>
+                                
+                                <div class="text-gray-500 text-sm mt-4 space-y-2">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2 w-4"></i>
+                                        <span>Kelas kecil (2-4 siswa)</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2 w-4"></i>
+                                        <span>Native tutor bersertifikat</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2 w-4"></i>
+                                        <span>Modul budaya Indonesia</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2 w-4"></i>
+                                        <span>Grup WhatsApp latihan</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-500 mr-2 w-4"></i>
+                                        <span>Rekaman kelas</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Price Breakdown -->
+                            <div class="pt-6 border-t border-gray-200">
+                                <div class="space-y-3 mb-4">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Harga Paket</span>
+                                        <span class="font-medium" id="summaryPrice">Rp 1.500.000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">PPN (10%)</span>
+                                        <span class="font-medium">Rp 150.000</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="pt-4 border-t border-gray-200">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-bold text-lg text-[#1A4D57]">Total</span>
+                                        <div>
+                                            <div class="price-tag" id="summaryTotal">Rp 1.650.000</div>
+                                            <div class="text-gray-500 text-sm text-right">Sudah termasuk semua pajak</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Help Section -->
+                    <div class="bg-gradient-to-br from-[#1A4D57] to-[#245A64] text-white rounded-2xl p-6 mt-6">
+                        <h3 class="font-bold text-xl mb-4 flex items-center">
+                            <i class="fas fa-question-circle mr-2"></i> Butuh Bantuan?
+                        </h3>
+                        <p class="text-white/90 text-sm mb-6">
+                            Tim customer service kami siap membantu Anda 24/7
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <a href="https://wa.me/6287729949195" target="_blank" class="flex items-center bg-white/10 hover:bg-white/20 p-4 rounded-xl transition-colors">
+                                <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold">WhatsApp</div>
+                                    <div class="text-sm text-white/80">+62 877-2994-9195</div>
+                                </div>
+                            </a>
+                            
+                            <div class="flex items-center bg-white/10 p-4 rounded-xl">
+                                <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold">Email</div>
+                                    <div class="text-sm text-white/80">cs@fluenesia.com</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 pt-6 border-t border-white/20">
+                            <div class="text-center text-white/80 text-sm">
+                                <i class="fas fa-shield-alt mr-1"></i> Transaksi 100% Aman & Terenkripsi
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Default order data (bisa dari parameter URL)
+    const orderData = {
+        package: "Semi Private Class",
+        level: "Independent",
+        levelClass: "independent",
+        sessions: 12,
+        price: 1500000,
+        tax: 150000,
+        total: 1650000
+    };
+    
+    // Data bank
+    const bankData = {
+        bca: {
+            name: "Bank Central Asia (BCA)",
+            branch: "Cabang Jakarta Selatan",
+            accountNumber: "1234567890",
+            accountName: "PT. Fluenesia Indonesia",
+            logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/512px-Bank_Central_Asia.svg.png"
+        },
+        mandiri: {
+            name: "Bank Mandiri",
+            branch: "Cabang Sudirman Jakarta",
+            accountNumber: "9876543210",
+            accountName: "PT. Fluenesia Indonesia",
+            logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Bank_Mandiri_logo.svg/512px-Bank_Mandiri_logo.svg.png"
+        },
+        bri: {
+            name: "Bank Rakyat Indonesia (BRI)",
+            branch: "Cabang Kuningan Jakarta",
+            accountNumber: "4567890123",
+            accountName: "PT. Fluenesia Indonesia",
+            logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Bank_Rakyat_Indonesia_%28BRI%29_logo.svg/512px-Bank_Rakyat_Indonesia_%28BRI%29_logo.svg.png"
+        },
+        bni: {
+            name: "Bank Negara Indonesia (BNI)",
+            branch: "Cabang Thamrin Jakarta",
+            accountNumber: "7890123456",
+            accountName: "PT. Fluenesia Indonesia",
+            logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/BNI_logo.svg/512px-BNI_logo.svg.png"
+        }
+    };
+    
+    let selectedPayment = "";
+    let selectedBank = 'bca';
+    let currentStep = 1;
+    let phoneInput;
+    let countdownInterval;
+    let verificationTimer = 48 * 60 * 60; // 48 jam dalam detik
+    
+    let countryNames = {
+        "ID": "Indonesia",
+        "MY": "Malaysia",
+        "SG": "Singapore",
+        "JP": "Japan",
+        "KR": "South Korea",
+        "CN": "China",
+        "US": "United States",
+        "CA": "Canada",
+        "GB": "United Kingdom",
+        "AU": "Australia",
+        "DE": "Germany",
+        "FR": "France",
+        "IT": "Italy",
+        "ES": "Spain",
+        "NL": "Netherlands",
+        "RU": "Russia",
+        "BR": "Brazil",
+        "MX": "Mexico",
+        "IN": "India",
+        "SA": "Saudi Arabia",
+        "AE": "United Arab Emirates",
+        "TH": "Thailand",
+        "VN": "Vietnam",
+        "PH": "Philippines",
+        "OTHER": "Lainnya"
+    };
+    
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ambil data dari URL parameter jika ada
+        const urlParams = new URLSearchParams(window.location.search);
+        const packageParam = urlParams.get('package');
+        const levelParam = urlParams.get('level');
+        
+        if (packageParam) orderData.package = decodeURIComponent(packageParam);
+        if (levelParam) {
+            orderData.level = decodeURIComponent(levelParam);
+            orderData.levelClass = levelParam.toLowerCase();
+        }
+        
+        // Initialize phone input with intl-tel-input
+        const phoneElement = document.querySelector("#phone");
+        if (phoneElement) {
+            phoneInput = window.intlTelInput(phoneElement, {
+                initialCountry: "id",
+                separateDialCode: true,
+                preferredCountries: ["id", "my", "sg", "jp", "kr", "us", "gb", "au", "de"],
+                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/utils.js",
+            });
+        }
+        
+        updatePackageDisplay();
+        setupEventListeners();
+        validateForm();
+        
+        // Initialize bank selection
+        selectBank('bca');
+        
+        // Cek jika ada status verifikasi di localStorage (untuk simulasi)
+        checkExistingVerificationStatus();
+    });
+    
+    // Update package display
+    function updatePackageDisplay() {
+        // Format prices
+        const formatter = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        });
+        
+        // Update step 1
+        const packageName = document.getElementById('packageName');
+        const levelBadge = document.getElementById('levelBadge');
+        const packagePrice = document.getElementById('packagePrice');
+        
+        if (packageName) packageName.textContent = `${orderData.package} - ${orderData.level}`;
+        if (levelBadge) {
+            levelBadge.textContent = getLevelText(orderData.level);
+            levelBadge.className = `level-badge-${orderData.levelClass} px-3 py-1 rounded-full text-xs font-bold mr-2`;
+        }
+        if (packagePrice) packagePrice.textContent = formatter.format(orderData.total);
+        
+        // Update transfer amount
+        const transferAmount = document.getElementById('transferAmount');
+        if (transferAmount) transferAmount.textContent = formatter.format(orderData.total);
+        
+        // Update review section
+        const reviewPackage = document.getElementById('reviewPackage');
+        const reviewPrice = document.getElementById('reviewPrice');
+        if (reviewPackage) reviewPackage.textContent = `${orderData.package} - ${orderData.level}`;
+        if (reviewPrice) reviewPrice.textContent = formatter.format(orderData.total);
+        
+        // Update summary section
+        const summaryPackage = document.getElementById('summaryPackage');
+        const summaryLevel = document.getElementById('summaryLevel');
+        const summaryPrice = document.getElementById('summaryPrice');
+        const summaryTotal = document.getElementById('summaryTotal');
+        
+        if (summaryPackage) summaryPackage.textContent = orderData.package;
+        if (summaryLevel) {
+            summaryLevel.textContent = orderData.level;
+            summaryLevel.className = `package-badge level-badge-${orderData.levelClass}`;
+        }
+        if (summaryPrice) summaryPrice.textContent = formatter.format(orderData.price);
+        if (summaryTotal) summaryTotal.textContent = formatter.format(orderData.total);
+    }
+    
+    // Setup event listeners
+    function setupEventListeners() {
+        // Form validation on input
+        const fullName = document.getElementById('fullName');
+        const email = document.getElementById('email');
+        const country = document.getElementById('country');
+        const phone = document.getElementById('phone');
+        
+        if (fullName) fullName.addEventListener('input', validateForm);
+        if (email) email.addEventListener('input', validateForm);
+        if (country) country.addEventListener('change', validateForm);
+        
+        // Phone validation
+        if (phone) {
+            phone.addEventListener('input', validateForm);
+            phone.addEventListener('blur', validateForm);
+            phone.addEventListener('countrychange', validateForm);
+        }
+        
+        // Payment option selection
+        const qrisOption = document.getElementById('qrisOption');
+        const transferOption = document.getElementById('transferOption');
+        
+        if (qrisOption) qrisOption.addEventListener('click', () => selectPayment('qris'));
+        if (transferOption) transferOption.addEventListener('click', () => selectPayment('transfer'));
+    }
+    
+    // Validate form
+    function validateForm() {
+        const name = document.getElementById('fullName')?.value.trim();
+        const email = document.getElementById('email')?.value.trim();
+        const phone = phoneInput ? phoneInput.getNumber() : '';
+        const country = document.getElementById('country')?.value;
+        const phoneIsValid = phoneInput ? phoneInput.isValidNumber() : false;
+        
+        const isValid = name && 
+                       validateEmail(email) && 
+                       phoneIsValid && 
+                       country && 
+                       selectedPayment;
+        
+        const nextBtn = document.getElementById('nextBtn');
+        if (nextBtn) nextBtn.disabled = !isValid;
+        
+        return isValid;
+    }
+    
+    // Select payment method
+    function selectPayment(method) {
+        selectedPayment = method;
+        
+        // Update UI
+        const qrisOption = document.getElementById('qrisOption');
+        const transferOption = document.getElementById('transferOption');
+        
+        if (qrisOption) qrisOption.classList.remove('selected');
+        if (transferOption) transferOption.classList.remove('selected');
+        
+        const selectedOption = document.getElementById(`${method}Option`);
+        if (selectedOption) selectedOption.classList.add('selected');
+        
+        validateForm();
+    }
+    
+    // Select bank
+    function selectBank(bankCode) {
+        selectedBank = bankCode;
+        
+        // Update UI
+        document.querySelectorAll('.bank-option').forEach(option => {
+            option.classList.remove('selected');
+        });
+        
+        const selectedOption = document.querySelector(`.bank-option[onclick="selectBank('${bankCode}')"]`);
+        if (selectedOption) selectedOption.classList.add('selected');
+        
+        // Update bank details
+        updateBankDetails(bankCode);
+    }
+    
+    // Update bank details
+    function updateBankDetails(bankCode) {
+        const bank = bankData[bankCode];
+        if (!bank) return;
+        
+        const logo = document.getElementById('selectedBankLogo');
+        const name = document.getElementById('selectedBankName');
+        const branch = document.getElementById('selectedBankBranch');
+        const accountNumber = document.getElementById('accountNumber');
+        const accountName = document.getElementById('accountName');
+        
+        if (logo) logo.src = bank.logo;
+        if (name) name.textContent = bank.name;
+        if (branch) branch.textContent = bank.branch;
+        if (accountNumber) accountNumber.textContent = bank.accountNumber;
+        if (accountName) accountName.textContent = bank.accountName;
+    }
+    
+    // Next step
+    function nextStep() {
+        if (!validateForm()) {
+            alert("Harap lengkapi semua data dengan benar dan pilih metode pembayaran");
+            return;
+        }
+        
+        // Save form data
+        const formData = {
+            name: document.getElementById('fullName').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: phoneInput.getNumber(),
+            countryCode: phoneInput.getSelectedCountryData().iso2,
+            countryName: countryNames[document.getElementById('country').value] || document.getElementById('country').value
+        };
+        
+        // Update review section
+        const reviewName = document.getElementById('reviewName');
+        const reviewEmail = document.getElementById('reviewEmail');
+        const reviewPhone = document.getElementById('reviewPhone');
+        const reviewCountry = document.getElementById('reviewCountry');
+        
+        if (reviewName) reviewName.textContent = formData.name;
+        if (reviewEmail) reviewEmail.textContent = formData.email;
+        if (reviewPhone) reviewPhone.textContent = formData.phone;
+        if (reviewCountry) reviewCountry.textContent = formData.countryName;
+        
+        // Simpan data ke localStorage untuk digunakan di step 3
+        localStorage.setItem('fluenesia_customer_email', formData.email);
+        localStorage.setItem('fluenesia_customer_name', formData.name);
+        
+        // Show selected payment details
+        document.querySelectorAll('.payment-details').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.instructions').forEach(el => el.classList.add('hidden'));
+        
+        const paymentDetails = document.getElementById(`${selectedPayment}Payment`);
+        const instructions = document.getElementById(`${selectedPayment}Instructions`);
+        
+        if (paymentDetails) paymentDetails.classList.remove('hidden');
+        if (instructions) instructions.classList.remove('hidden');
+        
+        // Update transfer instructions amount
+        const transferInstructionAmount = document.getElementById('transferInstructionAmount');
+        if (transferInstructionAmount) {
+            const formatter = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            });
+            transferInstructionAmount.textContent = `${formatter.format(orderData.total)} (sudah termasuk PPN)`;
+        }
+        
+        // Hide step 1, show step 2
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        
+        if (step1) step1.classList.remove('active');
+        if (step2) step2.classList.add('active');
+        currentStep = 2;
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Simulate QRIS payment detection after 3 seconds
+        if (selectedPayment === 'qris') {
+            setTimeout(() => {
+                const qrisAlert = document.getElementById('qrisAlert');
+                const paymentStatus = document.getElementById('paymentStatus');
+                
+                if (qrisAlert) qrisAlert.style.display = 'block';
+                if (paymentStatus) paymentStatus.textContent = 'Pembayaran berhasil!';
+            }, 3000);
+        }
+    }
+    
+    // Previous step
+    function prevStep() {
+        // Hide step 2, show step 1
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        
+        if (step1) step1.classList.add('active');
+        if (step2) step2.classList.remove('active');
+        currentStep = 1;
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Complete order
+    function completeOrder() {
+        // Get form data
+        const name = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        
+        // Generate order number
+        const orderNum = `ORDER#FLN${new Date().getFullYear()}${Math.floor(10000 + Math.random() * 90000)}`;
+        const orderNumber = document.getElementById('orderNumber');
+        if (orderNumber) orderNumber.textContent = orderNum;
+        
+        // Simpan data pesanan ke localStorage untuk simulasi
+        const orderDetails = {
+            orderNumber: orderNum,
+            customer: { name, email },
+            order: orderData,
+            paymentMethod: selectedPayment,
+            selectedBank: selectedPayment === 'transfer' ? selectedBank : null,
+            timestamp: new Date().toISOString(),
+            status: 'pending_verification',
+            verificationEndTime: new Date().getTime() + (48 * 60 * 60 * 1000) // 48 jam dari sekarang
+        };
+        
+        localStorage.setItem('fluenesia_order', JSON.stringify(orderDetails));
+        
+        // Tampilkan step 3 (status menunggu verifikasi)
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        
+        if (step2) step2.classList.remove('active');
+        if (step3) step3.classList.add('active');
+        currentStep = 3;
+        
+        // Setup UI untuk verifikasi
+        setupVerificationUI(orderNum, email);
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Simulate sending data to server
+        simulateOrderSubmission(orderNum, name, email);
+    }
+    
+    // Setup UI untuk verifikasi
+    function setupVerificationUI(orderNum, email) {
+        // Update data di step 3
+        const successPackage = document.getElementById('successPackage');
+        const successTotal = document.getElementById('successTotal');
+        const successMethod = document.getElementById('successMethod');
+        const successEmail = document.getElementById('successEmail');
+        
+        const formatter = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        });
+        
+        if (successPackage) successPackage.textContent = `${orderData.package} - ${orderData.level}`;
+        if (successTotal) successTotal.textContent = formatter.format(orderData.total);
+        if (successMethod) {
+            if (selectedPayment === 'qris') {
+                successMethod.textContent = 'QRIS';
+            } else {
+                const bankName = bankData[selectedBank]?.name || 'Transfer Bank';
+                successMethod.textContent = `${bankName}`;
+            }
+        }
+        if (successEmail) successEmail.textContent = email;
+        
+        // Reset semua status
+        const verificationAlert = document.getElementById('verificationAlert');
+        const successFinalAlert = document.getElementById('successFinalAlert');
+        
+        if (verificationAlert) verificationAlert.style.display = 'block';
+        if (successFinalAlert) successFinalAlert.style.display = 'none';
+        
+        // Update icon dan judul
+        const successIcon = document.getElementById('successIcon');
+        const successTitle = document.getElementById('successTitle');
+        const successMessage = document.getElementById('successMessage');
+        
+        if (successIcon) successIcon.innerHTML = '<i class="fas fa-clock text-white text-3xl"></i>';
+        if (successTitle) successTitle.textContent = 'Pembayaran Diterima!';
+        if (successMessage) successMessage.textContent = 'Pembayaran Anda telah berhasil dikirim dan sedang menunggu verifikasi admin. Proses verifikasi membutuhkan waktu maksimal 2x24 jam.';
+        
+        // Update status badge
+        const statusBadge = document.getElementById('statusBadge');
+        if (statusBadge) {
+            statusBadge.className = 'status-badge status-pending';
+            statusBadge.innerHTML = '<i class="fas fa-clock mr-2"></i> Menunggu Verifikasi';
+        }
+        
+        // Update tombol aksi
+        const actionButtons = document.getElementById('actionButtons');
+        if (actionButtons) {
+            actionButtons.innerHTML = `
+                <a href="https://wa.me/6287729949195" target="_blank" class="px-6 py-3 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition-colors">
+                    <i class="fab fa-whatsapp mr-2"></i>Konfirmasi ke Admin
+                </a>
+                <a href="index.html" class="px-6 py-3 border-2 border-[#1A4D57] text-[#1A4D57] font-bold rounded-xl hover:bg-[#1A4D57] hover:text-white transition-colors">
+                    <i class="fas fa-home mr-2"></i>Kembali ke Beranda
+                </a>
+            `;
+        }
+        
+        // Update timeline
+        const verificationIcon = document.getElementById('verificationIcon');
+        const verificationStatus = document.getElementById('verificationStatus');
+        const completionIcon = document.getElementById('completionIcon');
+        const completionStatus = document.getElementById('completionStatus');
+        
+        if (verificationIcon) verificationIcon.className = "step-icon active";
+        if (verificationStatus) verificationStatus.innerHTML = '<i class="fas fa-clock"></i>';
+        if (completionIcon) completionIcon.className = "step-icon";
+        if (completionStatus) completionStatus.innerHTML = '<i class="fas fa-clock"></i>';
+        
+        // Start countdown timer
+        startVerificationCountdown();
+    }
+    
+    // Fungsi untuk countdown verifikasi
+    function startVerificationCountdown() {
+        // Reset timer ke 48 jam
+        verificationTimer = 48 * 60 * 60;
+        
+        // Hapus interval sebelumnya jika ada
+        if (countdownInterval) {
+            clearInterval(countdownInterval);
+        }
+        
+        // Update countdown setiap detik
+        countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Panggil sekali untuk inisialisasi
+    }
+    
+    function updateCountdown() {
+        const countdownTimer = document.getElementById('countdownTimer');
+        if (!countdownTimer) return;
+        
+        const hours = Math.floor(verificationTimer / 3600);
+        const minutes = Math.floor((verificationTimer % 3600) / 60);
+        const seconds = verificationTimer % 60;
+        
+        countdownTimer.textContent = 
+            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        if (verificationTimer <= 0) {
+            clearInterval(countdownInterval);
+            // Jika waktu habis, cek status verifikasi
+            checkVerificationStatus();
+        }
+        
+        verificationTimer--;
+    }
+    
+    // Cek status verifikasi yang sudah ada di localStorage
+    function checkExistingVerificationStatus() {
+        const savedOrder = localStorage.getItem('fluenesia_order');
+        if (savedOrder) {
+            const order = JSON.parse(savedOrder);
+            
+            // Cek jika order sudah diverifikasi
+            if (order.status === 'verified') {
+                // Langsung tampilkan status verified
+                showVerificationComplete();
+            } else if (order.status === 'pending_verification') {
+                // Tampilkan step 3 dengan status pending
+                const step1 = document.getElementById('step1');
+                const step2 = document.getElementById('step2');
+                const step3 = document.getElementById('step3');
+                
+                if (step1) step1.classList.remove('active');
+                if (step2) step2.classList.remove('active');
+                if (step3) step3.classList.add('active');
+                currentStep = 3;
+                
+                // Update data pesanan
+                const orderNumber = document.getElementById('orderNumber');
+                const successPackage = document.getElementById('successPackage');
+                const successTotal = document.getElementById('successTotal');
+                const successMethod = document.getElementById('successMethod');
+                const successEmail = document.getElementById('successEmail');
+                
+                if (orderNumber) orderNumber.textContent = order.orderNumber;
+                if (successPackage) successPackage.textContent = `${order.order.package} - ${order.order.level}`;
+                if (successTotal) successTotal.textContent = new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0
+                }).format(order.order.total);
+                
+                if (successMethod) {
+                    if (order.paymentMethod === 'qris') {
+                        successMethod.textContent = 'QRIS';
+                    } else if (order.selectedBank) {
+                        const bankName = bankData[order.selectedBank]?.name || 'Transfer Bank';
+                        successMethod.textContent = `${bankName}`;
+                    } else {
+                        successMethod.textContent = 'Transfer Bank';
+                    }
+                }
+                
+                // Ambil email dari localStorage
+                const savedEmail = localStorage.getItem('fluenesia_customer_email');
+                if (successEmail && savedEmail) successEmail.textContent = savedEmail;
+                
+                // Setup UI untuk verifikasi
+                setupVerificationUI(order.orderNumber, savedEmail || '');
+                
+                // Hitung waktu tersisa
+                const timeLeft = Math.floor((order.verificationEndTime - new Date().getTime()) / 1000);
+                if (timeLeft > 0) {
+                    verificationTimer = timeLeft;
+                } else {
+                    verificationTimer = 0;
+                    checkVerificationStatus();
+                }
+            }
+        }
+    }
+    
+    // Fungsi untuk simulasi verifikasi admin (dalam real app, ini akan API call)
+    function checkVerificationStatus() {
+        // Simulasi: 70% kemungkinan sudah diverifikasi setelah 48 jam
+        const isVerified = Math.random() > 0.3;
+        
+        if (isVerified) {
+            showVerificationComplete();
+        } else {
+            // Jika belum diverifikasi, tampilkan pesan
+            const countdownTimer = document.getElementById('countdownTimer');
+            const verificationStatus = document.getElementById('verificationStatus');
+            const successMessage = document.getElementById('successMessage');
+            
+            if (countdownTimer) countdownTimer.textContent = "Menunggu admin...";
+            if (verificationStatus) verificationStatus.innerHTML = 
+                '<i class="fas fa-exclamation-triangle text-yellow-500"></i>';
+            if (successMessage) successMessage.textContent = 
+                'Verifikasi membutuhkan waktu lebih lama dari perkiraan. Silakan hubungi admin untuk konfirmasi manual.';
+        }
+    }
+    
+    // Fungsi untuk menampilkan verifikasi selesai
+    function showVerificationComplete() {
+        // Hapus interval countdown
+        if (countdownInterval) {
+            clearInterval(countdownInterval);
+        }
+        
+        // Update UI
+        const verificationAlert = document.getElementById('verificationAlert');
+        const successFinalAlert = document.getElementById('successFinalAlert');
+        
+        if (verificationAlert) verificationAlert.style.display = 'none';
+        if (successFinalAlert) successFinalAlert.style.display = 'block';
+        
+        // Update icon dan judul
+        const successIcon = document.getElementById('successIcon');
+        const successTitle = document.getElementById('successTitle');
+        const successMessage = document.getElementById('successMessage');
+        
+        if (successIcon) successIcon.innerHTML = '<i class="fas fa-check text-white text-3xl"></i>';
+        if (successTitle) successTitle.textContent = 'Pembayaran Telah Diverifikasi!';
+        if (successMessage) successMessage.textContent = 
+            'Pembayaran Anda telah diverifikasi oleh admin. Akses kelas sekarang tersedia!';
+        
+        // Update status badge
+        const statusBadge = document.getElementById('statusBadge');
+        if (statusBadge) {
+            statusBadge.className = 'status-badge status-verified';
+            statusBadge.innerHTML = '<i class="fas fa-check mr-2"></i> Telah Diverifikasi';
+        }
+        
+        // Update timeline
+        const verificationIcon = document.getElementById('verificationIcon');
+        const verificationStatus = document.getElementById('verificationStatus');
+        const completionIcon = document.getElementById('completionIcon');
+        const completionStatus = document.getElementById('completionStatus');
+        
+        if (verificationIcon) verificationIcon.className = "step-icon completed";
+        if (verificationStatus) verificationStatus.innerHTML = '<i class="fas fa-check text-green-600"></i>';
+        if (completionIcon) completionIcon.className = "step-icon completed";
+        if (completionStatus) completionStatus.innerHTML = '<i class="fas fa-check text-green-600"></i>';
+        
+        // Update tombol aksi
+        const actionButtons = document.getElementById('actionButtons');
+        if (actionButtons) {
+            actionButtons.innerHTML = `
+                <a href="dashboard.html" class="px-6 py-3 bg-[#1A4D57] text-white font-bold rounded-xl hover:bg-[#245A64] transition-colors">
+                    <i class="fas fa-chalkboard-teacher mr-2"></i>Akses Kelas
+                </a>
+                <a href="index.html" class="px-6 py-3 border-2 border-[#1A4D57] text-[#1A4D57] font-bold rounded-xl hover:bg-[#1A4D57] hover:text-white transition-colors">
+                    <i class="fas fa-home mr-2"></i>Kembali ke Beranda
+                </a>
+            `;
+        }
+        
+        // Update data di localStorage
+        const savedOrder = localStorage.getItem('fluenesia_order');
+        if (savedOrder) {
+            const order = JSON.parse(savedOrder);
+            order.status = 'verified';
+            localStorage.setItem('fluenesia_order', JSON.stringify(order));
+        }
+    }
+    
+    // Copy to clipboard
+    function copyToClipboard(elementId, button) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+        
+        const text = element.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            button.innerHTML = '<i class="fas fa-check mr-1"></i> Tersalin';
+            button.classList.add('copied');
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-copy mr-1"></i> Salin';
+                button.classList.remove('copied');
+            }, 2000);
+        });
+    }
+    
+    // Helper functions
+    function validateEmail(email) {
+        if (!email) return false;
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+    
+    function getLevelText(level) {
+        const levels = {
+            'Basic': 'A1-A2',
+            'Independent': 'B1-B2',
+            'Proficient': 'C1-C2'
+        };
+        return levels[level] || level;
+    }
+    
+    function simulateOrderSubmission(orderNum, name, email) {
+        // In real implementation, this would be an API call
+        console.log('Order submitted:', {
+            orderNumber: orderNum,
+            customer: { name, email },
+            order: orderData,
+            paymentMethod: selectedPayment,
+            selectedBank: selectedPayment === 'transfer' ? selectedBank : null,
+            timestamp: new Date().toISOString(),
+            status: 'pending_verification'
+        });
+        
+        // Simulasi: 20% kemungkinan diverifikasi dalam 10 detik (untuk demo)
+        setTimeout(() => {
+            if (Math.random() < 0.2) {
+                showVerificationComplete();
+            }
+        }, 10000);
+        
+        // Show notification
+        setTimeout(() => {
+            if (Notification.permission === 'granted') {
+                new Notification('Pembayaran Fluenesia Diterima!', {
+                    body: `Pesanan ${orderNum} sedang menunggu verifikasi admin.`,
+                    icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
+                });
+            }
+        }, 1000);
+        
+        // Untuk demo, tambahkan tombol "Simulate Admin Verification" di console
+        console.log("Untuk mensimulasikan verifikasi admin, ketik: simulateAdminVerification()");
+    }
+    
+    // Fungsi untuk simulasi verifikasi admin (bisa dipanggil dari console)
+    function simulateAdminVerification() {
+        showVerificationComplete();
+        
+        // Show notification
+        if (Notification.permission === 'granted') {
+            new Notification('Pembayaran Fluenesia Telah Diverifikasi!', {
+                body: `Pesanan Anda telah diverifikasi dan dapat diakses sekarang.`,
+                icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
+            });
+        }
+        
+        alert('Verifikasi admin berhasil disimulasikan! Status sekarang: Telah Diverifikasi.');
+    }
+    
+    // Request notification permission
+    if (Notification.permission === 'default') {
+        Notification.requestPermission();
+    }
+    
+    // Cleanup interval jika pindah halaman
+    window.addEventListener('beforeunload', function() {
+        if (countdownInterval) {
+            clearInterval(countdownInterval);
+        }
+    });
+</script>
+</body>
+</html>

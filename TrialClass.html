@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trial Class Gratis - Fluenesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+        
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #1A4D57 0%, #245A64 75%, #C4A603 100%);
+        }
+        
+        .bg-gradient-gold {
+            background: linear-gradient(135deg, #C4A603 0%, #E0B805 100%);
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px -8px rgba(26, 77, 87, 0.15);
+            border: 2px solid rgba(196, 166, 3, 0.15);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            margin: 0 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .form-container {
+                border-radius: 32px;
+                padding: 2.5rem;
+                margin: 0;
+                box-shadow: 0 30px 60px -12px rgba(26, 77, 87, 0.3);
+            }
+        }
+        
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1A4D57 0%, #C4A603 50%, #1A4D57 100%);
+            z-index: 1;
+        }
+        
+        .form-input {
+            border: 2px solid #d1d5db;
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            width: 100%;
+            background: #f9fafb;
+        }
+        
+        @media (min-width: 768px) {
+            .form-input {
+                border-radius: 16px;
+                padding: 1.25rem 1.5rem;
+                font-size: 17px;
+            }
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #1A4D57;
+            box-shadow: 0 0 0 3px rgba(26, 77, 87, 0.15);
+            background: white;
+            transform: translateY(-2px);
+        }
+        
+        .form-input:hover {
+            border-color: #9ca3af;
+        }
+        
+        .form-label {
+            color: #1A4D57;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 14px;
+        }
+        
+        @media (min-width: 768px) {
+            .form-label {
+                font-size: 16px;
+                margin-bottom: 0.875rem;
+                font-weight: 700;
+            }
+        }
+        
+        .required-star {
+            color: #ef4444;
+            font-weight: 700;
+        }
+        
+        .level-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .level-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
+        
+        .level-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: white;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        @media (min-width: 768px) {
+            .level-card {
+                border-radius: 20px;
+                padding: 2rem 1.75rem;
+                border-width: 3px;
+            }
+        }
+        
+        .level-card.selected {
+            border-color: #1A4D57;
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+            box-shadow: 0 10px 25px -8px rgba(26, 77, 87, 0.2);
+            transform: translateY(-4px);
+        }
+        
+        @media (min-width: 768px) {
+            .level-card.selected {
+                box-shadow: 0 20px 40px -12px rgba(26, 77, 87, 0.3);
+            }
+        }
+        
+        .level-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .level-icon {
+                width: 64px;
+                height: 64px;
+                border-radius: 16px;
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        .level-basic .level-icon {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+        }
+        
+        .level-independent .level-icon {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .level-proficient .level-icon {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+        }
+        
+        .radio-input {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .select-input {
+            border: 2px solid #d1d5db;
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            width: 100%;
+            background: #f9fafb;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231A4D57' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.25rem;
+        }
+        
+        @media (min-width: 768px) {
+            .select-input {
+                border-radius: 16px;
+                padding: 1.25rem 1.5rem;
+                font-size: 17px;
+                background-position: right 1.5rem center;
+                background-size: 1.5rem;
+            }
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #1A4D57 0%, #245A64 100%);
+            color: white;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media (min-width: 768px) {
+            .btn-submit {
+                padding: 1.5rem 3rem;
+                border-radius: 20px;
+                font-size: 20px;
+                font-weight: 800;
+            }
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px -8px rgba(26, 77, 87, 0.3);
+            background: linear-gradient(135deg, #245A64 0%, #1A4D57 100%);
+        }
+        
+        @media (min-width: 768px) {
+            .btn-submit:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 25px 50px -12px rgba(26, 77, 87, 0.4);
+            }
+        }
+        
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        .success-card {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            display: none;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @media (min-width: 768px) {
+            .success-card {
+                padding: 4rem;
+                border-radius: 28px;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px) scale(0.95);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .info-badge {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #92400e;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+            margin-top: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .info-badge {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
+                font-weight: 700;
+                margin-top: 0;
+            }
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d1d5db, transparent);
+            margin: 2rem 0;
+        }
+        
+        @media (min-width: 768px) {
+            .section-divider {
+                height: 2px;
+                margin: 3rem 0;
+            }
+        }
+        
+        .section-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #1A4D57 0%, #C4A603 100%);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(26, 77, 87, 0.2);
+        }
+        
+        @media (min-width: 768px) {
+            .section-number {
+                width: 56px;
+                height: 56px;
+                border-radius: 16px;
+                font-size: 1.5rem;
+                box-shadow: 0 8px 20px rgba(26, 77, 87, 0.2);
+            }
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .feature-card {
+                border-radius: 20px;
+                padding: 2rem;
+            }
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .section-header {
+                align-items: center;
+                gap: 1.5rem;
+                margin-bottom: 2.5rem;
+            }
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+        
+        .testimonial-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media (min-width: 768px) {
+            .testimonial-card {
+                border-radius: 20px;
+                padding: 2.5rem;
+            }
+        }
+        
+        .contact-card {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 2px solid #e5e7eb;
+        }
+        
+        @media (min-width: 768px) {
+            .contact-card {
+                padding: 2rem;
+                border-radius: 24px;
+            }
+        }
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 767px) {
+            .container-expanded {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .text-lg {
+                font-size: 1.125rem !important;
+            }
+            
+            textarea.form-input {
+                min-height: 120px;
+            }
+            
+            .level-card .text-sm {
+                font-size: 0.875rem;
+            }
+            
+            .select-input option {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+        
+        /* Prevent horizontal scrolling */
+        .no-scroll-x {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* WhatsApp button - removed */
+        .whatsapp-float {
+            display: none;
+        }
+        
+        /* Header removed */
+        .header-nav {
+            display: none;
+        }
+        
+        /* Footer removed */
+        footer {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen no-scroll-x">
+    
+    <!-- WhatsApp Float Button - REMOVED -->
+    
+    <!-- Header - REMOVED -->
+    
+    <main class="py-8 md:py-16">
+        <div class="container-expanded px-4 md:px-8 mx-auto">
+            <!-- Hero Section -->
+            <div class="text-center mb-10 md:mb-20">
+                <div class="inline-flex items-center gap-2 bg-gradient-gold text-white px-4 py-2 md:px-6 md:py-3 rounded-full mb-6 md:mb-10">
+                    <span class="relative flex h-3 w-3 md:h-4 md:w-4">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 md:h-4 md:w-4 bg-white"></span>
+                    </span>
+                    <span class="text-sm md:text-base font-bold uppercase tracking-wider">Trial Class Gratis</span>
+                </div>
+                
+                <h1 class="text-3xl md:text-6xl font-bold text-[#1A4D57] mb-4 md:mb-8 leading-tight">
+                    Daftar <span class="text-[#C4A603]">Trial Class</span>
+                </h1>
+                
+                <p class="text-gray-600 text-base md:text-2xl max-w-4xl mx-auto leading-relaxed">
+                    Isi data diri Anda untuk memulai perjalanan belajar Bahasa Indonesia 
+                    <span class="font-bold text-[#1A4D57]">langsung dengan tutor native speaker</span>
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Form Section -->
+                <div class="lg:col-span-2">
+                    <div class="form-container">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 md:mb-12">
+                            <div class="mb-4 md:mb-0">
+                                <h2 class="text-2xl md:text-4xl font-bold text-[#1A4D57] mb-2 md:mb-3">Form Pendaftaran</h2>
+                                <p class="text-gray-500 text-sm md:text-lg">Isi data diri Anda untuk memulai perjalanan belajar</p>
+                            </div>
+                            <div class="info-badge">
+                                <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </svg>
+                                Gratis 100% & Tanpa Biaya
+                            </div>
+                        </div>
+
+                        <!-- Success Message -->
+                        <div id="successMessage" class="success-card">
+                            <div class="w-20 h-20 md:w-28 md:h-28 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 md:mb-8">
+                                <svg class="w-10 h-10 md:w-14 md:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Pendaftaran Berhasil!</h3>
+                            <p class="text-white/90 text-base md:text-xl mb-6 md:mb-8 max-w-xl mx-auto">
+                                Tim kami akan menghubungi Anda dalam 1x24 jam untuk mengonfirmasi jadwal Trial Class.
+                            </p>
+                            <button onclick="window.location.href='index.html'" class="inline-block bg-white text-[#1A4D57] px-6 py-3 md:px-10 md:py-4 rounded-xl md:rounded-2xl font-bold hover:bg-gray-100 transition-colors text-base md:text-lg">
+                                Kembali ke Beranda
+                            </button>
+                        </div>
+
+                        <!-- Registration Form -->
+                        <form id="trialForm" class="space-y-8 md:space-y-12">
+                            <!-- Section 1: Data Pribadi -->
+                            <div>
+                                <div class="section-header">
+                                    <div class="section-number">1</div>
+                                    <div>
+                                        <h3 class="text-xl md:text-2xl font-bold text-[#1A4D57] mb-1 md:mb-2">Data Pribadi</h3>
+                                        <p class="text-gray-600 text-sm md:text-base">Isi informasi pribadi Anda dengan lengkap dan benar</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-grid">
+                                    <!-- Full Name -->
+                                    <div>
+                                        <label class="form-label">
+                                            Nama Lengkap <span class="required-star">*</span>
+                                        </label>
+                                        <input type="text" 
+                                               id="fullName" 
+                                               class="form-input" 
+                                               placeholder="Masukkan nama lengkap Anda"
+                                               required>
+                                    </div>
+                                    
+                                    <!-- Email -->
+                                    <div>
+                                        <label class="form-label">
+                                            Email <span class="required-star">*</span>
+                                        </label>
+                                        <input type="email" 
+                                               id="email" 
+                                               class="form-input" 
+                                               placeholder="nama@email.com"
+                                               required>
+                                    </div>
+                                    
+                                    <!-- Phone Number -->
+                                    <div>
+                                        <label class="form-label">
+                                            Nomor WhatsApp <span class="required-star">*</span>
+                                        </label>
+                                        <input type="tel" 
+                                               id="phone" 
+                                               class="form-input" 
+                                               placeholder="62xxxxxxxxxxx"
+                                               required>
+                                        <p class="text-xs md:text-sm text-gray-500 mt-2 pl-1 md:pl-2">Format: 62 tanpa tanda + (contoh: 6281234567890)</p>
+                                    </div>
+                                    
+                                    <!-- Country -->
+                                    <div>
+                                        <label class="form-label">
+                                            Negara Asal <span class="required-star">*</span>
+                                        </label>
+                                        <input type="text" 
+                                               id="country" 
+                                               class="form-input" 
+                                               placeholder="Contoh: Jepang, Amerika, Australia, etc."
+                                               required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="section-divider"></div>
+
+                            <!-- Section 2: Level Kemampuan -->
+                            <div>
+                                <div class="section-header">
+                                    <div class="section-number">2</div>
+                                    <div>
+                                        <h3 class="text-xl md:text-2xl font-bold text-[#1A4D57] mb-1 md:mb-2">Level Kemampuan</h3>
+                                        <p class="text-gray-600 text-sm md:text-base">Pilih level yang paling sesuai dengan kemampuan Bahasa Indonesia Anda saat ini</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="level-grid">
+                                    <!-- Basic Level -->
+                                    <label class="level-card level-basic" id="basicCard">
+                                        <div class="level-icon">
+                                            <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                            </svg>
+                                        </div>
+                                        <input type="radio" 
+                                               name="level" 
+                                               value="basic" 
+                                               class="radio-input"
+                                               required>
+                                        <div class="relative z-10 flex-1 flex flex-col">
+                                            <div class="font-bold text-[#1A4D57] text-lg md:text-xl mb-2 md:mb-3">Basic (A1-A2)</div>
+                                            <div class="text-gray-600 text-sm md:text-base mb-3 md:mb-4 flex-1">
+                                                Untuk pemula yang baru memulai belajar Bahasa Indonesia dari dasar
+                                            </div>
+                                            <div class="text-xs md:text-sm text-gray-500 text-left w-full">
+                                                <div class="mb-1">✓ Pengenalan dasar bahasa</div>
+                                                <div class="mb-1">✓ Percakapan sederhana sehari-hari</div>
+                                                <div>✓ Kosakata dan frasa umum</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <!-- Independent Level -->
+                                    <label class="level-card level-independent" id="independentCard">
+                                        <div class="level-icon">
+                                            <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                            </svg>
+                                        </div>
+                                        <input type="radio" 
+                                               name="level" 
+                                               value="independent" 
+                                               class="radio-input"
+                                               required>
+                                        <div class="relative z-10 flex-1 flex flex-col">
+                                            <div class="font-bold text-[#1A4D57] text-lg md:text-xl mb-2 md:mb-3">Independent (B1-B2)</div>
+                                            <div class="text-gray-600 text-sm md:text-base mb-3 md:mb-4 flex-1">
+                                                Sudah bisa percakapan dasar, ingin meningkatkan kelancaran dan pemahaman
+                                            </div>
+                                            <div class="text-xs md:text-sm text-gray-500 text-left w-full">
+                                                <div class="mb-1">✓ Percakapan topik kompleks</div>
+                                                <div class="mb-1">✓ Diskusi dan presentasi sederhana</div>
+                                                <div>✓ Pemahaman konteks budaya</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <!-- Proficient Level -->
+                                    <label class="level-card level-proficient" id="proficientCard">
+                                        <div class="level-icon">
+                                            <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                                            </svg>
+                                        </div>
+                                        <input type="radio" 
+                                               name="level" 
+                                               value="proficient" 
+                                               class="radio-input"
+                                               required>
+                                        <div class="relative z-10 flex-1 flex flex-col">
+                                            <div class="font-bold text-[#1A4D57] text-lg md:text-xl mb-2 md:mb-3">Proficient (C1-C2)</div>
+                                            <div class="text-gray-600 text-sm md:text-base mb-3 md:mb-4 flex-1">
+                                                Mahir, ingin memperdalam untuk keperluan profesional dan akademis
+                                            </div>
+                                            <div class="text-xs md:text-sm text-gray-500 text-left w-full">
+                                                <div class="mb-1">✓ Diskusi akademik dan bisnis</div>
+                                                <div class="mb-1">✓ Presentasi dan negosiasi formal</div>
+                                                <div>✓ Bahasa untuk keperluan spesifik</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="section-divider"></div>
+
+                            <!-- Section 3: Informasi Tambahan -->
+                            <div>
+                                <div class="section-header">
+                                    <div class="section-number">3</div>
+                                    <div>
+                                        <h3 class="text-xl md:text-2xl font-bold text-[#1A4D57] mb-1 md:mb-2">Informasi Tambahan</h3>
+                                        <p class="text-gray-600 text-sm md:text-base">Bantu kami memahami kebutuhan belajar Anda lebih baik</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Learning Goal -->
+                                <div class="mb-6 md:mb-10">
+                                    <label class="form-label">
+                                        Tujuan Belajar Utama <span class="required-star">*</span>
+                                    </label>
+                                    <select id="learningGoal" class="select-input" required>
+                                        <option value="" disabled selected>Pilih tujuan utama Anda belajar Bahasa Indonesia</option>
+                                        <option value="daily_conversation">🎯 Percakapan Sehari-hari</option>
+                                        <option value="business">💼 Bisnis & Pekerjaan</option>
+                                        <option value="academic">📚 Akademik & Studi</option>
+                                        <option value="travel">✈️ Bepergian & Pariwisata</option>
+                                        <option value="culture">🎭 Budaya & Tradisi</option>
+                                        <option value="relationship">👨‍👩‍👧‍👦 Hubungan Keluarga</option>
+                                        <option value="exam">📝 Ujian & Sertifikasi</option>
+                                        <option value="other">🔍 Tujuan Lainnya</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- How did you hear about us? -->
+                                <div class="mb-6 md:mb-10">
+                                    <label class="form-label">
+                                        Dari mana Anda mengetahui Fluenesia?
+                                    </label>
+                                    <select id="referral" class="select-input">
+                                        <option value="" selected>Pilih sumber informasi tentang Fluenesia</option>
+                                        <option value="google">🔍 Google Search</option>
+                                        <option value="instagram">📸 Instagram</option>
+                                        <option value="facebook">📘 Facebook</option>
+                                        <option value="linkedin">💼 LinkedIn</option>
+                                        <option value="friend">👥 Rekomendasi Teman</option>
+                                        <option value="ads">📢 Iklan Online</option>
+                                        <option value="event">🎪 Event / Workshop</option>
+                                        <option value="other">📰 Sumber Lainnya</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Special Requests -->
+                                <div>
+                                    <label class="form-label">
+                                        Catatan atau Permintaan Khusus (Opsional)
+                                    </label>
+                                    <textarea id="specialRequests" 
+                                              class="form-input" 
+                                              rows="4" 
+                                              placeholder="Contoh: Saya ingin fokus pada pronunciation, memiliki kebutuhan materi khusus, preferensi waktu belajar tertentu..."></textarea>
+                                    <p class="text-xs md:text-sm text-gray-500 mt-2 pl-1 md:pl-2">Kami akan berusaha memenuhi permintaan Anda sebaik mungkin</p>
+                                </div>
+                            </div>
+
+                            <div class="section-divider"></div>
+
+                            <!-- Terms and Conditions -->
+                            <div class="mb-8 md:mb-12">
+                                <label class="flex items-start gap-3 md:gap-5 cursor-pointer p-4 md:p-6 bg-gray-50 rounded-xl md:rounded-2xl hover:bg-gray-100 transition-colors border border-gray-200">
+                                    <input type="checkbox" 
+                                           id="terms" 
+                                           class="checkbox-input mt-1 md:mt-2 flex-shrink-0 w-5 h-5 md:w-6 md:h-6"
+                                           required>
+                                    <span class="text-sm md:text-base text-gray-700 leading-relaxed">
+                                        Saya menyetujui bahwa data yang saya berikan akan digunakan untuk keperluan Trial Class. 
+                                        Saya telah membaca, memahami, dan menyetujui 
+                                        <a href="#" class="text-[#1A4D57] font-bold hover:underline">Syarat & Ketentuan</a> 
+                                        serta 
+                                        <a href="#" class="text-[#1A4D57] font-bold hover:underline">Kebijakan Privasi</a>.
+                                    </span>
+                                </label>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="pt-4 md:pt-6">
+                                <button type="submit" class="btn-submit">
+                                    🚀 Kirim Pendaftaran Trial Class
+                                </button>
+                                
+                                <p class="text-center text-gray-600 text-sm md:text-lg mt-4 md:mt-6">
+                                    Tim admin akan menghubungi Anda via WhatsApp dalam 24 jam
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Benefits Section -->
+                <div class="space-y-6 md:space-y-10">
+                    <!-- Features -->
+                    <div class="space-y-6 md:space-y-8">
+                        <div class="feature-card">
+                            <div class="flex items-center gap-4 md:gap-5">
+                                <div class="w-12 h-12 md:w-16 md:h-16 bg-[#C4A603]/10 rounded-xl md:rounded-2xl flex items-center justify-center">
+                                    <span class="text-2xl md:text-3xl">🎯</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-[#1A4D57] text-lg md:text-xl mb-1 md:mb-2">Metode Interaktif</div>
+                                    <div class="text-gray-600 text-sm md:text-base">Belajar melalui diskusi aktif dan praktik langsung</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="flex items-center gap-4 md:gap-5">
+                                <div class="w-12 h-12 md:w-16 md:h-16 bg-[#1A4D57]/10 rounded-xl md:rounded-2xl flex items-center justify-center">
+                                    <span class="text-2xl md:text-3xl">👨‍🏫</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-[#1A4D57] text-lg md:text-xl mb-1 md:mb-2">Tutor Berpengalaman</div>
+                                    <div class="text-gray-600 text-sm md:text-base">Dibimbing oleh native speaker bersertifikasi</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="flex items-center gap-4 md:gap-5">
+                                <div class="w-12 h-12 md:w-16 md:h-16 bg-[#C4A603]/10 rounded-xl md:rounded-2xl flex items-center justify-center">
+                                    <span class="text-2xl md:text-3xl">🎭</span>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-[#1A4D57] text-lg md:text-xl mb-1 md:mb-2">Integrasi Budaya</div>
+                                    <div class="text-gray-600 text-sm md:text-base">Belajar bahasa sekaligus memahami budaya Indonesia</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial -->
+                    <div class="testimonial-card">
+                        <div class="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+                            <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-primary overflow-hidden p-1">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200" 
+                                     alt="Testimonial" 
+                                     class="w-full h-full object-cover rounded-full">
+                            </div>
+                            <div>
+                                <div class="font-bold text-[#1A4D57] text-base md:text-lg">Idni</div>
+                                <div class="text-xs md:text-sm text-gray-500 flex items-center gap-1 md:gap-2">
+                                    <span class="text-[#C4A603] text-base md:text-lg">★★★★★</span>
+                                    Peserta Trial Class
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative z-10">
+                            <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+                                "Baru ikut sesi trial 30 menit, tapi langsung merasakan perbedaan metode pengajarannya. Tutor sangat memahami kebutuhan pemula seperti saya."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="contact-card">
+                        <h4 class="font-bold text-[#1A4D57] mb-4 md:mb-5 text-xl md:text-2xl">📞 Butuh Bantuan?</h4>
+                        <p class="text-gray-600 text-base md:text-lg mb-4 md:mb-6">Tim support kami siap membantu Anda</p>
+                        <div class="space-y-4 md:space-y-5">
+                            <a href="https://wa.me/6287729949195" 
+                               target="_blank"
+                               class="flex items-center gap-4 p-3 md:p-4 bg-white rounded-lg md:rounded-xl hover:shadow-lg transition-all duration-300 group border border-gray-200">
+                                <div class="w-10 h-10 md:w-12 md:h-12 bg-green-100 rounded-lg md:rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                                    <svg class="w-5 h-5 md:w-6 md:h-6 text-green-600" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-bold text-gray-800 text-base md:text-lg">WhatsApp Support</div>
+                                    <div class="text-gray-600 text-sm md:text-base">+62 877-2994-9195</div>
+                                </div>
+                            </a>
+                            
+                            <a href="mailto:info@fluenesia.com"
+                               class="flex items-center gap-4 p-3 md:p-4 bg-white rounded-lg md:rounded-xl hover:shadow-lg transition-all duration-300 group border border-gray-200">
+                                <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-100 rounded-lg md:rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                                    <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-bold text-gray-800 text-base md:text-lg">Email Support</div>
+                                    <div class="text-gray-600 text-sm md:text-base">info@fluenesia.com</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer - REMOVED -->
+
+    <script>
+        // Form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('trialForm');
+            const successMessage = document.getElementById('successMessage');
+            const levelCards = document.querySelectorAll('.level-card');
+            const submitBtn = form.querySelector('.btn-submit');
+            
+            // Level card selection
+            levelCards.forEach(card => {
+                const radioInput = card.querySelector('.radio-input');
+                
+                card.addEventListener('click', () => {
+                    // Remove selected class from all cards
+                    levelCards.forEach(c => {
+                        c.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked card
+                    card.classList.add('selected');
+                    radioInput.checked = true;
+                });
+            });
+            
+            // Form submission
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = {
+                    fullName: document.getElementById('fullName').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    country: document.getElementById('country').value.trim(),
+                    level: document.querySelector('input[name="level"]:checked')?.value,
+                    learningGoal: document.getElementById('learningGoal').value,
+                    referral: document.getElementById('referral').value,
+                    specialRequests: document.getElementById('specialRequests').value.trim(),
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Validation
+                const errors = [];
+                
+                if (!formData.fullName) {
+                    errors.push('Nama lengkap harus diisi');
+                    highlightField('fullName');
+                }
+                
+                if (!formData.email || !isValidEmail(formData.email)) {
+                    errors.push('Email harus valid');
+                    highlightField('email');
+                }
+                
+                if (!formData.phone || !isValidPhone(formData.phone)) {
+                    errors.push('Nomor WhatsApp harus valid (format: 62...)');
+                    highlightField('phone');
+                }
+                
+                if (!formData.country) {
+                    errors.push('Negara asal harus diisi');
+                    highlightField('country');
+                }
+                
+                if (!formData.level) {
+                    errors.push('Silakan pilih level kemampuan');
+                    levelCards.forEach(card => {
+                        card.style.animation = 'shake 0.5s';
+                    });
+                    setTimeout(() => {
+                        levelCards.forEach(card => card.style.animation = '');
+                    }, 500);
+                }
+                
+                if (!formData.learningGoal) {
+                    errors.push('Silakan pilih tujuan belajar');
+                    highlightField('learningGoal');
+                }
+                
+                if (!document.getElementById('terms').checked) {
+                    errors.push('Anda harus menyetujui syarat dan ketentuan');
+                }
+                
+                if (errors.length > 0) {
+                    showErrorMessages(errors);
+                    return;
+                }
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = '🔄 Mengirim...';
+                
+                // Simulate submission
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // Show success
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Scroll to success message
+                setTimeout(() => {
+                    successMessage.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }, 100);
+            });
+            
+            function highlightField(fieldId) {
+                const field = document.getElementById(fieldId);
+                field.style.borderColor = '#ef4444';
+                field.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
+                
+                field.addEventListener('input', function() {
+                    this.style.borderColor = '#1A4D57';
+                    this.style.boxShadow = 'none';
+                }, { once: true });
+            }
+            
+            function showErrorMessages(errors) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'bg-red-50 border-l-4 border-red-500 p-4 rounded-lg mb-6';
+                errorDiv.innerHTML = `
+                    <div class="flex items-center gap-2 mb-2">
+                        <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <h4 class="font-bold text-red-800 text-base">Perbaiki data berikut:</h4>
+                    </div>
+                    <ul class="text-red-700 text-sm list-disc pl-5 space-y-1">
+                        ${errors.map(error => `<li>${error}</li>`).join('')}
+                    </ul>
+                `;
+                
+                // Remove existing error messages
+                const existingError = form.querySelector('.error-message');
+                if (existingError) {
+                    existingError.remove();
+                }
+                
+                errorDiv.classList.add('error-message');
+                form.prepend(errorDiv);
+                
+                // Scroll to error
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            function isValidEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+            
+            function isValidPhone(phone) {
+                return /^62\d{9,12}$/.test(phone);
+            }
+            
+            // Add shake animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                    20%, 40%, 60%, 80% { transform: translateX(5px); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
