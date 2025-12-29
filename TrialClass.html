@@ -6,6 +6,7 @@
     <title>Trial Class Gratis - Fluenesia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
     
     <style>
         * {
@@ -229,6 +230,154 @@
             }
         }
         
+        /* Custom select with flags */
+        .flag-select {
+            border: 2px solid #d1d5db;
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            width: 100%;
+            background: #f9fafb;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231A4D57' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.25rem;
+        }
+        
+        .flag-select:focus {
+            outline: none;
+            border-color: #1A4D57;
+            box-shadow: 0 0 0 3px rgba(26, 77, 87, 0.15);
+            background: white;
+            transform: translateY(-2px);
+        }
+        
+        .flag-select option {
+            padding: 10px;
+            font-size: 16px;
+        }
+        
+        /* PHONE INPUT WITH FLAG - UPDATED DESIGN */
+        .phone-input-container {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .phone-input-container {
+                gap: 0.75rem;
+            }
+        }
+        
+        /* Country select wrapper with flag */
+        .country-select-wrapper {
+            flex: 0 0 160px;
+            position: relative;
+        }
+        
+        @media (min-width: 768px) {
+            .country-select-wrapper {
+                flex: 0 0 180px;
+            }
+        }
+        
+        .country-code-select {
+            padding-left: 3.5rem !important;
+            padding-right: 2.5rem !important;
+            border: 2px solid #d1d5db;
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 16px;
+            background: #f9fafb;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #1A4D57;
+            font-weight: 500;
+            appearance: none;
+        }
+        
+        @media (min-width: 768px) {
+            .country-code-select {
+                border-radius: 16px;
+                padding: 1.25rem 1rem;
+                font-size: 17px;
+                padding-left: 4rem !important;
+            }
+        }
+        
+        .country-code-select:focus {
+            outline: none;
+            border-color: #1A4D57;
+            box-shadow: 0 0 0 3px rgba(26, 77, 87, 0.15);
+            background: white;
+        }
+        
+        .country-code-select:hover {
+            border-color: #9ca3af;
+        }
+        
+        /* Flag display in select */
+        .selected-country-flag {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        @media (min-width: 768px) {
+            .selected-country-flag {
+                left: 1.25rem;
+            }
+        }
+        
+        .selected-country-flag .flag-icon {
+            width: 24px;
+            height: 18px;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Dropdown arrow */
+        .country-select-arrow {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        
+        .phone-number-input {
+            flex: 1;
+            border: 2px solid #d1d5db;
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 16px;
+            background: #f9fafb;
+        }
+        
+        @media (min-width: 768px) {
+            .phone-number-input {
+                border-radius: 16px;
+                padding: 1.25rem 1.5rem;
+                font-size: 17px;
+            }
+        }
+        
+        .phone-number-input:focus,
+        .country-code-select:focus {
+            outline: none;
+            border-color: #1A4D57;
+            box-shadow: 0 0 0 3px rgba(26, 77, 87, 0.15);
+            background: white;
+        }
+        
         .btn-submit {
             background: linear-gradient(135deg, #1A4D57 0%, #245A64 100%);
             color: white;
@@ -435,6 +584,20 @@
             }
         }
         
+        /* Flag icons in selects */
+        .country-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 5px;
+        }
+        
+        .flag-icon-small {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
+        
         /* Mobile-specific adjustments */
         @media (max-width: 767px) {
             .container-expanded {
@@ -471,6 +634,30 @@
                 font-size: 14px;
                 padding: 8px;
             }
+            
+            /* Mobile adjustments for phone input */
+            .phone-input-container {
+                flex-direction: column;
+            }
+            
+            .country-select-wrapper {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .country-code-select {
+                padding-left: 3rem !important;
+                padding-right: 2rem !important;
+            }
+            
+            .selected-country-flag .flag-icon {
+                width: 20px;
+                height: 15px;
+            }
+            
+            .phone-number-input {
+                width: 100%;
+            }
         }
         
         /* Prevent horizontal scrolling */
@@ -492,6 +679,14 @@
         /* Footer removed */
         footer {
             display: none;
+        }
+        
+        /* Custom option styling for flags - limited browser support */
+        select option.flag-option {
+            padding-left: 40px !important;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            background-size: 20px 15px;
         }
     </style>
 </head>
@@ -593,17 +788,34 @@
                                                required>
                                     </div>
                                     
-                                    <!-- Phone Number -->
+                                    <!-- Phone Number - UPDATED WITH FLAG -->
                                     <div>
                                         <label class="form-label">
                                             Nomor WhatsApp <span class="required-star">*</span>
                                         </label>
-                                        <input type="tel" 
-                                               id="phone" 
-                                               class="form-input" 
-                                               placeholder="62xxxxxxxxxxx"
-                                               required>
-                                        <p class="text-xs md:text-sm text-gray-500 mt-2 pl-1 md:pl-2">Format: 62 tanpa tanda + (contoh: 6281234567890)</p>
+                                        <div class="phone-input-container">
+                                            <div class="country-select-wrapper">
+                                                <select id="countryCode" class="country-code-select" required>
+                                                    <!-- Country codes will be populated by JavaScript -->
+                                                </select>
+                                                <div class="selected-country-flag">
+                                                    <span id="selectedFlag" class="flag-icon flag-icon-id"></span>
+                                                </div>
+                                                <div class="country-select-arrow">
+                                                    <svg class="w-5 h-5 text-[#1A4D57]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <input type="tel" 
+                                                   id="phoneNumber" 
+                                                   class="phone-number-input" 
+                                                   placeholder="81234567890"
+                                                   required>
+                                        </div>
+                                        <p class="text-xs md:text-sm text-gray-500 mt-2 pl-1 md:pl-2">
+                                            Masukkan nomor WhatsApp tanpa kode negara (contoh: 81234567890)
+                                        </p>
                                     </div>
                                     
                                     <!-- Country -->
@@ -611,11 +823,9 @@
                                         <label class="form-label">
                                             Negara Asal <span class="required-star">*</span>
                                         </label>
-                                        <input type="text" 
-                                               id="country" 
-                                               class="form-input" 
-                                               placeholder="Contoh: Jepang, Amerika, Australia, etc."
-                                               required>
+                                        <select id="country" class="flag-select" required>
+                                            <!-- Countries will be populated by JavaScript -->
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -909,12 +1119,255 @@
     <!-- Footer - REMOVED -->
 
     <script>
+        // Country data for phone codes and country selection
+        const countryData = [
+            { name: "Afghanistan", code: "AF", phoneCode: "+93", flag: "af" },
+            { name: "Albania", code: "AL", phoneCode: "+355", flag: "al" },
+            { name: "Algeria", code: "DZ", phoneCode: "+213", flag: "dz" },
+            { name: "Andorra", code: "AD", phoneCode: "+376", flag: "ad" },
+            { name: "Angola", code: "AO", phoneCode: "+244", flag: "ao" },
+            { name: "Antigua and Barbuda", code: "AG", phoneCode: "+1-268", flag: "ag" },
+            { name: "Argentina", code: "AR", phoneCode: "+54", flag: "ar" },
+            { name: "Armenia", code: "AM", phoneCode: "+374", flag: "am" },
+            { name: "Australia", code: "AU", phoneCode: "+61", flag: "au" },
+            { name: "Austria", code: "AT", phoneCode: "+43", flag: "at" },
+            { name: "Azerbaijan", code: "AZ", phoneCode: "+994", flag: "az" },
+            { name: "Bahamas", code: "BS", phoneCode: "+1-242", flag: "bs" },
+            { name: "Bahrain", code: "BH", phoneCode: "+973", flag: "bh" },
+            { name: "Bangladesh", code: "BD", phoneCode: "+880", flag: "bd" },
+            { name: "Barbados", code: "BB", phoneCode: "+1-246", flag: "bb" },
+            { name: "Belarus", code: "BY", phoneCode: "+375", flag: "by" },
+            { name: "Belgium", code: "BE", phoneCode: "+32", flag: "be" },
+            { name: "Belize", code: "BZ", phoneCode: "+501", flag: "bz" },
+            { name: "Benin", code: "BJ", phoneCode: "+229", flag: "bj" },
+            { name: "Bhutan", code: "BT", phoneCode: "+975", flag: "bt" },
+            { name: "Bolivia", code: "BO", phoneCode: "+591", flag: "bo" },
+            { name: "Bosnia and Herzegovina", code: "BA", phoneCode: "+387", flag: "ba" },
+            { name: "Botswana", code: "BW", phoneCode: "+267", flag: "bw" },
+            { name: "Brazil", code: "BR", phoneCode: "+55", flag: "br" },
+            { name: "Brunei", code: "BN", phoneCode: "+673", flag: "bn" },
+            { name: "Bulgaria", code: "BG", phoneCode: "+359", flag: "bg" },
+            { name: "Burkina Faso", code: "BF", phoneCode: "+226", flag: "bf" },
+            { name: "Burundi", code: "BI", phoneCode: "+257", flag: "bi" },
+            { name: "Cabo Verde", code: "CV", phoneCode: "+238", flag: "cv" },
+            { name: "Cambodia", code: "KH", phoneCode: "+855", flag: "kh" },
+            { name: "Cameroon", code: "CM", phoneCode: "+237", flag: "cm" },
+            { name: "Canada", code: "CA", phoneCode: "+1", flag: "ca" },
+            { name: "Central African Republic", code: "CF", phoneCode: "+236", flag: "cf" },
+            { name: "Chad", code: "TD", phoneCode: "+235", flag: "td" },
+            { name: "Chile", code: "CL", phoneCode: "+56", flag: "cl" },
+            { name: "China", code: "CN", phoneCode: "+86", flag: "cn" },
+            { name: "Colombia", code: "CO", phoneCode: "+57", flag: "co" },
+            { name: "Comoros", code: "KM", phoneCode: "+269", flag: "km" },
+            { name: "Congo", code: "CG", phoneCode: "+242", flag: "cg" },
+            { name: "Costa Rica", code: "CR", phoneCode: "+506", flag: "cr" },
+            { name: "Croatia", code: "HR", phoneCode: "+385", flag: "hr" },
+            { name: "Cuba", code: "CU", phoneCode: "+53", flag: "cu" },
+            { name: "Cyprus", code: "CY", phoneCode: "+357", flag: "cy" },
+            { name: "Czech Republic", code: "CZ", phoneCode: "+420", flag: "cz" },
+            { name: "Denmark", code: "DK", phoneCode: "+45", flag: "dk" },
+            { name: "Djibouti", code: "DJ", phoneCode: "+253", flag: "dj" },
+            { name: "Dominica", code: "DM", phoneCode: "+1-767", flag: "dm" },
+            { name: "Dominican Republic", code: "DO", phoneCode: "+1-809", flag: "do" },
+            { name: "East Timor", code: "TL", phoneCode: "+670", flag: "tl" },
+            { name: "Ecuador", code: "EC", phoneCode: "+593", flag: "ec" },
+            { name: "Egypt", code: "EG", phoneCode: "+20", flag: "eg" },
+            { name: "El Salvador", code: "SV", phoneCode: "+503", flag: "sv" },
+            { name: "Equatorial Guinea", code: "GQ", phoneCode: "+240", flag: "gq" },
+            { name: "Eritrea", code: "ER", phoneCode: "+291", flag: "er" },
+            { name: "Estonia", code: "EE", phoneCode: "+372", flag: "ee" },
+            { name: "Eswatini", code: "SZ", phoneCode: "+268", flag: "sz" },
+            { name: "Ethiopia", code: "ET", phoneCode: "+251", flag: "et" },
+            { name: "Fiji", code: "FJ", phoneCode: "+679", flag: "fj" },
+            { name: "Finland", code: "FI", phoneCode: "+358", flag: "fi" },
+            { name: "France", code: "FR", phoneCode: "+33", flag: "fr" },
+            { name: "Gabon", code: "GA", phoneCode: "+241", flag: "ga" },
+            { name: "Gambia", code: "GM", phoneCode: "+220", flag: "gm" },
+            { name: "Georgia", code: "GE", phoneCode: "+995", flag: "ge" },
+            { name: "Germany", code: "DE", phoneCode: "+49", flag: "de" },
+            { name: "Ghana", code: "GH", phoneCode: "+233", flag: "gh" },
+            { name: "Greece", code: "GR", phoneCode: "+30", flag: "gr" },
+            { name: "Grenada", code: "GD", phoneCode: "+1-473", flag: "gd" },
+            { name: "Guatemala", code: "GT", phoneCode: "+502", flag: "gt" },
+            { name: "Guinea", code: "GN", phoneCode: "+224", flag: "gn" },
+            { name: "Guinea-Bissau", code: "GW", phoneCode: "+245", flag: "gw" },
+            { name: "Guyana", code: "GY", phoneCode: "+592", flag: "gy" },
+            { name: "Haiti", code: "HT", phoneCode: "+509", flag: "ht" },
+            { name: "Honduras", code: "HN", phoneCode: "+504", flag: "hn" },
+            { name: "Hungary", code: "HU", phoneCode: "+36", flag: "hu" },
+            { name: "Iceland", code: "IS", phoneCode: "+354", flag: "is" },
+            { name: "India", code: "IN", phoneCode: "+91", flag: "in" },
+            { name: "Indonesia", code: "ID", phoneCode: "+62", flag: "id" },
+            { name: "Iran", code: "IR", phoneCode: "+98", flag: "ir" },
+            { name: "Iraq", code: "IQ", phoneCode: "+964", flag: "iq" },
+            { name: "Ireland", code: "IE", phoneCode: "+353", flag: "ie" },
+            { name: "Israel", code: "IL", phoneCode: "+972", flag: "il" },
+            { name: "Italy", code: "IT", phoneCode: "+39", flag: "it" },
+            { name: "Jamaica", code: "JM", phoneCode: "+1-876", flag: "jm" },
+            { name: "Japan", code: "JP", phoneCode: "+81", flag: "jp" },
+            { name: "Jordan", code: "JO", phoneCode: "+962", flag: "jo" },
+            { name: "Kazakhstan", code: "KZ", phoneCode: "+7", flag: "kz" },
+            { name: "Kenya", code: "KE", phoneCode: "+254", flag: "ke" },
+            { name: "Kiribati", code: "KI", phoneCode: "+686", flag: "ki" },
+            { name: "Korea, North", code: "KP", phoneCode: "+850", flag: "kp" },
+            { name: "Korea, South", code: "KR", phoneCode: "+82", flag: "kr" },
+            { name: "Kosovo", code: "XK", phoneCode: "+383", flag: "xk" },
+            { name: "Kuwait", code: "KW", phoneCode: "+965", flag: "kw" },
+            { name: "Kyrgyzstan", code: "KG", phoneCode: "+996", flag: "kg" },
+            { name: "Laos", code: "LA", phoneCode: "+856", flag: "la" },
+            { name: "Latvia", code: "LV", phoneCode: "+371", flag: "lv" },
+            { name: "Lebanon", code: "LB", phoneCode: "+961", flag: "lb" },
+            { name: "Lesotho", code: "LS", phoneCode: "+266", flag: "ls" },
+            { name: "Liberia", code: "LR", phoneCode: "+231", flag: "lr" },
+            { name: "Libya", code: "LY", phoneCode: "+218", flag: "ly" },
+            { name: "Liechtenstein", code: "LI", phoneCode: "+423", flag: "li" },
+            { name: "Lithuania", code: "LT", phoneCode: "+370", flag: "lt" },
+            { name: "Luxembourg", code: "LU", phoneCode: "+352", flag: "lu" },
+            { name: "Madagascar", code: "MG", phoneCode: "+261", flag: "mg" },
+            { name: "Malawi", code: "MW", phoneCode: "+265", flag: "mw" },
+            { name: "Malaysia", code: "MY", phoneCode: "+60", flag: "my" },
+            { name: "Maldives", code: "MV", phoneCode: "+960", flag: "mv" },
+            { name: "Mali", code: "ML", phoneCode: "+223", flag: "ml" },
+            { name: "Malta", code: "MT", phoneCode: "+356", flag: "mt" },
+            { name: "Marshall Islands", code: "MH", phoneCode: "+692", flag: "mh" },
+            { name: "Mauritania", code: "MR", phoneCode: "+222", flag: "mr" },
+            { name: "Mauritius", code: "MU", phoneCode: "+230", flag: "mu" },
+            { name: "Mexico", code: "MX", phoneCode: "+52", flag: "mx" },
+            { name: "Micronesia", code: "FM", phoneCode: "+691", flag: "fm" },
+            { name: "Moldova", code: "MD", phoneCode: "+373", flag: "md" },
+            { name: "Monaco", code: "MC", phoneCode: "+377", flag: "mc" },
+            { name: "Mongolia", code: "MN", phoneCode: "+976", flag: "mn" },
+            { name: "Montenegro", code: "ME", phoneCode: "+382", flag: "me" },
+            { name: "Morocco", code: "MA", phoneCode: "+212", flag: "ma" },
+            { name: "Mozambique", code: "MZ", phoneCode: "+258", flag: "mz" },
+            { name: "Myanmar", code: "MM", phoneCode: "+95", flag: "mm" },
+            { name: "Namibia", code: "NA", phoneCode: "+264", flag: "na" },
+            { name: "Nauru", code: "NR", phoneCode: "+674", flag: "nr" },
+            { name: "Nepal", code: "NP", phoneCode: "+977", flag: "np" },
+            { name: "Netherlands", code: "NL", phoneCode: "+31", flag: "nl" },
+            { name: "New Zealand", code: "NZ", phoneCode: "+64", flag: "nz" },
+            { name: "Nicaragua", code: "NI", phoneCode: "+505", flag: "ni" },
+            { name: "Niger", code: "NE", phoneCode: "+227", flag: "ne" },
+            { name: "Nigeria", code: "NG", phoneCode: "+234", flag: "ng" },
+            { name: "North Macedonia", code: "MK", phoneCode: "+389", flag: "mk" },
+            { name: "Norway", code: "NO", phoneCode: "+47", flag: "no" },
+            { name: "Oman", code: "OM", phoneCode: "+968", flag: "om" },
+            { name: "Pakistan", code: "PK", phoneCode: "+92", flag: "pk" },
+            { name: "Palau", code: "PW", phoneCode: "+680", flag: "pw" },
+            { name: "Palestine", code: "PS", phoneCode: "+970", flag: "ps" },
+            { name: "Panama", code: "PA", phoneCode: "+507", flag: "pa" },
+            { name: "Papua New Guinea", code: "PG", phoneCode: "+675", flag: "pg" },
+            { name: "Paraguay", code: "PY", phoneCode: "+595", flag: "py" },
+            { name: "Peru", code: "PE", phoneCode: "+51", flag: "pe" },
+            { name: "Philippines", code: "PH", phoneCode: "+63", flag: "ph" },
+            { name: "Poland", code: "PL", phoneCode: "+48", flag: "pl" },
+            { name: "Portugal", code: "PT", phoneCode: "+351", flag: "pt" },
+            { name: "Qatar", code: "QA", phoneCode: "+974", flag: "qa" },
+            { name: "Romania", code: "RO", phoneCode: "+40", flag: "ro" },
+            { name: "Russia", code: "RU", phoneCode: "+7", flag: "ru" },
+            { name: "Rwanda", code: "RW", phoneCode: "+250", flag: "rw" },
+            { name: "Saint Kitts and Nevis", code: "KN", phoneCode: "+1-869", flag: "kn" },
+            { name: "Saint Lucia", code: "LC", phoneCode: "+1-758", flag: "lc" },
+            { name: "Saint Vincent and the Grenadines", code: "VC", phoneCode: "+1-784", flag: "vc" },
+            { name: "Samoa", code: "WS", phoneCode: "+685", flag: "ws" },
+            { name: "San Marino", code: "SM", phoneCode: "+378", flag: "sm" },
+            { name: "Sao Tome and Principe", code: "ST", phoneCode: "+239", flag: "st" },
+            { name: "Saudi Arabia", code: "SA", phoneCode: "+966", flag: "sa" },
+            { name: "Senegal", code: "SN", phoneCode: "+221", flag: "sn" },
+            { name: "Serbia", code: "RS", phoneCode: "+381", flag: "rs" },
+            { name: "Seychelles", code: "SC", phoneCode: "+248", flag: "sc" },
+            { name: "Sierra Leone", code: "SL", phoneCode: "+232", flag: "sl" },
+            { name: "Singapore", code: "SG", phoneCode: "+65", flag: "sg" },
+            { name: "Slovakia", code: "SK", phoneCode: "+421", flag: "sk" },
+            { name: "Slovenia", code: "SI", phoneCode: "+386", flag: "si" },
+            { name: "Solomon Islands", code: "SB", phoneCode: "+677", flag: "sb" },
+            { name: "Somalia", code: "SO", phoneCode: "+252", flag: "so" },
+            { name: "South Africa", code: "ZA", phoneCode: "+27", flag: "za" },
+            { name: "South Sudan", code: "SS", phoneCode: "+211", flag: "ss" },
+            { name: "Spain", code: "ES", phoneCode: "+34", flag: "es" },
+            { name: "Sri Lanka", code: "LK", phoneCode: "+94", flag: "lk" },
+            { name: "Sudan", code: "SD", phoneCode: "+249", flag: "sd" },
+            { name: "Suriname", code: "SR", phoneCode: "+597", flag: "sr" },
+            { name: "Sweden", code: "SE", phoneCode: "+46", flag: "se" },
+            { name: "Switzerland", code: "CH", phoneCode: "+41", flag: "ch" },
+            { name: "Syria", code: "SY", phoneCode: "+963", flag: "sy" },
+            { name: "Taiwan", code: "TW", phoneCode: "+886", flag: "tw" },
+            { name: "Tajikistan", code: "TJ", phoneCode: "+992", flag: "tj" },
+            { name: "Tanzania", code: "TZ", phoneCode: "+255", flag: "tz" },
+            { name: "Thailand", code: "TH", phoneCode: "+66", flag: "th" },
+            { name: "Togo", code: "TG", phoneCode: "+228", flag: "tg" },
+            { name: "Tonga", code: "TO", phoneCode: "+676", flag: "to" },
+            { name: "Trinidad and Tobago", code: "TT", phoneCode: "+1-868", flag: "tt" },
+            { name: "Tunisia", code: "TN", phoneCode: "+216", flag: "tn" },
+            { name: "Turkey", code: "TR", phoneCode: "+90", flag: "tr" },
+            { name: "Turkmenistan", code: "TM", phoneCode: "+993", flag: "tm" },
+            { name: "Tuvalu", code: "TV", phoneCode: "+688", flag: "tv" },
+            { name: "Uganda", code: "UG", phoneCode: "+256", flag: "ug" },
+            { name: "Ukraine", code: "UA", phoneCode: "+380", flag: "ua" },
+            { name: "United Arab Emirates", code: "AE", phoneCode: "+971", flag: "ae" },
+            { name: "United Kingdom", code: "GB", phoneCode: "+44", flag: "gb" },
+            { name: "United States", code: "US", phoneCode: "+1", flag: "us" },
+            { name: "Uruguay", code: "UY", phoneCode: "+598", flag: "uy" },
+            { name: "Uzbekistan", code: "UZ", phoneCode: "+998", flag: "uz" },
+            { name: "Vanuatu", code: "VU", phoneCode: "+678", flag: "vu" },
+            { name: "Vatican City", code: "VA", phoneCode: "+379", flag: "va" },
+            { name: "Venezuela", code: "VE", phoneCode: "+58", flag: "ve" },
+            { name: "Vietnam", code: "VN", phoneCode: "+84", flag: "vn" },
+            { name: "Yemen", code: "YE", phoneCode: "+967", flag: "ye" },
+            { name: "Zambia", code: "ZM", phoneCode: "+260", flag: "zm" },
+            { name: "Zimbabwe", code: "ZW", phoneCode: "+263", flag: "zw" }
+        ];
+
         // Form handling
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('trialForm');
             const successMessage = document.getElementById('successMessage');
             const levelCards = document.querySelectorAll('.level-card');
             const submitBtn = form.querySelector('.btn-submit');
+            const countrySelect = document.getElementById('country');
+            const countryCodeSelect = document.getElementById('countryCode');
+            const selectedFlag = document.getElementById('selectedFlag');
+            
+            // Populate country dropdown
+            countryData.sort((a, b) => a.name.localeCompare(b.name)).forEach(country => {
+                // Untuk country select (negara asal)
+                const option = document.createElement('option');
+                option.value = country.code;
+                option.textContent = `${country.name}`;
+                option.setAttribute('data-flag', country.flag);
+                countrySelect.appendChild(option);
+                
+                // Untuk country code select (kode telepon) dengan flag
+                const phoneOption = document.createElement('option');
+                phoneOption.value = country.phoneCode;
+                phoneOption.setAttribute('data-country', country.code);
+                phoneOption.setAttribute('data-flag', country.flag);
+                
+                // Teks untuk option
+                phoneOption.textContent = `${country.name} (${country.phoneCode})`;
+                countryCodeSelect.appendChild(phoneOption);
+            });
+            
+            // Set default values (Indonesia)
+            const indonesia = countryData.find(c => c.code === 'ID');
+            if (indonesia) {
+                countrySelect.value = 'ID';
+                countryCodeSelect.value = '+62';
+                // Set flag default untuk Indonesia
+                if (selectedFlag) {
+                    selectedFlag.className = `flag-icon flag-icon-${indonesia.flag}`;
+                }
+            }
+            
+            // Update flag saat country code berubah
+            countryCodeSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                const flagCode = selectedOption.getAttribute('data-flag');
+                
+                if (selectedFlag && flagCode) {
+                    selectedFlag.className = `flag-icon flag-icon-${flagCode}`;
+                }
+            });
             
             // Level card selection
             levelCards.forEach(card => {
@@ -940,8 +1393,10 @@
                 const formData = {
                     fullName: document.getElementById('fullName').value.trim(),
                     email: document.getElementById('email').value.trim(),
-                    phone: document.getElementById('phone').value.trim(),
-                    country: document.getElementById('country').value.trim(),
+                    countryCode: document.getElementById('countryCode').value,
+                    phoneNumber: document.getElementById('phoneNumber').value.trim(),
+                    country: document.getElementById('country').value,
+                    countryName: countryData.find(c => c.code === document.getElementById('country').value)?.name || '',
                     level: document.querySelector('input[name="level"]:checked')?.value,
                     learningGoal: document.getElementById('learningGoal').value,
                     referral: document.getElementById('referral').value,
@@ -962,9 +1417,9 @@
                     highlightField('email');
                 }
                 
-                if (!formData.phone || !isValidPhone(formData.phone)) {
-                    errors.push('Nomor WhatsApp harus valid (format: 62...)');
-                    highlightField('phone');
+                if (!formData.phoneNumber || !isValidPhoneNumber(formData.phoneNumber)) {
+                    errors.push('Nomor WhatsApp harus valid');
+                    highlightField('phoneNumber');
                 }
                 
                 if (!formData.country) {
@@ -1019,13 +1474,15 @@
             
             function highlightField(fieldId) {
                 const field = document.getElementById(fieldId);
-                field.style.borderColor = '#ef4444';
-                field.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
-                
-                field.addEventListener('input', function() {
-                    this.style.borderColor = '#1A4D57';
-                    this.style.boxShadow = 'none';
-                }, { once: true });
+                if (field) {
+                    field.style.borderColor = '#ef4444';
+                    field.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
+                    
+                    field.addEventListener('input', function() {
+                        this.style.borderColor = '#1A4D57';
+                        this.style.boxShadow = 'none';
+                    }, { once: true });
+                }
             }
             
             function showErrorMessages(errors) {
@@ -1060,8 +1517,9 @@
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
             }
             
-            function isValidPhone(phone) {
-                return /^62\d{9,12}$/.test(phone);
+            function isValidPhoneNumber(phone) {
+                // Basic validation for phone number (at least 5 digits)
+                return /^\d{5,}$/.test(phone);
             }
             
             // Add shake animation

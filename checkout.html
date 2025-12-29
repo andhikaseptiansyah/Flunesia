@@ -629,6 +629,70 @@
             font-weight: bold;
         }
         
+        /* Styles untuk notifikasi */
+        .pending-order-notification {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-left: 4px solid #C4A603;
+            z-index: 1000;
+            max-width: 350px;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(20px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(20px); }
+        }
+        
+        .notification-fade {
+            animation: fadeInOut 10s ease;
+        }
+        
+        .fixed-notification {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Loading state */
+        .loading-spinner {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Existing order alert */
+        .existing-order-alert {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
         @media (max-width: 768px) {
             .checkout-container {
                 border-radius: 0;
@@ -662,6 +726,12 @@
                 width: 50px;
                 height: 50px;
             }
+            
+            .pending-order-notification {
+                left: 1rem;
+                right: 1rem;
+                max-width: none;
+            }
         }
     </style>
 </head>
@@ -693,6 +763,26 @@
                 
                 <!-- Left Column - Form & Payment -->
                 <div>
+                    <!-- Alert untuk order yang sedang pending -->
+                    <div id="existingOrderAlert" class="existing-order-alert hidden">
+                        <div class="flex items-start">
+                            <i class="fas fa-info-circle text-yellow-600 mr-3 mt-1 text-lg"></i>
+                            <div class="flex-1">
+                                <strong>Anda memiliki pesanan yang sedang diproses</strong>
+                                <p class="text-sm mt-1">Pesanan sebelumnya sedang menunggu verifikasi admin. Anda tetap bisa checkout paket lain.</p>
+                                <div class="mt-2 flex flex-wrap gap-2">
+                                    <button onclick="viewExistingOrder()" class="px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white text-sm rounded-lg">
+                                        <i class="fas fa-eye mr-1"></i> Lihat Status
+                                    </button>
+                                    <button onclick="dismissAlert()" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm rounded-lg">
+                                        <i class="fas fa-times mr-1"></i> Tutup
+                                    </button>
+                                </div>
+                                <div id="existingOrderInfo" class="mt-2 text-xs text-gray-600"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Step 1: Input Data Pribadi & Pilih Pembayaran -->
                     <div id="step1" class="step-content active">
                         <div class="flex items-center gap-4 mb-8">
@@ -1210,6 +1300,12 @@
                                 <a href="https://wa.me/6287729949195" target="_blank" class="px-6 py-3 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition-colors">
                                     <i class="fab fa-whatsapp mr-2"></i>Konfirmasi ke Admin
                                 </a>
+                                
+                                <!-- TAMBAH TOMBOL CHECKOUT LAGI -->
+                                <button type="button" onclick="startNewCheckout()" class="px-6 py-3 bg-[#C4A603] text-white font-bold rounded-xl hover:bg-[#E0B805] transition-colors">
+                                    <i class="fas fa-shopping-cart mr-2"></i>Checkout Paket Lain
+                                </button>
+                                
                                 <a href="index.html" class="px-6 py-3 border-2 border-[#1A4D57] text-[#1A4D57] font-bold rounded-xl hover:bg-[#1A4D57] hover:text-white transition-colors">
                                     <i class="fas fa-home mr-2"></i>Kembali ke Beranda
                                 </a>
@@ -1435,14 +1531,20 @@
         }
         
         // Initialize phone input with intl-tel-input
-        const phoneElement = document.querySelector("#phone");
-        if (phoneElement) {
-            phoneInput = window.intlTelInput(phoneElement, {
-                initialCountry: "id",
-                separateDialCode: true,
-                preferredCountries: ["id", "my", "sg", "jp", "kr", "us", "gb", "au", "de"],
-                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/utils.js",
-            });
+        try {
+            const phoneElement = document.querySelector("#phone");
+            if (phoneElement) {
+                phoneInput = window.intlTelInput(phoneElement, {
+                    initialCountry: "id",
+                    separateDialCode: true,
+                    preferredCountries: ["id", "my", "sg", "jp", "kr", "us", "gb", "au", "de"],
+                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/utils.js",
+                });
+            } else {
+                console.warn("Phone element not found");
+            }
+        } catch (error) {
+            console.error("Failed to initialize phone input:", error);
         }
         
         updatePackageDisplay();
@@ -1454,6 +1556,9 @@
         
         // Cek jika ada status verifikasi di localStorage (untuk simulasi)
         checkExistingVerificationStatus();
+        
+        // Cek dan tampilkan notifikasi untuk order yang sedang pending
+        showPendingOrderNotificationIfAny();
     });
     
     // Update package display
@@ -1518,7 +1623,12 @@
         if (phone) {
             phone.addEventListener('input', validateForm);
             phone.addEventListener('blur', validateForm);
-            phone.addEventListener('countrychange', validateForm);
+            // Tambahkan event listener untuk countrychange
+            if (phoneInput) {
+                phoneInput.promise.then(() => {
+                    // Event listener akan diatur oleh intl-tel-input
+                });
+            }
         }
         
         // Payment option selection
@@ -1535,7 +1645,19 @@
         const email = document.getElementById('email')?.value.trim();
         const phone = phoneInput ? phoneInput.getNumber() : '';
         const country = document.getElementById('country')?.value;
-        const phoneIsValid = phoneInput ? phoneInput.isValidNumber() : false;
+        
+        // Validasi nomor telepon
+        let phoneIsValid = false;
+        if (phoneInput) {
+            try {
+                phoneIsValid = phoneInput.isValidNumber();
+            } catch (error) {
+                console.warn("Phone validation error:", error);
+                phoneIsValid = phone.length > 5; // Fallback validation
+            }
+        } else {
+            phoneIsValid = phone.length > 5; // Fallback validation
+        }
         
         const isValid = name && 
                        validateEmail(email) && 
@@ -1611,8 +1733,8 @@
         const formData = {
             name: document.getElementById('fullName').value.trim(),
             email: document.getElementById('email').value.trim(),
-            phone: phoneInput.getNumber(),
-            countryCode: phoneInput.getSelectedCountryData().iso2,
+            phone: phoneInput ? phoneInput.getNumber() : document.getElementById('phone').value,
+            countryCode: document.getElementById('country').value,
             countryName: countryNames[document.getElementById('country').value] || document.getElementById('country').value
         };
         
@@ -1738,7 +1860,6 @@
         const successPackage = document.getElementById('successPackage');
         const successTotal = document.getElementById('successTotal');
         const successMethod = document.getElementById('successMethod');
-        const successEmail = document.getElementById('successEmail');
         
         const formatter = new Intl.NumberFormat('id-ID', {
             style: 'currency',
@@ -1756,7 +1877,6 @@
                 successMethod.textContent = `${bankName}`;
             }
         }
-        if (successEmail) successEmail.textContent = email;
         
         // Reset semua status
         const verificationAlert = document.getElementById('verificationAlert');
@@ -1788,6 +1908,9 @@
                 <a href="https://wa.me/6287729949195" target="_blank" class="px-6 py-3 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition-colors">
                     <i class="fab fa-whatsapp mr-2"></i>Konfirmasi ke Admin
                 </a>
+                <button type="button" onclick="startNewCheckout()" class="px-6 py-3 bg-[#C4A603] text-white font-bold rounded-xl hover:bg-[#E0B805] transition-colors">
+                    <i class="fas fa-shopping-cart mr-2"></i>Checkout Paket Lain
+                </button>
                 <a href="index.html" class="px-6 py-3 border-2 border-[#1A4D57] text-[#1A4D57] font-bold rounded-xl hover:bg-[#1A4D57] hover:text-white transition-colors">
                     <i class="fas fa-home mr-2"></i>Kembali ke Beranda
                 </a>
@@ -1807,6 +1930,142 @@
         
         // Start countdown timer
         startVerificationCountdown();
+    }
+    
+    // FUNGSI BARU: Memulai checkout baru
+    function startNewCheckout() {
+        // Konfirmasi dengan user
+        if (confirm('Apakah Anda ingin membeli paket lain? Order yang sedang diverifikasi tetap akan diproses.')) {
+            // Reset form checkout ke step 1
+            resetCheckoutForm();
+            
+            // Tampilkan step 1
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const step3 = document.getElementById('step3');
+            
+            if (step1) step1.classList.add('active');
+            if (step2) step2.classList.remove('active');
+            if (step3) step3.classList.remove('active');
+            currentStep = 1;
+            
+            // Scroll ke atas
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Tampilkan alert bahwa ada order yang sedang pending
+            showExistingOrderAlert();
+        }
+    }
+    
+    // FUNGSI BARU: Reset form checkout
+    function resetCheckoutForm() {
+        // Reset form fields (hanya jika ada)
+        const fullName = document.getElementById('fullName');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const country = document.getElementById('country');
+        
+        if (fullName) fullName.value = '';
+        if (email) email.value = '';
+        if (phone) phone.value = '';
+        if (country) country.selectedIndex = 0;
+        
+        // Reset phone input jika tersedia
+        if (phoneInput) {
+            try {
+                phoneInput.setNumber('');
+                phoneInput.setCountry('id');
+            } catch (error) {
+                console.warn("Error resetting phone input:", error);
+            }
+        }
+        
+        // Reset payment selection
+        selectedPayment = '';
+        document.querySelectorAll('.payment-option').forEach(el => {
+            el.classList.remove('selected');
+        });
+        
+        // Reset bank selection
+        selectedBank = 'bca';
+        selectBank('bca');
+        
+        // Reset review section
+        const reviewName = document.getElementById('reviewName');
+        const reviewEmail = document.getElementById('reviewEmail');
+        const reviewPhone = document.getElementById('reviewPhone');
+        const reviewCountry = document.getElementById('reviewCountry');
+        
+        if (reviewName) reviewName.textContent = '-';
+        if (reviewEmail) reviewEmail.textContent = '-';
+        if (reviewPhone) reviewPhone.textContent = '-';
+        if (reviewCountry) reviewCountry.textContent = '-';
+        
+        // Reset validation
+        validateForm();
+    }
+    
+    // FUNGSI BARU: Tampilkan alert untuk order yang sedang pending
+    function showExistingOrderAlert() {
+        const savedOrder = localStorage.getItem('fluenesia_order');
+        if (savedOrder) {
+            const order = JSON.parse(savedOrder);
+            
+            const alertElement = document.getElementById('existingOrderAlert');
+            const orderInfoElement = document.getElementById('existingOrderInfo');
+            
+            if (alertElement) {
+                alertElement.classList.remove('hidden');
+                
+                if (orderInfoElement) {
+                    const statusText = order.status === 'verified' ? 'Terverifikasi' : 'Menunggu Verifikasi';
+                    const statusClass = order.status === 'verified' ? 'text-green-600' : 'text-yellow-600';
+                    
+                    orderInfoElement.innerHTML = `
+                        <div class="flex items-center">
+                            <i class="fas fa-receipt mr-2"></i>
+                            <span class="font-medium">${order.orderNumber}</span>
+                            <span class="ml-2 ${statusClass} text-xs font-bold">${statusText}</span>
+                        </div>
+                    `;
+                }
+            }
+        }
+    }
+    
+    // FUNGSI BARU: Tutup alert
+    function dismissAlert() {
+        const alertElement = document.getElementById('existingOrderAlert');
+        if (alertElement) {
+            alertElement.classList.add('hidden');
+        }
+    }
+    
+    // FUNGSI BARU: Lihat order yang sedang pending
+    function viewExistingOrder() {
+        const savedOrder = localStorage.getItem('fluenesia_order');
+        if (!savedOrder) return;
+        
+        const order = JSON.parse(savedOrder);
+        
+        // Tampilkan step 3
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        
+        if (step1) step1.classList.remove('active');
+        if (step2) step2.classList.remove('active');
+        if (step3) step3.classList.add('active');
+        currentStep = 3;
+        
+        // Update data order di step 3
+        setupVerificationUI(order.orderNumber, order.customer.email);
+        
+        // Tutup alert
+        dismissAlert();
+        
+        // Scroll ke atas
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     
     // Fungsi untuk countdown verifikasi
@@ -1850,64 +2109,68 @@
         if (savedOrder) {
             const order = JSON.parse(savedOrder);
             
-            // Cek jika order sudah diverifikasi
-            if (order.status === 'verified') {
-                // Langsung tampilkan status verified
-                showVerificationComplete();
-            } else if (order.status === 'pending_verification') {
-                // Tampilkan step 3 dengan status pending
-                const step1 = document.getElementById('step1');
-                const step2 = document.getElementById('step2');
-                const step3 = document.getElementById('step3');
-                
-                if (step1) step1.classList.remove('active');
-                if (step2) step2.classList.remove('active');
-                if (step3) step3.classList.add('active');
-                currentStep = 3;
-                
-                // Update data pesanan
-                const orderNumber = document.getElementById('orderNumber');
-                const successPackage = document.getElementById('successPackage');
-                const successTotal = document.getElementById('successTotal');
-                const successMethod = document.getElementById('successMethod');
-                const successEmail = document.getElementById('successEmail');
-                
-                if (orderNumber) orderNumber.textContent = order.orderNumber;
-                if (successPackage) successPackage.textContent = `${order.order.package} - ${order.order.level}`;
-                if (successTotal) successTotal.textContent = new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0
-                }).format(order.order.total);
-                
-                if (successMethod) {
-                    if (order.paymentMethod === 'qris') {
-                        successMethod.textContent = 'QRIS';
-                    } else if (order.selectedBank) {
-                        const bankName = bankData[order.selectedBank]?.name || 'Transfer Bank';
-                        successMethod.textContent = `${bankName}`;
-                    } else {
-                        successMethod.textContent = 'Transfer Bank';
-                    }
-                }
-                
-                // Ambil email dari localStorage
-                const savedEmail = localStorage.getItem('fluenesia_customer_email');
-                if (successEmail && savedEmail) successEmail.textContent = savedEmail;
-                
-                // Setup UI untuk verifikasi
-                setupVerificationUI(order.orderNumber, savedEmail || '');
-                
-                // Hitung waktu tersisa
-                const timeLeft = Math.floor((order.verificationEndTime - new Date().getTime()) / 1000);
-                if (timeLeft > 0) {
-                    verificationTimer = timeLeft;
-                } else {
-                    verificationTimer = 0;
-                    checkVerificationStatus();
-                }
+            // JANGAN otomatis redirect ke step 3!
+            // Hanya tampilkan alert di step 1
+            showExistingOrderAlert();
+        }
+    }
+    
+    // FUNGSI BARU: Tampilkan notifikasi untuk order pending
+    function showPendingOrderNotificationIfAny() {
+        const savedOrder = localStorage.getItem('fluenesia_order');
+        if (savedOrder) {
+            const order = JSON.parse(savedOrder);
+            
+            // Hanya tampilkan notifikasi jika order masih pending
+            if (order.status === 'pending_verification') {
+                // Buat notifikasi toast
+                createPendingOrderToast(order.orderNumber);
             }
         }
+    }
+    
+    // FUNGSI BARU: Buat notifikasi toast
+    function createPendingOrderToast(orderNumber) {
+        // Cek jika sudah ada notifikasi
+        if (document.getElementById('pending-order-toast')) return;
+        
+        const toast = document.createElement('div');
+        toast.id = 'pending-order-toast';
+        toast.className = 'pending-order-notification';
+        toast.innerHTML = `
+            <div class="p-4">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-clock text-yellow-500 text-lg"></i>
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <p class="text-sm font-medium text-gray-900">
+                            Pesanan sedang diverifikasi
+                        </p>
+                        <p class="mt-1 text-xs text-gray-500">
+                            Order ${orderNumber} sedang menunggu verifikasi admin.
+                        </p>
+                        <div class="mt-2 flex gap-2">
+                            <button onclick="viewExistingOrder()" class="text-xs bg-[#1A4D57] hover:bg-[#245A64] text-white px-3 py-1 rounded-lg">
+                                Lihat Status
+                            </button>
+                            <button onclick="this.parentElement.parentElement.parentElement.parentElement.remove()" class="text-xs bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1 rounded-lg">
+                                Tutup
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(toast);
+        
+        // Auto-hide setelah 15 detik
+        setTimeout(() => {
+            if (toast.parentElement) {
+                toast.remove();
+            }
+        }, 15000);
     }
     
     // Fungsi untuk simulasi verifikasi admin (dalam real app, ini akan API call)
@@ -1980,6 +2243,9 @@
                 <a href="dashboard.html" class="px-6 py-3 bg-[#1A4D57] text-white font-bold rounded-xl hover:bg-[#245A64] transition-colors">
                     <i class="fas fa-chalkboard-teacher mr-2"></i>Akses Kelas
                 </a>
+                <button type="button" onclick="startNewCheckout()" class="px-6 py-3 bg-[#C4A603] text-white font-bold rounded-xl hover:bg-[#E0B805] transition-colors">
+                    <i class="fas fa-shopping-cart mr-2"></i>Checkout Paket Lain
+                </button>
                 <a href="index.html" class="px-6 py-3 border-2 border-[#1A4D57] text-[#1A4D57] font-bold rounded-xl hover:bg-[#1A4D57] hover:text-white transition-colors">
                     <i class="fas fa-home mr-2"></i>Kembali ke Beranda
                 </a>
@@ -2009,6 +2275,26 @@
                 button.innerHTML = '<i class="fas fa-copy mr-1"></i> Salin';
                 button.classList.remove('copied');
             }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy:', err);
+            // Fallback untuk browser lama
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                button.innerHTML = '<i class="fas fa-check mr-1"></i> Tersalin';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-copy mr-1"></i> Salin';
+                    button.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Fallback copy failed:', err);
+            }
+            document.body.removeChild(textArea);
         });
     }
     
